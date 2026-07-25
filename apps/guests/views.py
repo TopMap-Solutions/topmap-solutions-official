@@ -1,4 +1,5 @@
 from datetime import timedelta
+from django.http import HttpResponse
 
 from django.shortcuts import redirect, render
 from django.utils import timezone
@@ -49,7 +50,7 @@ def send_public_form(request):
                 "inquiry": inquiry,
             },
         )
-    
+
     # Send email to staff
     send_mail(
         subject="Client Inquiry",
@@ -113,3 +114,7 @@ def inquiry_success(request):
         "contact_success.html",
         {"email": email},
     )
+
+
+def test(request):
+    return HttpResponse("Hello1")

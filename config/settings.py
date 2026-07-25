@@ -58,12 +58,16 @@ DEBUG = not IS_PROD
 # SECURITY
 # ----------------------------
 
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    "topmapsolutions.com",
-    "www.topmapsolutions.com",
-]
+if IS_PROD:
+    ALLOWED_HOSTS = [
+        "localhost",
+        "127.0.0.1",
+        "topmapsolutions.com",
+        "www.topmapsolutions.com",
+    ]
+else:
+    ALLOWED_HOSTS = ["*"]
+
 
 if IS_PROD:
     CSRF_TRUSTED_ORIGINS = [
@@ -235,5 +239,3 @@ if IS_PROD:
     EMAIL_HOST_PASSWORD = os.getenv("BREVO_SMTP_PASSWORD")
 else:
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-
-
