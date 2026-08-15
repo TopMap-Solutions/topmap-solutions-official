@@ -1,8 +1,8 @@
 from django.shortcuts import redirect, render
 
 from apps.guests.models import Guest
-from apps.guests.selectors import check_email_cooldown
 from apps.guests.forms import InquiryForm
+from apps.guests.selectors import check_email_cooldown
 from apps.guests.services import send_inquiry_emails
 
 

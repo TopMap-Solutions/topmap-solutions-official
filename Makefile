@@ -11,3 +11,6 @@ migrate:
 
 tests:
 	uv run manage.py test
+
+lint:
+	uv run djlint . --reformat
