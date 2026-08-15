@@ -7,3 +7,8 @@ __pycache__/
 node_modules/
 .git/
 .gitignore
+
+docs
+data
+license
+README.md
