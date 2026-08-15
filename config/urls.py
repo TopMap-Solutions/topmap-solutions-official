@@ -22,7 +22,4 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("apps.guests.urls")),
     path("accounts/", include("apps.accounts.urls")),
-    path("parcels/", include("apps.parcels.urls")),
-    path("boundaries/", include("apps.boundaries.urls")),
-    path("dashboard/", include("apps.dashboard.urls")),
 ]
