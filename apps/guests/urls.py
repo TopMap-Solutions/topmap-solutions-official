@@ -7,5 +7,4 @@ urlpatterns = [
     path("inquiry/form/", views.inquiry_form, name="inquiry_form"),
     path("inquiry/success/", views.inquiry_success, name="inquiry_success"),
     path("submit/", views.send_public_form, name="send_public_form"),
-    path("test/", views.test, name="test"),
 ]
