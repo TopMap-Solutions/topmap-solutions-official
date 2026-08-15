@@ -1,10 +1,10 @@
 {% load static %}
 <nav class="container-navbar customer-nav">
-    <a class="nav-title" href="{% url 'homepage' %}">
+    <a class="nav-title" href="{% url 'guests:homepage' %}">
         <img src="{% static 'brand/topmap.svg' %}" alt="icon">
         <span>TopMap Solutions</span>
     </a>
     <div>
-        <a class="btn-primary" href="{% url 'inquiry' %}">Contact</a>
+        <a class="btn-primary" href="{% url 'guests:inquiry' %}">Contact</a>
     </div>
 </nav>

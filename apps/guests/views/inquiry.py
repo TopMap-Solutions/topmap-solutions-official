@@ -14,7 +14,7 @@ def inquiry_success(request):
     email = request.session.pop("submitted_email", None)
 
     if not email:
-        return redirect("inquiry")
+        return redirect("guests:inquiry")
 
     return render(
         request,
@@ -25,7 +25,7 @@ def inquiry_success(request):
 
 def send_public_form(request):
     if request.method != "POST":
-        return redirect("inquiry")
+        return redirect("guests:inquiry")
 
     form = InquiryForm(request.POST)
 
@@ -52,4 +52,4 @@ def send_public_form(request):
 
     request.session["submitted_email"] = data["email"]
 
-    return redirect("inquiry_success")
+    return redirect("guests:inquiry_success")

@@ -1,5 +1,5 @@
 <section>
-    <form action="{% url 'send_public_form' %}" method="post">
+    <form action="{% url 'guests:send_public_form' %}" method="post">
         {% csrf_token %}
         <div>
             <label for="name">Name *</label>
