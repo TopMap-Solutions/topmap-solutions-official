@@ -8,9 +8,12 @@ services:
     env_file:
       - ../.env.prod
 
+    environment:
+      DJANGO_SETTINGS_MODULE: config.settings.prod
+
     ports:
       - "8000:8000"
-      
+
     restart: unless-stopped
     networks:
       - gis_centralize_db
