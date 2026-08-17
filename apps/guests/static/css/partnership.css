@@ -1,0 +1,68 @@
+.partner h4 {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  text-transform: uppercase;
+}
+
+.partner .marquee {
+  --w: 150px;
+  --h: 150px;
+  --dur: 25s;
+  --n: 3;
+
+  margin-top: 3rem;
+  display: flex;
+  block-size: var(--h);
+  position: relative;
+  overflow-x: hidden;
+  mask-image: linear-gradient(
+    to right,
+    hsl(0 0% 0% / 0),
+    hsl(0 0% 0% / 1) 20%,
+    hsl(0 0% 0% / 1) 80%,
+    hsl(0 0% 0% / 0)
+  );
+}
+
+.partner .item {
+  position: absolute;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition:
+    filter 0.3s,
+    opacity 0.3s;
+  inset-inline-start: max(calc(var(--w) * var(--n)), calc(100% + var(--w)));
+  transform: translateX(-50%);
+  animation: go linear var(--dur)
+    calc(var(--dur) / var(--n) * (var(--n) - var(--i)) * -1) infinite;
+}
+
+.partner .item:nth-of-type(1) {
+  --i: 1;
+}
+.partner .item:nth-of-type(2) {
+  --i: 2;
+}
+.partner .item:nth-of-type(3) {
+  --i: 3;
+}
+
+@keyframes go {
+  to {
+    inset-inline-start: calc(var(--w) * -1);
+  }
+}
+
+.partner .marquee:hover .item {
+  animation-play-state: paused;
+}
+
+.partner .marquee:hover .item:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+.partner .marquee img {
+  height: 150px;
+}

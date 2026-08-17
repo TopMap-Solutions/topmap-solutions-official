@@ -1,3 +1,5 @@
+@import url("partnership.css");
+
 /* Hero Section */
 .hero {
   position: relative;
@@ -116,9 +118,9 @@
   width: 150px;
 }
 
-@media (max-width: 900px ) {
+@media (max-width: 900px) {
   .hero-card {
-  max-width: 600px;
-  padding: 1rem;
-}
+    max-width: 600px;
+    padding: 1rem;
+  }
 }
