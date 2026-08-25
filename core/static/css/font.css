@@ -1,13 +1,13 @@
 h1 {
   font-family: var(--font-header);
   font-weight: var(--fw-black);
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 h2 {
   font-family: var(--font-header);
   font-weight: var(--fw-black);
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 h3 {
@@ -19,7 +19,7 @@ h3 {
 h4 {
   font-family: var(--font-body);
   font-weight: var(--fw-bold);
-  font-size: 1.4rem;
+  font-size: 1  rem;
 }
 
 p {

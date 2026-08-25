@@ -13,8 +13,10 @@
     </head>
     <body>
         {% include 'navbar.html' %}
-        {% block content %}{% endblock %}
-        {% include 'footer.html' %}
-        {% block scripts %}{% endblock %}
+        <div class="base">
+            {% block content %}{% endblock %}
+            {% include 'footer.html' %}
+        </div>
     </body>
+    {% block scripts %}{% endblock %}
 </html>

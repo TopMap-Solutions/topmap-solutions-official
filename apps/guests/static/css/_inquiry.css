@@ -1,7 +1,6 @@
 .inquiry {
   display: flex;
   gap: 3rem;
-  min-height: var(--min-height);
 }
 
 .inquiry section {
