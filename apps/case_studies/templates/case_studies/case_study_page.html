@@ -1,0 +1,94 @@
+{% extends "_base.html" %}
+
+{% block content %}
+{% load wagtailcore_tags %}
+
+<main class="container">
+
+    <article class="case-study">
+
+        <header class="case-study-header">
+
+            <div class="case-study-header__meta">
+
+                {% if page.project_type %}
+                    <span>{{ page.project_type }}</span>
+                {% endif %}
+
+                {% if page.location %}
+                    <span>{{ page.location }}</span>
+                {% endif %}
+
+            </div>
+
+            <h1>{{ page.title }}</h1>
+
+            {% if page.client %}
+                <p class="case-study-header__client">
+                    Client: {{ page.client }}
+                </p>
+            {% endif %}
+
+            {% if page.summary %}
+                <p class="case-study-header__summary">
+                    {{ page.summary }}
+                </p>
+            {% endif %}
+
+        </header>
+
+
+        {% if page.challenge %}
+            <section class="case-study-section">
+
+                <h2>Challenge</h2>
+
+                <div class="case-study-section__content">
+                    {{ page.challenge|richtext }}
+                </div>
+
+            </section>
+        {% endif %}
+
+
+        {% if page.solution %}
+            <section class="case-study-section">
+
+                <h2>Solution</h2>
+
+                <div class="case-study-section__content">
+                    {{ page.solution|richtext }}
+                </div>
+
+            </section>
+        {% endif %}
+
+
+        {% if page.results %}
+            <section class="case-study-section">
+
+                <h2>Results</h2>
+
+                <div class="case-study-section__content">
+                    {{ page.results|richtext }}
+                </div>
+
+            </section>
+        {% endif %}
+
+
+        <footer class="case-study-footer">
+
+            {% if page.get_parent.url %}
+                <a href="{{ page.get_parent.url }}">
+                    ← Back to case studies
+                </a>
+            {% endif %}
+
+        </footer>
+
+    </article>
+
+</main>
+
+{% endblock %}

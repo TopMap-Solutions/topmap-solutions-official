@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     # Local
     "core",
     "apps.guests",
+    "apps.case_studies",
 ]
 # ============================================================
 # MIDDLEWARE

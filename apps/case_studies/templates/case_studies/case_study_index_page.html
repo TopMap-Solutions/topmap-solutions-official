@@ -1,0 +1,87 @@
+{% extends "_base.html" %}
+
+{% block content %}
+{% load wagtailcore_tags %}
+
+<main class="container">
+
+    <header class="case-studies-header">
+        <h1>{{ page.title }}</h1>
+
+        {% if page.intro %}
+            <div class="case-studies-intro">
+                {{ page.intro|richtext }}
+            </div>
+        {% endif %}
+    </header>
+
+    {% with case_studies=page.get_children.live.specific %}
+
+        {% if case_studies %}
+
+            <section class="case-studies" aria-label="Case studies">
+
+                {% for case_study in case_studies %}
+
+                    <article class="case-study-card">
+
+                        <div class="case-study-card__meta">
+
+                            {% if case_study.project_type %}
+                                <span>
+                                    {{ case_study.project_type }}
+                                </span>
+                            {% endif %}
+
+                            {% if case_study.location %}
+                                <span>
+                                    {{ case_study.location }}
+                                </span>
+                            {% endif %}
+
+                        </div>
+
+                        <h2 class="case-study-card__title">
+                            <a href="{{ case_study.url }}">
+                                {{ case_study.title }}
+                            </a>
+                        </h2>
+
+                        {% if case_study.client %}
+                            <p class="case-study-card__client">
+                                {{ case_study.client }}
+                            </p>
+                        {% endif %}
+
+                        {% if case_study.summary %}
+                            <p class="case-study-card__summary">
+                                {{ case_study.summary }}
+                            </p>
+                        {% endif %}
+
+                        <a
+                            href="{{ case_study.url }}"
+                            class="case-study-card__link"
+                        >
+                            View case study →
+                        </a>
+
+                    </article>
+
+                {% endfor %}
+
+            </section>
+
+        {% else %}
+
+            <div class="case-studies-empty">
+                <p>No case studies have been published yet.</p>
+            </div>
+
+        {% endif %}
+
+    {% endwith %}
+
+</main>
+
+{% endblock %}
