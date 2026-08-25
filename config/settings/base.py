@@ -29,7 +29,6 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 # ============================================================
 
 INSTALLED_APPS = [
-    "core",
     # Django
     "django.contrib.admin",
     "django.contrib.auth",
@@ -37,11 +36,29 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # Local apps
+    "django.contrib.postgres",
+
+    # Wagtail
+    "wagtail",
+    "wagtail.admin",
+    "wagtail.documents",
+    "wagtail.images",
+    "wagtail.search",
+    "wagtail.snippets",
+    "wagtail.sites",
+    "wagtail.users",
+    "wagtail.embeds",
+    "wagtail.contrib.forms",
+    "wagtail.contrib.redirects",
+
+    # Third party
+    "modelcluster",
+    "taggit",
+
+    # Local
+    "core",
     "apps.guests",
 ]
-
-
 # ============================================================
 # MIDDLEWARE
 # ============================================================
@@ -55,6 +72,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
 
 
@@ -150,9 +168,22 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = "/media/"
+
 
 # ============================================================
 # DEFAULT PRIMARY KEY
 # ============================================================
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# ============================================================
+# Wag Tail Config
+# ============================================================
+
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000
+
+WAGTAIL_SITE_NAME = "TopMap Solutions"
+WAGTAILADMIN_BASE_URL = "https://topmapsolutions.com"
