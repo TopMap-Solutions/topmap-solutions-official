@@ -27,11 +27,6 @@
 
 .partner .item {
   position: absolute;
-  filter: grayscale(100%);
-  opacity: 0.7;
-  transition:
-    filter 0.3s,
-    opacity 0.3s;
   inset-inline-start: max(calc(var(--w) * var(--n)), calc(100% + var(--w)));
   transform: translateX(-50%);
   animation: go linear var(--dur)
@@ -54,14 +49,6 @@
   }
 }
 
-.partner .marquee:hover .item {
-  animation-play-state: paused;
-}
-
-.partner .marquee:hover .item:hover {
-  filter: grayscale(0%);
-  opacity: 1;
-}
 
 .partner .marquee img {
   height: 150px;

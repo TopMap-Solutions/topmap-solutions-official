@@ -1,0 +1,116 @@
+{% extends "_base.html" %}
+{% block title %} {{page.client }} | Topmap Solutions{% endblock title %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/case_studies/contentPage.css' %}">
+{% endblock %}
+{% block content %}
+    <main class="container">
+        <div class="case-study-navigation">
+            {% with parent=page.get_parent %}
+                {% if parent %}
+                    <a href="{{ parent.url }}">
+                        <img src="{% static 'icons/back-button.png' %}" alt="back-button">
+                        <p>All Success Stories</p>
+                    </a>
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <article class="case-study">
+            <header>
+
+                <div class="title">
+                    <h1>{{ page.title }}</h1>
+                    {% if page.summary %}
+                        <p>{{ page.summary }}</p>
+                    {% endif %}
+                </div>
+
+                <div class="right-bar">
+                    <div class="client-info">
+                        {% if page.client %}
+                        <div>
+                            <img src="{% static 'icons/company2.png' %}" alt="company">
+                            <p>{{ page.client }}</p>
+                        </div>
+                        {% endif %}
+                        {% if page.location %}
+                        <div>
+                            <img src="{% static 'icons/map.png' %}" alt="map">
+                            <p>{{ page.location }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="tags-list-container">
+                    {% with tags=page.tags.all %}
+                        {% if tags %}
+                        <p>Tags</p>
+                        <div class="tags-container">
+                            {% for tag in tags %}
+                                <span class="chip-tag">{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    {% endwith %}
+                    </div>
+                </div>
+
+            </header>
+
+            {% with gallery=page.gallery_images.all %}
+                {% if gallery %}
+                    <section class="gallery">
+                        {% for item in gallery %}
+                            {% image item.image width-1200 as gallery_image %}
+                            <figure>
+                                <img src="{{ gallery_image.url }}"
+                                     width="{{ gallery_image.width }}"
+                                     height="{{ gallery_image.height }}"
+                                     alt="{{ item.caption|default:page.title }}"
+                                     loading="lazy" />
+                            </figure>
+                        {% endfor %}
+                    </section>
+                {% endif %}
+            {% endwith %}
+            <main>
+                {% with results=page.results.all %}
+                    {% if results %}
+                        <div class="case-study-results">
+                            <section class="case-study-section case-study-results">
+                                {% for result in results %}
+                                    <article class="case-study-result">
+                                        <h1 class="result-value">{{ result.value }}</h1>
+                                        <h3>{{ result.label }}</h3>
+                                        {% if result.description %}
+                                            <p>{{ result.description }}</p>
+                                        {% endif %}
+                                    </article>
+                                {% endfor %}
+                                <a class="btn-primary" href="{% url 'guests:inquiry' %}">Contact Us</a>
+                            </section>
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                <div class="case-study-body">
+                    {% if page.challenge %}
+                        <section class="case-study-section">
+                            <h1>Challenge</h1>
+                            <div class="content">{{ page.challenge|richtext }}</div>
+                        </section>
+                    {% endif %}
+                    {% if page.solution %}
+                        <section class="case-study-section">
+                            <h1>Solution</h1>
+                            <div class="content">{{ page.solution|richtext }}</div>
+                        </section>
+                    {% endif %}
+                </div>
+            </main>
+        </article>
+    </main>
+{% endblock %}

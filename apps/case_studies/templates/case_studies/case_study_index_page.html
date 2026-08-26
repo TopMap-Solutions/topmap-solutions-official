@@ -1,0 +1,46 @@
+{% extends "_base.html" %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% block title %}Customer Success | Topmap Solutions{% endblock title %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/case_studies/indexPage.css' %}">
+{% endblock %}
+{% block content %}
+    <main class="container">
+        <header class="case-studies-header">
+            <h1>{{ page.title }}</h1>
+        </header>
+        {% with case_studies=page.get_children.live.specific %}
+            {% if case_studies %}
+                <section class="case-studies">
+                    {% for case_study in case_studies %}
+                        <a class="case-study-card" href="{{ case_study.url }}">
+                            {% with first_image=case_study.gallery_images.first %}
+                                {% if first_image %}
+                                    {% image first_image.image fill-800x500 as card_image %}
+                                    <img src="{{ card_image.url }}"
+                                         alt="{{ first_image.caption|default:case_study.title }}">
+                                {% endif %}
+                            {% endwith %}
+                            <div class="studies-content">
+                                <h3>{{ case_study.title }}</h3>
+                                {% if case_study.tags.all %}
+                                    <div class="tags-container">
+                                        {% for tag in case_study.tags.all %}
+                                            <span class="chip-tag">{{ tag }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </a>
+                    {% endfor %}
+                </section>
+            {% else %}
+                <div class="case-studies-empty">
+                    <p>No case studies have been published yet.</p>
+                </div>
+            {% endif %}
+        {% endwith %}
+    </main>
+{% endblock %}

@@ -4,7 +4,8 @@
         <img src="{% static 'brand/topmap.svg' %}" alt="icon">
         <span>TopMap Solutions</span>
     </a>
-    <div>
+    <div class="nav-routers">
+        <a class="route" href="{{ case_studies.url }}">Case Studies</a>
         <a class="btn-primary" href="{% url 'guests:inquiry' %}">Contact</a>
     </div>
 </nav>

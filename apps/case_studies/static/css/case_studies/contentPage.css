@@ -1,0 +1,237 @@
+@import url("content.css");
+
+.case-study-navigation a {
+  display: flex;
+  margin-bottom: 1.5rem;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--color-dark);
+  transition: 0.2s all ease-in-out;
+}
+
+.case-study-navigation a:hover {
+  color: var(--color-accent);
+}
+
+.case-study-navigation img {
+  height: 25px;
+  transition:
+    transform 0.2s ease-in-out,
+    filter 0.2s ease-in-out;
+}
+
+.case-study-navigation a:hover img {
+  filter: var(--icon-accent);
+  transform: translateX(-3px);
+}
+
+/* ---------- Header ---------- */
+.case-study header {
+  display: flex;
+  gap: 5rem;
+}
+
+.case-study header .title {
+  flex: 6;
+}
+
+.case-study header .title h1 {
+  margin-bottom: 1rem;
+}
+
+.case-study header .right-bar {
+  flex: 2;
+  padding: 2rem;
+  background-color: var(--color-secondary-bg);
+  border-radius: var(--radius-card);
+}
+
+.case-study header .right-bar .client-info {
+  border-bottom: 1px solid var(--color-dark);
+  padding-bottom: 1rem;
+}
+
+.case-study header .right-bar .client-info div {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem 0rem;
+  align-items: center;
+}
+
+.case-study header .right-bar .client-info p {
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.case-study header .right-bar .client-info img {
+  filter: var(--icon-dark);
+  height: 30px;
+}
+
+.case-study header .right-bar .tags-list-container {
+  padding-top: 1rem;
+}
+
+.case-study header .right-bar .tags-container {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+/* ---------- Gallery ---------- */
+.case-study .gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr));
+  gap: 1px;
+  overflow: hidden;
+}
+
+.case-study .gallery figure {
+  margin: 0;
+  background: var(--color-muted);
+  position: relative;
+  margin: 1.5rem 0rem;
+  border-radius: var(--radius-card);
+}
+
+.case-study .gallery figure img {
+  border-radius: var(--radius-card);
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+}
+
+.case-study main {
+  display: flex;
+  gap: 5rem;
+}
+
+/* ---------- Results ---------- */
+.case-study-results {
+  flex: 2;
+  gap: 5rem;
+}
+
+.case-study-result {
+  margin-bottom: 2rem;
+}
+
+.case-study-results .btn-primary {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  margin-top: 1.75rem;
+}
+
+.case-study-section .case-study-results h2 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1.75rem;
+}
+
+.case-study main {
+  margin-top: 2rem;
+}
+
+.case-study-result p {
+  font-size: 1rem;
+}
+
+/* ---------- Body ---------- */
+.case-study-body {
+  flex: 7;
+}
+
+/* ---------- Responsive ---------- */
+
+/* Tablet: stack header, tighten gaps */
+@media (max-width: 900px) {
+  .case-study header {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .case-study header .right-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .case-study header .right-bar .client-info {
+    border-bottom: none;
+    border-right: 1px solid var(--color-dark);
+    padding-bottom: 0;
+    padding-right: 1.5rem;
+  }
+
+  .case-study header .right-bar .tags-list-container {
+    padding-top: 0;
+  }
+
+  /* Results sidebar + body stack */
+  .case-study main {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  /* Results row: cards side-by-side */
+  .case-study-results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .case-study-result {
+    flex: 1 1 140px;
+    margin-bottom: 0;
+  }
+
+  .case-study-results .btn-primary {
+    flex-basis: 100%;
+  }
+}
+
+/* Mobile: tighten further */
+@media (max-width: 640px) {
+  .case-study .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  /* right-bar: stack client-info and tags vertically again */
+  .case-study header .right-bar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .case-study header .right-bar .client-info {
+    border-right: none;
+    border-bottom: 1px solid var(--color-dark);
+    padding-right: 0;
+    padding-bottom: 1rem;
+  }
+
+  .case-study header .right-bar .tags-list-container {
+    padding-top: 0;
+  }
+
+  /* Tags wrap on small screens */
+  .case-study header .right-bar .tags-container {
+    flex-wrap: wrap;
+  }
+
+  /* Results stack vertically */
+  .case-study-results {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .case-study-result {
+    flex-basis: auto;
+  }
+}

@@ -1,14 +1,21 @@
 .container {
-  padding: 6rem 20rem;
+  padding: 5rem 15rem;
 }
 
 .container-navbar {
-  padding: 1rem 20rem;
+  padding: 1rem 15rem;
+}
+
+.base {
+  min-height: var(--min-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 @media (max-width: 1400px) {
   .container {
-    padding: 6rem 10rem;
+    padding: 5rem 10rem;
   }
 
   .container-navbar {
@@ -18,7 +25,7 @@
 
 @media (max-width: 1200px) {
   .container {
-    padding: 6rem 5rem;
+    padding: 4rem 5rem;
   }
     .container-navbar {
     padding: 1rem 5rem;
@@ -27,7 +34,7 @@
 
 @media (max-width: 768px) {
   .container {
-    padding: 4rem 2rem;
+    padding: 3rem 2rem;
   }
 
   .container-navbar {

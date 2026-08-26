@@ -7,13 +7,21 @@
 @import url("container.css");
 @import url("errors.css");
 
-
 :root {
   /* Colors */
   --color-bg: #ebe7df;
   --color-dark: #2b1d0e;
   --color-accent: #f4530a;
+  --color-accent-second: #c4873a;
   --color-text-light: #ebe7df;
+  --color-muted: #e2dfda;
+
+  /* Secondary / Coffee Palette */
+  --color-secondary: #6f4e37;
+  --color-secondary-light: #a89880;
+  --color-secondary-dark: #3b2618;
+  --color-secondary-bg: #fff5e9;
+  --color-secondary-cream: #fafafa;
 
   /* Typography */
   --font-heading: "Neue Haas Grotesk", "Helvetica Now", Arial, sans-serif;
@@ -27,9 +35,16 @@
   /* Spacing/Radius */
   --radius-btn: 8px;
   --radius-input: 4px;
+  --radius-card: 10px;
+  --radius-chip: 30px;
   --border-hairline: 1px solid rgba(43, 29, 14, 0.3);
+  --min-height: calc(100vh - 100px);
 
-  --min-height: calc(100vh - (80px + 2rem));
+  /* Icons */
+  --icon-dark: invert(9%) sepia(19%) saturate(1130%) hue-rotate(356deg)
+    brightness(93%) contrast(96%);
+  --icon-accent: invert(36%) sepia(96%) saturate(3561%) hue-rotate(359deg)
+    brightness(101%) contrast(101%);
 }
 
 input {

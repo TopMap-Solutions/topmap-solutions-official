@@ -1,5 +1,5 @@
 nav {
-  height: 80px;
+  height: 100px;
   display: flex;
   border-bottom: 1px solid var(--color-dark);
   justify-content: space-between;
@@ -8,12 +8,25 @@ nav {
   position: sticky;
   top: 0;
   z-index: 500;
-  background-color: var(--color-bg);
+  background-color: var(--color-secondary-bg);
+  box-sizing: border-box;
 }
 
-nav a {
+nav .nav-routers {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+nav .route {
   text-decoration: none;
   font-weight: var(--fw-black);
+  color: var(--color-dark);
+  transition: all 0.2s ease;
+}
+
+nav .route:hover {
+  color: var(--color-accent)
 }
 
 nav .nav-title {
@@ -22,8 +35,9 @@ nav .nav-title {
   font-weight: var(--fw-black);
   font-family: var(--font-header);
   color: var(--color-darl);
-  font-size: 2.5rem;
-  gap: 2rem;
+  font-size: 2.3rem;
+  gap: 1rem;
+  text-decoration: none;
 }
 
 nav div {
@@ -31,7 +45,7 @@ nav div {
 }
 
 nav img {
-  width: 80px;
+  width: 60px;
 }
 
 @media (max-width: 800px) {

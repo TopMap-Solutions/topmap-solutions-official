@@ -7,7 +7,6 @@ __pycache__/
 
 # Virtual environments
 venv/
-env/
 .venv/
 ENV/
 
@@ -26,7 +25,8 @@ staticfiles/
 
 # Environment variables
 .env
-.env.*
+.env.prod
+.env.testing
 
 # IDE / editor
 .vscode/
@@ -54,7 +54,4 @@ node_modules/
 dist/
 build/
 
-
 data
-
-staticfiles

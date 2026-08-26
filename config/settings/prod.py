@@ -55,10 +55,22 @@ EMAIL_HOST_PASSWORD = os.environ["BREVO_SMTP_PASSWORD"]
 # STORAGES
 # ============================================================
 
+
 STORAGES = {
     "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "BACKEND": "storages.backends.s3.S3Storage",
+        "OPTIONS": {
+            "access_key": os.environ["B2_APPLICATION_KEY_ID"],
+            "secret_key": os.environ["B2_APPLICATION_KEY"],
+            "bucket_name": os.environ["B2_BUCKET_NAME"],
+            "endpoint_url": os.environ["B2_ENDPOINT_URL"],
+            "region_name": os.environ["B2_REGION"],
+
+            "default_acl": None,
+            "querystring_auth": False,
+        },
     },
+
     "staticfiles": {
         "BACKEND": (
             "whitenoise.storage.CompressedManifestStaticFilesStorage"
