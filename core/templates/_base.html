@@ -5,18 +5,18 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>
-            {% block title %}{% endblock %}
+            {% block title %}TopMap Solutions{% endblock title %}
         </title>
         <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
         <link rel="stylesheet" href="{% static 'css/_global.css' %}">
-        {% block extra_css %}{% endblock %}
+        {% block extra_css %}{% endblock extra_css %}
     </head>
     <body>
         {% include 'navbar.html' %}
         <div class="base">
-            {% block content %}{% endblock %}
+            {% block content %}{% endblock content %}
             {% include 'footer.html' %}
         </div>
     </body>
-    {% block scripts %}{% endblock %}
+    {% block scripts %}{% endblock scripts %}
 </html>

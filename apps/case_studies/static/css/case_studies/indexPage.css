@@ -1,6 +1,6 @@
 .case-studies {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   margin-top: 3rem;
   gap: 1rem;
 }
@@ -20,7 +20,8 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center top;
   transition: transform 0.3s ease;
 }
 
@@ -73,4 +74,13 @@
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: auto;
+}
+
+@media (max-width: 700px) {
+  .case-studies {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-top: 3rem;
+    gap: 1rem;
+  }
 }

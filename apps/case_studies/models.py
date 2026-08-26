@@ -31,9 +31,43 @@ class CaseStudyPage(Page):
         auto_now_add=True,
     )
 
-    summary = models.TextField()
-    challenge = RichTextField()
-    solution = RichTextField()
+    summary = models.TextField(blank=True)
+
+    challenge = RichTextField(
+        blank=True,
+        features=[
+            "h2",
+            "h3",
+            "h4",
+            "hr",
+            "bold",
+            "italic",
+            "link",
+            "ul",
+            "ol",
+            "blockquote",
+            "image",
+            "embed",
+        ],
+    )
+
+    solution = RichTextField(
+        blank=True,
+        features=[
+            "h2",
+            "h3",
+            "h4",
+            "hr",
+            "bold",
+            "italic",
+            "link",
+            "ul",
+            "ol",
+            "blockquote",
+            "image",
+            "embed",
+        ],
+    )
 
     tags = ClusterTaggableManager(
         through="case_studies.CaseStudyPageTag",
