@@ -25,6 +25,3 @@ shell:
 lint:
 	uv run djlint . --reformat
 
-
-admin:
-	uv run add_admin.py

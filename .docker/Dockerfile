@@ -2,7 +2,7 @@
 # Stage 1: Python Builder
 # ==============================
 
-FROM python:3.12-slim-bookworm AS python-builder
+FROM python:3.14-slim-bookworm AS python-builder
 
 WORKDIR /app
 
@@ -24,7 +24,7 @@ RUN uv sync --frozen --no-dev
 # Stage 2: Runtime
 # ==============================
 
-FROM python:3.12-slim-bookworm
+FROM python:3.14-slim-bookworm
 
 WORKDIR /app
 
