@@ -7,6 +7,7 @@ FROM python:3.14-slim-bookworm AS python-builder
 WORKDIR /app
 
 RUN pip install --no-cache-dir uv
+
 RUN python -m venv /opt/venv
 
 ENV PATH="/opt/venv/bin:$PATH"
@@ -19,6 +20,7 @@ RUN uv sync --frozen --no-dev --no-install-project
 COPY . .
 
 RUN uv sync --frozen --no-dev
+
 
 # ==============================
 # Stage 2: Runtime
