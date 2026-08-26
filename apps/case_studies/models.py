@@ -27,11 +27,6 @@ class CaseStudyPage(Page):
         blank=True,
     )
 
-    project_type = models.CharField(
-        max_length=255,
-        blank=True,
-    )
-
     created_on = models.DateField(
         auto_now_add=True,
     )
@@ -50,7 +45,6 @@ class CaseStudyPage(Page):
     content_panels = Page.content_panels + [
         "client",
         "location",
-        "project_type",
         "summary",
         "challenge",
         "solution",

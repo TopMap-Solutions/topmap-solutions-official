@@ -2,190 +2,165 @@
 
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/case_studies/contentPage.css' %}">
+{% endblock %}
 
 {% block content %}
 
 <main class="container">
 
+    <div class="case-study-navigation">
+        {% with parent=page.get_parent %}
+            {% if parent %}
+                <a href="{{ parent.url }}">
+                    All Case studies
+                </a>
+            {% endif %}
+        {% endwith %}
+    </div>
+
     <article class="case-study">
-
         <header class="case-study-header">
+            <div class="top-bar">
 
-            <div class="case-study-header__meta">
+                <div>
+                    {% if page.location %}
+                        <span>{{ page.location }}</span>
+                    {% endif %}
+                </div>
 
-                {% if page.project_type %}
-                    <span>{{ page.project_type }}</span>
+                <div>
+                    {% with tags=page.tags.all %}
+                        {% if tags %}
+                            <div class="tags-container">
+                                {% for tag in tags %}
+                                    <span class="chip-tag">
+                                        {{ tag }}
+                                    </span>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+                </div>
+                
+            </div>
+            
+            <h1>{{ page.title }}</h1>
+
+            {% if page.summary %}
+                <p>{{ page.summary }}</p>
+            {% endif %}
+        </header>
+
+        {% with gallery=page.gallery_images.all %}
+            {% if gallery %}
+
+                <section class="gallery">
+                    {% for item in gallery %}
+
+                        {% image item.image width-1200 as gallery_image %}
+
+                        <figure>
+
+                            <img
+                                src="{{ gallery_image.url }}"
+                                width="{{ gallery_image.width }}"
+                                height="{{ gallery_image.height }}"
+                                alt="{{ item.caption|default:page.title }}"
+                                loading="lazy"
+                            />
+
+                            {% if item.caption %}
+                                <figcaption> {{ item.caption }} </figcaption>
+                            {% endif %}
+
+                        </figure>
+
+                    {% endfor %}
+                </section>
+            {% endif %}
+        {% endwith %}
+
+        <main>
+            <div class="case-study-results">
+                {% with results=page.results.all %}
+
+                    {% if results %}
+
+                        <section class="case-study-section case-study-results">
+                            <h2>Results</h2>
+
+                            <div class="case-study-results">
+
+                                {% for result in results %}
+
+                                    <article class="case-study-result">
+
+                                        <div class="result-value">
+                                            {{ result.value }}
+                                        </div>
+
+                                        <h3>{{ result.label }}</h3>
+
+                                        {% if result.description %}
+                                            <p>{{ result.description }}</p>
+                                        {% endif %}
+
+                                    </article>
+
+                                {% endfor %}
+                            </div>
+                        </section>
+
+                    {% endif %}
+
+                {% endwith %}
+            </div>
+
+            <div class="case-study-body">
+
+                {% if page.client %}
+                    <p>Client: {{ page.client }}</p>
                 {% endif %}
+        
 
-                {% if page.location %}
-                    <span>{{ page.location }}</span>
+        
+                {% if page.challenge %}
+        
+                    <section class="case-study-section">
+        
+                        <h2>Challenge</h2>
+        
+                        <div class="content">
+                            {{ page.challenge|richtext }}
+                        </div>
+        
+                    </section>
+        
+                {% endif %}
+        
+        
+                {% if page.solution %}
+        
+                    <section class="case-study-section">
+        
+                        <h2>Solution</h2>
+        
+                        <div class="content">
+                            {{ page.solution|richtext }}
+                        </div>
+        
+                    </section>
+        
                 {% endif %}
 
             </div>
-
-            <h1>{{ page.title }}</h1>
-
-            {% if page.client %}
-                <p class="case-study-header__client">
-                    Client: {{ page.client }}
-                </p>
-            {% endif %}
-
-            {% if page.summary %}
-                <p class="case-study-header__summary">
-                    {{ page.summary }}
-                </p>
-            {% endif %}
-
-            {% with tags=page.tags.all %}
-                {% if tags %}
-                    <div class="case-study-header__tags">
-                        {% for tag in tags %}
-                            <span class="case-study-tag">
-                                {{ tag }}
-                            </span>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            {% endwith %}
-
-        </header>
-
-
-        {% if page.challenge %}
-
-            <section class="case-study-section">
-
-                <h2>Challenge</h2>
-
-                <div class="case-study-section__content">
-                    {{ page.challenge|richtext }}
-                </div>
-
-            </section>
-
-        {% endif %}
-
-
-        {% if page.solution %}
-
-            <section class="case-study-section">
-
-                <h2>Solution</h2>
-
-                <div class="case-study-section__content">
-                    {{ page.solution|richtext }}
-                </div>
-
-            </section>
-
-        {% endif %}
-
-
-        {% with results=page.results.all %}
-
-            {% if results %}
-
-                <section class="case-study-section case-study-results">
-
-                    <header class="case-study-section__header">
-                        <h2>Results</h2>
-                    </header>
-
-                    <div class="case-study-results__grid">
-
-                        {% for result in results %}
-
-                            <article class="case-study-result">
-
-                                <div class="case-study-result__value">
-                                    {{ result.value }}
-                                </div>
-
-                                <h3 class="case-study-result__label">
-                                    {{ result.label }}
-                                </h3>
-
-                                {% if result.description %}
-                                    <p class="case-study-result__description">
-                                        {{ result.description }}
-                                    </p>
-                                {% endif %}
-
-                            </article>
-
-                        {% endfor %}
-
-                    </div>
-
-                </section>
-
-            {% endif %}
-
-        {% endwith %}
-
-
-        {% with gallery=page.gallery_images.all %}
-
-            {% if gallery %}
-
-                <section class="case-study-section case-study-gallery">
-
-                    <header class="case-study-section__header">
-                        <h2>Project Gallery</h2>
-                    </header>
-
-                    <div class="case-study-gallery__grid">
-
-                        {% for item in gallery %}
-
-                            {% image item.image fill-1200x800 as gallery_image %}
-
-                            <figure class="case-study-gallery__item">
-
-                                <img
-                                    src="{{ gallery_image.url }}"
-                                    width="{{ gallery_image.width }}"
-                                    height="{{ gallery_image.height }}"
-                                    alt="{{ item.caption|default:page.title }}"
-                                    loading="lazy"
-                                />
-
-                                {% if item.caption %}
-                                    <figcaption>
-                                        {{ item.caption }}
-                                    </figcaption>
-                                {% endif %}
-
-                            </figure>
-
-                        {% endfor %}
-
-                    </div>
-
-                </section>
-
-            {% endif %}
-
-        {% endwith %}
-
-
-        <footer class="case-study-footer">
-
-            {% with parent=page.get_parent %}
-
-                {% if parent %}
-                    <a href="{{ parent.url }}">
-                        ← Back to case studies
-                    </a>
-                {% endif %}
-
-            {% endwith %}
-
-        </footer>
+        </main>
 
     </article>
-
 </main>
 
 {% endblock %}
