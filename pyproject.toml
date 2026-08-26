@@ -5,7 +5,9 @@ description = "Top Map Solutions official public client facing website"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
+    "boto3>=1.43.80",
     "django>=6.0.6",
+    "django-storages>=1.14.6",
     "gunicorn>=26.0.0",
     "psycopg[binary]>=3.3.4",
     "python-dotenv>=1.2.2",
