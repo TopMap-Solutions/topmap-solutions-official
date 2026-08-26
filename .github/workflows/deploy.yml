@@ -24,7 +24,7 @@ jobs:
           script: |
             set -e
 
-            cd ~/myapps/django-smart-city-gis
+            cd ~/myapps/topmap-solutions-official
             git fetch origin main
             git reset --hard origin/main
 

@@ -3,7 +3,7 @@ services:
     build:
       context: ../
       dockerfile: .docker/Dockerfile
-    container_name: django-smart-city-gis
+    container_name: topmapsolutions-official
 
     env_file:
       - ../.env.prod
