@@ -1,4 +1,4 @@
-.PHONY: run migrate
+.PHONY: run migrate test-ui
 
 run:
 	uv run manage.py runserver
@@ -10,7 +10,7 @@ migrate:
 	uv run  manage.py showmigrations
 
 
-tests:
+test:
 	uv run manage.py test
 
 
@@ -25,3 +25,6 @@ shell:
 lint:
 	uv run djlint . --reformat
 
+
+test-ui:
+	uv run --frozen python -B -m django test tests --settings=config.settings.test_ui

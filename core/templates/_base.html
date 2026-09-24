@@ -1,22 +1,24 @@
-{% load static %}
+{% load static seo_tags %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>
-            {% block title %}TopMap Solutions{% endblock title %}
-        </title>
+        {% seo_head %}
+        <meta name="theme-color" content="#2b1d0e">
         <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
         <link rel="stylesheet" href="{% static 'css/_global.css' %}">
-        {% block extra_css %}{% endblock extra_css %}
+        {% block extra_css %}{% endblock %}
     </head>
     <body>
+        <a class="skip-link" href="#main-content">Skip to content</a>
         {% include 'navbar.html' %}
         <div class="base">
-            {% block content %}{% endblock content %}
+            <main id="main-content" tabindex="-1">
+                {% block content %}{% endblock %}
+            </main>
             {% include 'footer.html' %}
         </div>
+        {% block scripts %}{% endblock %}
     </body>
-    {% block scripts %}{% endblock scripts %}
 </html>

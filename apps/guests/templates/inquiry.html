@@ -1,17 +1,25 @@
 {% extends '_base.html' %}
 {% load static %}
-{% block title %}Inquiry | TopMap Solutions{% endblock %}
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/_inquiry.css' %}">
 {% endblock %}
 {% block content %}
     <div class="inquiry container">
-        <section>
-            <h1 class="strong">How can we help?</h1>
-            <p>
-                We're ready for all your questions. Send us some details, and a member of our team will be in touch soon.
-                <p>
-                </section>
-                <div id="contact-form">{% include "form/contact.html" %}</div>
+        <section class="inquiry-intro">
+            <p class="eyebrow">Start a conversation</p>
+            <h1>Let's scope your GIS project.</h1>
+            <p class="lead">Tell us where your data is today and what your team needs next.</p>
+            <div class="inquiry-note">
+                <h2>Useful details to include</h2>
+                <ul>
+                    <li>Your sector and country</li>
+                    <li>Source formats and approximate data volume</li>
+                    <li>The outcome you need and your target timeline</li>
+                </ul>
+                <p>Land, utilities or another spatial-data challenge: we'll discuss the fit before agreeing any work.</p>
             </div>
+            <p>Based in the Philippines. Local and international inquiries welcome.</p>
+        </section>
+        <div id="contact-form">{% include 'form/contact.html' %}</div>
+    </div>
 {% endblock %}

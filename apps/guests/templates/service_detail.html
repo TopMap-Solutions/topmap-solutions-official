@@ -1,0 +1,33 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/_homepage.css' %}">
+{% endblock %}
+{% block content %}
+    <section class="container service-intro">
+        <a class="text-link" href="{% url 'guests:homepage' %}#services">← All GIS services</a>
+        <p class="eyebrow">{{ service.name }}</p>
+        <h1>{{ service.headline }}</h1>
+        <p class="lead">{{ service.summary }}</p>
+        <a class="btn-primary" href="{% url 'guests:inquiry' %}">Discuss your GIS project</a>
+    </section>
+    <section class="container section-grid">
+        <div>
+            <p class="eyebrow">The right fit</p>
+            <h2>Start with the work your data needs to do.</h2>
+        </div>
+        <div class="prose">
+            <p>{{ service.problem }}</p>
+            <p>{{ service.fit }}</p>
+        </div>
+    </section>
+    <section class="section-tint">
+        <div class="container sector-grid">
+            <article class="service-card"><h2>What we start with</h2><ul class="deliverables">{% for item in service.inputs %}<li>{{ item }}</li>{% endfor %}</ul></article>
+            <article class="service-card"><h2>What we scope together</h2><ul class="deliverables">{% for item in service.outputs %}<li>{{ item }}</li>{% endfor %}</ul></article>
+        </div>
+    </section>
+    <section class="container section-grid"><h2>Clear expectations from the start.</h2><div class="prose"><p>{{ service.boundary }}</p><p>For local and international projects, we agree data-sharing arrangements, review points and responsibilities before work begins.</p>{% if case_studies %}<a class="text-link" href="{{ case_studies.url }}">See project case studies ↗</a>{% endif %}</div></section>
+    <section class="container related-services"><h2>Related GIS services</h2><div class="footer-links">{% for slug, item in services.items %}{% if item != service %}<a href="{% url 'guests:service_detail' slug=slug %}">{{ item.name }}</a>{% endif %}{% endfor %}</div></section>
+    {% include 'components/cta.html' %}
+{% endblock %}

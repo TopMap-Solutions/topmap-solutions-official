@@ -1,74 +1,182 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
-
-@import url("footer.css");
-@import url("navbar.css");
-@import url("button.css");
 @import url("font.css");
 @import url("container.css");
+@import url("navbar.css");
+@import url("button.css");
+@import url("footer.css");
 @import url("errors.css");
 
 :root {
-  /* Colors */
-  --color-bg: #ebe7df;
+  --color-bg: #f7f5f0;
   --color-dark: #2b1d0e;
-  --color-accent: #f4530a;
+  --color-accent: #ad3b08;
   --color-accent-second: #c4873a;
-  --color-text-light: #ebe7df;
-  --color-muted: #e2dfda;
-
-  /* Secondary / Coffee Palette */
+  --color-text-light: #f7f5f0;
+  --color-muted: #e7e1d7;
   --color-secondary: #6f4e37;
   --color-secondary-light: #a89880;
   --color-secondary-dark: #3b2618;
-  --color-secondary-bg: #fff5e9;
-  --color-secondary-cream: #fafafa;
-
-  /* Typography */
-  --font-heading: "Neue Haas Grotesk", "Helvetica Now", Arial, sans-serif;
-  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
-  --font-header: "Geist", sans-serif;
-
-  --fw-black: 900;
-  --fw-bold: 700;
+  --color-secondary-bg: #eee9df;
+  --color-secondary-cream: #fff;
+  --font-body: "Helvetica Neue", Arial, sans-serif;
+  --font-header: var(--font-body);
+  --font-heading: var(--font-body);
+  --fw-black: 750;
+  --fw-bold: 650;
   --fw-regular: 400;
-
-  /* Spacing/Radius */
-  --radius-btn: 8px;
-  --radius-input: 4px;
-  --radius-card: 10px;
+  --radius-btn: 6px;
+  --radius-input: 6px;
+  --radius-card: 12px;
   --radius-chip: 30px;
-  --border-hairline: 1px solid rgba(43, 29, 14, 0.3);
-  --min-height: calc(100vh - 100px);
-
-  /* Icons */
-  --icon-dark: invert(9%) sepia(19%) saturate(1130%) hue-rotate(356deg)
-    brightness(93%) contrast(96%);
-  --icon-accent: invert(36%) sepia(96%) saturate(3561%) hue-rotate(359deg)
-    brightness(101%) contrast(101%);
+  --border-hairline: 1px solid #d3cabd;
+  --min-height: calc(100svh - 88px);
+  --icon-dark: brightness(0) saturate(100%);
+  --icon-accent: none;
 }
 
-input {
-  background-color: white;
-  padding: 0.5rem;
-  outline: var(--border-hairline);
-  border-radius: var(--radius-input);
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-textarea {
-  background-color: white;
-  padding: 0.5rem;
-  outline: var(--border-hairline);
-  border-radius: var(--radius-input);
-}
-
-html,
 * {
-  padding: 0;
   margin: 0;
 }
 
+html {
+  scroll-padding-top: 9rem;
+}
+
 body {
-  background-color: var(--color-bg);
-  font-family: var(--font-body);
+  background: var(--color-bg);
   color: var(--color-dark);
+  font-family: var(--font-body);
+  line-height: 1.65;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: .2em;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a,
+summary {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid #8b8173;
+  border-radius: var(--radius-input);
+  padding: .75rem;
+  background: white;
+  color: var(--color-dark);
+}
+
+textarea {
+  resize: vertical;
+}
+
+[aria-invalid="true"] {
+  border: 2px solid #a02020;
+}
+
+main,
+section,
+article,
+.prose {
+  min-width: 0;
+}
+
+h1,
+h2,
+h3,
+p,
+a {
+  overflow-wrap: break-word;
+}
+
+.eyebrow {
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.prose>*+* {
+  margin-top: 1.25rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  align-items: center;
+}
+
+.text-link {
+  font-weight: 650;
+  text-decoration-thickness: 1px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 1rem;
+  z-index: 1000;
+  background: white;
+  padding: .75rem 1rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }

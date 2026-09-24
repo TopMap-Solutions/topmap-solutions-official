@@ -1,55 +1,69 @@
-nav {
-  height: 100px;
+.customer-nav {
   display: flex;
-  border-bottom: 1px solid var(--color-dark);
+  gap: 1rem;
   justify-content: space-between;
   align-items: center;
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 500;
-  background-color: var(--color-secondary-bg);
-  box-sizing: border-box;
+  background: var(--color-bg);
+  border-bottom: var(--border-hairline);
 }
 
-nav .nav-routers {
+.nav-title {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  text-decoration: none;
+  font-size: 1.15rem;
+  font-weight: 750;
+  letter-spacing: -.035em;
+  white-space: nowrap;
+}
+
+.nav-title img {
+  width: 40px;
+  height: 40px;
+}
+
+.nav-routers {
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 1.25rem;
   align-items: center;
 }
 
-nav .route {
+.route {
+  font-size: .875rem;
+  font-weight: 600;
   text-decoration: none;
-  font-weight: var(--fw-black);
-  color: var(--color-dark);
-  transition: all 0.2s ease;
+  padding-block: .65rem;
 }
 
-nav .route:hover {
-  color: var(--color-accent)
+.route:hover {
+  text-decoration: underline;
 }
 
-nav .nav-title {
-  display: flex;
-  align-items: center;
-  font-weight: var(--fw-black);
-  font-family: var(--font-header);
-  color: var(--color-darl);
-  font-size: 2.3rem;
-  gap: 1rem;
-  text-decoration: none;
+.nav-routers .btn-primary {
+  font-size: .875rem;
+  padding: .65rem 1rem;
 }
 
-nav div {
-  padding: 1rem;
+@media (max-width: 760px) {
+  .customer-nav {
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .nav-routers {
+    width: 100%;
+    justify-content: space-between;
+    gap: .5rem 1rem;
+  }
 }
 
-nav img {
-  width: 60px;
-}
-
-@media (max-width: 800px) {
-  .nav-title span {
-    display: none;
+@media (max-width: 380px) {
+  .nav-routers .btn-primary {
+    width: 100%;
   }
 }

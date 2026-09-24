@@ -1,12 +1,7 @@
-from django.core.cache import cache
 from apps.case_studies.models import CaseStudyIndexPage
+from core.public_pages import case_study_pages
 
 
 def navigation(request):
-    return {
-        "case_studies": cache.get_or_set(
-            "navigation_case_studies",
-            lambda: CaseStudyIndexPage.objects.live().first(),
-            60 * 60 * 24,
-        ),
-    }
+    # Resolve published navigation on each request so unpublishing is reflected immediately.
+    return {"case_studies": case_study_pages(request).type(CaseStudyIndexPage).first()}

@@ -55,3 +55,7 @@ dist/
 build/
 
 data
+
+# codex
+.codex
+.agents

@@ -1,5 +1,12 @@
-{% load static %}
 <footer>
-    <img src="{% static 'brand/topmap.svg' %}" alt="icon" />
-    <p>© {% now "Y" %} TopMap Solutions. All rights reserved.</p>
+    <div class="footer-inner">
+        <div><a class="footer-brand" href="{% url 'guests:homepage' %}">TopMap Solutions</a><p>Spatial data. Clearer workflows.</p></div>
+        <div class="footer-links">
+            <a href="{% url 'guests:homepage' %}#services">GIS services</a>
+            <a href="{% url 'guests:homepage' %}#sectors">Sectors</a>
+            <a href="{% url 'guests:inquiry' %}">Discuss your project</a>
+        </div>
+        <p class="footer-note">Based in the Philippines. Welcoming local and international project inquiries.</p>
+        <p class="footer-note">© {% now "Y" %} TopMap Solutions. All rights reserved.</p>
+    </div>
 </footer>

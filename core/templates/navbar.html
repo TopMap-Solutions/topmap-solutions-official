@@ -1,11 +1,13 @@
 {% load static %}
-<nav class="container-navbar customer-nav">
+<nav class="container-navbar customer-nav" aria-label="Main navigation">
     <a class="nav-title" href="{% url 'guests:homepage' %}">
-        <img src="{% static 'brand/topmap.svg' %}" alt="icon">
+        <img src="{% static 'brand/topmap.svg' %}" width="40" height="40" alt="">
         <span>TopMap Solutions</span>
     </a>
     <div class="nav-routers">
-        <a class="route" href="{{ case_studies.url }}">Case Studies</a>
-        <a class="btn-primary" href="{% url 'guests:inquiry' %}">Contact</a>
+        <a class="route" href="{% url 'guests:homepage' %}#services">Services</a>
+        <a class="route" href="{% url 'guests:homepage' %}#sectors">Sectors</a>
+        {% if case_studies %}<a class="route" href="{{ case_studies.url }}">Case studies</a>{% endif %}
+        <a class="btn-primary" href="{% url 'guests:inquiry' %}">Discuss a project</a>
     </div>
 </nav>

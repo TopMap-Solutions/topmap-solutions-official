@@ -189,3 +189,6 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000
 
 WAGTAIL_SITE_NAME = "TopMap Solutions"
 WAGTAILADMIN_BASE_URL = "https://topmapsolutions.com"
+
+# Preferred public origin for canonical links, social metadata and the sitemap.
+PUBLIC_SITE_URL = "https://topmapsolutions.com"

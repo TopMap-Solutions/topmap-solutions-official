@@ -5,6 +5,7 @@ app_name = "guests"
 
 urlpatterns = [
     path("", views.homepage, name="homepage"),
+    path("services/<slug:slug>/", views.service_detail, name="service_detail"),
     path("inquiry/", views.inquiry_page, name="inquiry"),
     path("inquiry/form/", views.inquiry_form, name="inquiry_form"),
     path("inquiry/success/", views.inquiry_success, name="inquiry_success"),
