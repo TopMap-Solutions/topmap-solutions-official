@@ -1,0 +1,157 @@
+.service-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.service-intro-heading {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.service-intro-heading .eyebrow {
+  margin: 0;
+}
+
+.service-intro-icon {
+  display: block;
+  width: clamp(80px, 8vw, 110px);
+  height: clamp(80px, 8vw, 110px);
+  object-fit: contain;
+  object-position: left center;
+  flex-shrink: 0;
+}
+
+.service-intro h1 {
+  margin: 0;
+}
+
+.service-intro .lead {
+  margin: 0;
+}
+
+.section-grid {
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 6rem);
+}
+
+.section-grid > * {
+  flex: 1;
+  min-width: 0;
+}
+
+.section-grid > div > img {
+  display: block;
+  width: clamp(110px, 10vw, 150px);
+  height: auto;
+  margin-top: 1.5rem;
+  object-fit: contain;
+}
+
+.section-grid > img {
+  display: block;
+  width: clamp(110px, 10vw, 150px);
+  height: auto;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.service-card img {
+  display: block;
+  width: clamp(90px, 8vw, 120px);
+  height: clamp(90px, 8vw, 120px);
+  margin-bottom: 1.25rem;
+  object-fit: contain;
+}
+
+.deliverables {
+  padding-left: 1.25rem;
+}
+
+.deliverables li + li {
+  margin-top: 0.75rem;
+}
+
+.related-services {
+  padding-top: 0;
+}
+
+.related-services h2 {
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .section-grid {
+    gap: 2.5rem;
+  }
+
+  .section-grid > div > img,
+  .section-grid > img {
+    width: 120px;
+  }
+
+  .service-card img {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media (max-width: 700px) {
+  .service-intro {
+    gap: 1.25rem;
+  }
+
+  .service-intro-heading {
+    gap: 0.75rem;
+  }
+
+  .service-intro-icon {
+    width: clamp(70px, 20vw, 90px);
+    height: clamp(70px, 20vw, 90px);
+  }
+
+  .section-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .section-grid > * {
+    width: 100%;
+    flex: none;
+  }
+
+  .section-grid > div > img,
+  .section-grid > img {
+    width: 100px;
+    margin-top: 1.25rem;
+  }
+
+  .service-card img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-intro-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .section-grid > div > img,
+  .section-grid > img {
+    width: 90px;
+  }
+
+  .service-card img {
+    width: 72px;
+    height: 72px;
+  }
+}

@@ -1,22 +1,115 @@
 .success {
-    min-height: var(--min-height);
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    text-align: center;
-    align-items: center;
+  min-height: var(--min-height);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding-block: clamp(3rem, 8vw, 6rem);
+  text-align: center;
 }
 
 .success section {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  width: min(100%, 1200px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.success img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.success section h1 {
+  max-width: 900px;
+  margin: 0;
+}
+
+.success section p {
+  width: min(100%, 1000px);
+  margin: 0;
+  line-height: 1.7;
 }
 
 .success .btn-container {
-    margin-top: 2rem;
-    min-width: 300px;
-    display: flex;
-    flex-direction: column;
+  margin-top: 1rem;
+  width: min(100%, 300px);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.success .btn-container a {
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  .success {
+    justify-content: flex-start;
+    gap: 1.75rem;
+    padding-block: 4rem;
+  }
+
+  .success section {
+    width: min(100%, 650px);
+    gap: 1.25rem;
+  }
+
+  .success img {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 0.5rem;
+  }
+
+  .success section h1 {
+    max-width: 600px;
+  }
+
+  .success section p {
+    max-width: 600px;
+    line-height: 1.65;
+  }
+
+  .success .btn-container {
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .success {
+    gap: 1.5rem;
+    padding-block: 3rem;
+    padding-inline: 1.25rem;
+  }
+
+  .success section {
+    width: 100%;
     gap: 1rem;
+  }
+
+  .success img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 0.5rem;
+  }
+
+  .success section h1 {
+    width: 100%;
+  }
+
+  .success section p {
+    width: 100%;
+    line-height: 1.6;
+  }
+
+  .success .btn-container {
+    width: 100%;
+    max-width: 320px;
+    margin-top: 0.5rem;
+  }
 }

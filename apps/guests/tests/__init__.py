@@ -1,2 +1,1 @@
-from .test_models import *
-from .test_views import *
+"""Django discovers test modules in this app automatically."""

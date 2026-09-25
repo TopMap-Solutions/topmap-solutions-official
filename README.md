@@ -1,109 +1,55 @@
-# Smart City GIS Offices
+# TopMap Solutions
 
-this is a monolith application that handles land planning offices
+The public website for **TopMap Solutions** — GIS data conversion, spatial-data
+validation and web mapping services for local and international buyers.
+Land and property are our core sector, with utilities and infrastructure an
+expanding focus.
 
-![Customer](static/brand/image.png)
-![Map](static/brand/image-map.png)
+## Features
 
-## Tech Stack
+- Service pages with clear inputs, deliverables and project inquiries.
+- Wagtail case studies with results, tags and image galleries.
+- Inquiry management in Django admin, with email notifications.
+- Search metadata, social previews, canonical URLs and a sitemap.
 
-1. django/geodjango
-2. django all auth
-3. maplibre
-4. postgresql / postgis
-5. htmx, css, vanila js
-6. s3 backblaze (cloud storage)
-7. WhiteNoise
-8. Vultr & Nginx
-9. gdal/ogr
+## Stack
 
+Python 3.14+ · Django · Wagtail · PostgreSQL · uv · Docker
 
-## Project Structure
+Server-rendered templates with plain CSS and JavaScript. Production uses
+Gunicorn, WhiteNoise, Brevo email and Backblaze B2 media storage.
 
-```
-.docker /
-    │
-    ├── Dockerfile
-    └── docker-compose.yml
+## Get started
 
-.github /
-    │
-    └── github/workflows
-        │
-        └── github/workflows
+With uv, Python 3.14+ and PostgreSQL installed, open the repository directory:
 
-apps/
-    │
-    ├── accounts/                # users, roles, auth
-    ├── guests/                  # customer landing page, email support
-    ├── boundaries/              # political boundaries 
-    ├── parcels/                 # GIS core (MAIN APP)
-    ├── owners/                  # land owners
-    └── dashboard/               # UI pages, filters, map views
-
-config/                          # django settings
-templates/                       # global html
-static/                          # global styles/js and images
-   │
-   ├── css/  
-   ├── icons/
-   ├── images/
-   ├── js/  
-   └── favicon.ico
-
-plans/                           # pre planing stuffs
-.env                             # environment
-
-manage.py                        # default django command
-pyproject.toml                   # uv settings
-uv.lock
+```sh
+uv sync --frozen
+cp .env.example .env
 ```
 
-## To start
+Set a unique `SECRET_KEY` and your PostgreSQL `DB_*` values in `.env`.
+Then follow the [installation guide](docs/installation.md) to create the local
+database, initialize it and start the site.
 
-### Postgres
+Development email prints to the terminal; Brevo and B2 credentials are only
+needed for production. Keep `.env` files out of version control.
 
-```
-sudo -u <user> psql
-CREATE DATABASE <database_name>:
-\c <database_name>
-CREATE EXTENSION postgis
-```
+## Tests
 
-### Environment Structure
-
-```
-ENV=dev | prod
-
-SECRET_KEY="django-key"
-
-# Database (postgres)
-DB_NAME=
-DB_USER=
-DB_PASSWORD=
-DB_HOST=
-DB_PORT=
-
-# Brevo (email for prod)
-BREVO_HOST=
-BREVO_PORT=
-BREVO_SMTP_LOGIN=
-BREVO_SMTP_PASSWORD=
-WEBSITE_EMAIL=
-
+```sh
+make test       # Full Django suite; temporary SQLite database
+make test-ui    # Optional database-free public-site checks
 ```
 
-### Django Run Commands
+Tests do not need PostgreSQL, `.env` or external services. CI runs the full suite,
+then builds the production image; successful pushes to `main` deploy to Vultr.
 
-```
-uv sync
-python manage.py migrate
-python manage.py runserver
-python manage.py createsuperuser
-```
+## Documentation
 
-to ingest gis files
-```
-python manage.py import_boundaries <shapefile path> <table_name> ----> adds ingest shp using gdal/ogr
-python manage.py spatial_join ----> adds neccessary area and boundaries
-```
+- [Installation](docs/installation.md) — environment, local setup and production requirements.
+- [Architecture](docs/architecture.md) — components, request flow and deployment.
+- [UI and SEO](docs/ui-seo.md) — content editing and verification notes.
+- [Agent guide](AGENTS.md) — project context and contributor rules.
+
+Licensed under [Apache 2.0](LICENSE).

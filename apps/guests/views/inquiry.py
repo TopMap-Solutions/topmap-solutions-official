@@ -7,7 +7,9 @@ from apps.guests.services import send_inquiry_emails
 
 
 def inquiry_form(request):
-    return render(request, "form/contact.html")
+    response = render(request, "form/contact.html", {"form": InquiryForm()})
+    response["X-Robots-Tag"] = "noindex, follow"
+    return response
 
 
 def inquiry_success(request):

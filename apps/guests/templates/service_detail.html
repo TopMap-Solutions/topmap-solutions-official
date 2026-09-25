@@ -1,0 +1,71 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/_homepage.css' %}">
+{% endblock %}
+{% block content %}
+    <section class="container service-intro">
+        <a class="text-link" href="{% url 'guests:homepage' %}#services">← All GIS services</a>
+        <div class="service-intro-heading">
+            <img class="service-intro-icon"
+                 src="{% static service.icon %}"
+                 alt=""
+                 aria-hidden="true">
+            <p class="eyebrow">{{ service.name }}</p>
+        </div>
+        <h1>{{ service.headline }}</h1>
+        <p class="lead">{{ service.summary }}</p>
+        <a class="btn-primary" href="{% url 'guests:inquiry' %}">Discuss your GIS project</a>
+    </section>
+    
+    <section class="container section-grid">
+        <div>
+            <p class="eyebrow">The right fit</p>
+            <h2>Start with the work your data needs to do.</h2>
+            <img src="{% static 'icons/talk.png'%}" alt="logo">
+        </div>
+        <div class="prose">
+            <p>{{ service.problem }}</p>
+            <p>{{ service.fit }}</p>
+        </div>
+    </section>
+    <section class="section-tint">
+        <div class="container sector-grid">
+            <article class="service-card">
+                <img src="{% static 'icons/flag.png'%}" alt="logo">
+                <h2>What we start with</h2>
+                <ul class="deliverables">
+                    {% for item in service.inputs %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </article>
+            <article class="service-card">
+                <img src="{% static 'icons/document.png' %}" alt="scope">
+                <h2>What we scope together</h2>
+                <ul class="deliverables">
+                    {% for item in service.outputs %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </article>
+        </div>
+    </section>
+    <section class="container section-grid">
+        <div>
+            <h2>Clear expectations from the start.</h2>
+            <img src="{% static 'icons/online.png' %}" alt="clear-logo">
+        </div>
+        <div class="prose">
+            <p>{{ service.boundary }}</p>
+            <p>
+                For local and international projects, we agree data-sharing
+                arrangements, review points and responsibilities before work begins.
+            </p>
+            {% if case_studies %}
+                <a class="text-link" href="{{ case_studies.url }}">See project case studies ↗</a>
+            {% endif %}
+        </div>
+    </section>
+    {% include 'components/cta.html' %}
+{% endblock %}

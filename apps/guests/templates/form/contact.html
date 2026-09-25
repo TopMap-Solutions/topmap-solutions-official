@@ -1,58 +1,28 @@
-<section>
-    <form action="{% url 'guests:send_public_form' %}" method="post">
-        {% csrf_token %}
-        <div>
-            <label for="name">Name *</label>
-            <input type="text"
-                   id="name"
-                   name="name"
-                   placeholder="Your name"
-                   value="{{ name }}"
-                   autocomplete="name"
-                   required>
+<form action="{% url 'guests:send_public_form' %}" method="post">
+    {% csrf_token %}
+    {% if form.errors %}
+        <div class="error-summary" role="alert">
+            <h2>Please check your inquiry</h2>
+            <p>Review the highlighted fields below. Your details have been kept.</p>
+            {{ form.non_field_errors }}
         </div>
-        <div>
-            <label for="organization">Organization</label>
-            <input type="text"
-                   id="organization"
-                   name="organization"
-                   value="{{ organization }}"
-                   autocomplete="organization"
-                   placeholder="Company, Municipality, or Individual">
-        </div>
-        <div>
-            <label for="email">Email *</label>
-            <input type="email"
-                   id="email"
-                   name="email"
-                   placeholder="you@example.com"
-                   autocomplete="email"
-                   value="{{ email }}"
-                   required>
-        </div>
-        <div>
-            <label for="phone">Phone</label>
-            <input type="tel"
-                   id="phone"
-                   name="phone"
-                   minlength="10"
-                   maxlength="20"
-                   value="{{ phone }}"
-                   autocomplete="tel"
-                   placeholder="63 912 345 6889">
-        </div>
-        <div>
-            <label for="inquiry">Inquiry *</label>
-            <textarea id="inquiry"
-                      name="inquiry"
-                      rows="6"
-                      placeholder="Tell us about your project or how we can help..."
-                      required>{{ inquiry }}</textarea>
-        </div>
-        <button class="btn-primary" type="submit">Send Inquiry</button>
-        {% if error %}
-            <div class="alert error">{{ error }}</div>
-        {% endif %}
-    </form>
-    <p>TopMap Solutions needs the contact information you provide to us to contact you about our products and services.</p>
-</section>
+    {% endif %}
+    {% for field in form %}
+        <div class="form-field">
+            <label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %}
+                <span aria-hidden="true">*</span><span class="sr-only"> (required)</span>{% else %}
+                <span class="optional">(optional)</span>{% endif %}</label>
+        {{ field }} {% if field.help_text %}
+        <p class="field-help" id="{{ field.auto_id }}_helptext">{{ field.help_text }}</p>
+    {% endif %}
+    {% if field.errors %}
+        <div class="field-errors" id="{{ field.auto_id }}_error">{{ field.errors }}</div>
+    {% endif %}
+</div>
+{% endfor %}
+<button class="btn-primary" type="submit">Send project inquiry</button>
+<p class="form-note">
+    We'll use these details to respond to your inquiry. Please don't include
+    confidential land, customer or utility records.
+</p>
+</form>

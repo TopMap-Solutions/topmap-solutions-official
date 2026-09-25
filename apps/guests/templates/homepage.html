@@ -1,18 +1,18 @@
 {% extends '_base.html' %}
 {% load static %}
-{% block title %}TopMap Solutions{% endblock %}
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/_homepage.css' %}">
 {% endblock %}
 {% block content %}
-    {% include "components/hero.html" %}
-    {% include "components/partner.html" %}
-    {% include "components/niched.html" %}
-    {% include "components/customer.html" %}
-    {% include "components/assessment.html" %}
-    {% include "components/service.html" %}
-    {% include "components/cta.html" %}
+    {% include 'components/hero.html' %}
+    {% include 'components/partner.html' %}
+    {% include 'components/problem.html' %}
+    {% include 'components/service.html' %}
+    {% include 'components/customer.html' %}
+    {% include 'components/process.html' %}
+    {% include 'components/faq.html' %}
+    {% include 'components/cta.html' %}
 {% endblock %}
 {% block scripts %}
-    <script src="{% static 'js/homepage.js' %}"></script>
+    <script type="module" src="{% static 'js/homepage.js' %}"></script>
 {% endblock %}

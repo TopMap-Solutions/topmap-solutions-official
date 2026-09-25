@@ -1,15 +1,22 @@
-{% load static %}
-<div class="partner">
-    <h4>Trusted by</h4>
-    <div class="marquee">
-        <img class="item"
-             src="{% static 'images/offices/tagum.png' %}"
-             alt="tagum_city">
-        <img class="item"
-             src="{% static 'images/offices/tagum_assessors.png' %}"
-             alt="tagum_assessor">
-        <img class="item"
-             src="{% static 'images/offices/tagum_cpdo.png' %}"
-             alt="tagum_cpdo">
+<section class="partner-section" aria-labelledby="partners-title">
+    <div class="partner-heading container">
+        <div>
+            <h2 id="partners-title">Local experience. Your next organization partner.</h2>
+            <p>Explore our work with local government offices, then let's talk about your team.</p>
+        </div>
     </div>
-</div>
+    <div class="partner-marquee"
+         tabindex="0"
+         aria-label="Existing client references">
+        <div class="partner-track">
+            <div class="client-logos">{% include 'components/partner_logos.html' %}</div>
+            <div class="client-logos" aria-hidden="true">{% include 'components/partner_logos.html' %}</div>
+        </div>
+    </div>
+    {% if case_studies %}
+        <div class="partner-evidence container">
+            <a class="btn-primary" href="{% url 'guests:inquiry' %}">Become a partner</a>
+            <a class="text-link" href="{{ case_studies.url }}">Explore our case studies</a>
+        </div>
+    {% endif %}
+</section>

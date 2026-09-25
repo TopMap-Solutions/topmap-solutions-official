@@ -1,0 +1,24 @@
+.section-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 6vw, 6rem);
+}
+
+.section-tint {
+  background: var(--color-secondary-bg);
+}
+
+.section-heading {
+  max-width: 660px;
+  margin-bottom: 2.5rem;
+}
+
+.section-heading>p:last-child {
+  margin-top: 1rem;
+}
+
+@media (max-width: 700px) {
+  .section-grid {
+    grid-template-columns: 1fr;
+  }
+}

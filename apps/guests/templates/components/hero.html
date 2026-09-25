@@ -1,17 +1,40 @@
 {% load static %}
-<section class="hero">
-    <img src="{% static 'images/city-planning.jpg' %}"
-         class="hero-images"
-         alt="images">
-    <div class="container">
-        <div class="hero-card">
-            <h1>Modernize Your City With GIS</h1>
-            <p>
-                Transform land records, urban planning data, infrastructure, and
-                public assets into accurate, connected GIS solutions for local
-                governments and organizations.
-            </p>
-            <a class="btn-primary" href="{% url 'guests:inquiry' %}">Get in touch</a>
+<section class="hero container">
+    <div class="hero-copy">
+        <h1>Make your spatial data work for your team.</h1>
+        <p class="lead">Turn scattered drawings, records and datasets into usable GIS data and web maps. Built around your workflow, with land expertise at the core and utilities as our next focus.</p>
+        <div class="actions">
+            <a class="btn-primary" href="{% url 'guests:inquiry' %}">Discuss your GIS project</a>
+            <a class="btn-secondary" href="#services">Explore services</a>
         </div>
+        <p class="microcopy">Based in the Philippines. Open to projects across borders.</p>
     </div>
+    {% if hero_images %}
+        <figure class="hero-visual" aria-label="GIS image gallery">
+            <div class="hero-slides"
+                 tabindex="0"
+                 aria-label="Scroll through GIS images">
+                {% for image in hero_images %}
+                    <img src="{% static image.path %}"
+                         alt="{{ image.alt }}"
+                         {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
+                         width="1280"
+                         height="720">
+                {% endfor %}
+            </div>
+            {% if hero_images|length > 1 %}
+                <div class="hero-dots"
+                     role="group"
+                     aria-label="Choose gallery image"
+                     hidden>
+                    {% for image in hero_images %}
+                        <button class="hero-dot"
+                                type="button"
+                                aria-label="Show image {{ forloop.counter }}: {{ image.alt }}"
+                                aria-current="{% if forloop.first %}true{% else %}false{% endif %}"></button>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </figure>
+    {% endif %}
 </section>

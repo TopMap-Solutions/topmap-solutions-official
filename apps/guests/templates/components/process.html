@@ -1,0 +1,38 @@
+{% load static %}
+<section class="section-dark" id="process">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">How we start</p>
+            <h2>A clear scope before a bigger commitment.</h2>
+        </div>
+        <ol class="process-grid">
+            <li>
+                <img src="{% static 'icons/problem.png' %}" alt="logo">
+                <div class="process-title">
+                    <span class="step-number">01</span>
+                    <h3>Tell us what isn't working</h3>
+                </div>
+                <p>Describe your data, users and the outcome you need. We'll discuss whether the project fits.</p>
+            </li>
+            <li>
+                <img src="{% static 'icons/deal.png' %}" alt="logo">
+                <div class="process-title">
+                    <span class="step-number">02</span>
+                    <h3>Agree a practical scope</h3>
+                </div>
+                <p>Define inputs, deliverables, checks and commercial terms. Where useful, start with a bounded pilot.</p>
+            </li>
+            <li>
+                <img src="{% static 'icons/search-data.png' %}" alt="logo">
+                <div class="process-title">
+                    <span class="step-number">03</span>
+                    <h3>Review, then move forward</h3>
+                </div>
+                <p>Review outputs against the agreed requirements and plan the next step or handover together.</p>
+            </li>
+        </ol>
+        <div class="process-action">
+            <a class="btn-secondary" href="{% url 'guests:inquiry' %}">Let's scope your project</a>
+        </div>
+    </div>
+</section>

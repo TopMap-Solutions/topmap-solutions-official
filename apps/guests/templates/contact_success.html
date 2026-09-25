@@ -1,21 +1,21 @@
 {% extends '_base.html' %}
 {% load static %}
-{% block title %}Inquiry Sent | TopMap Solutions{% endblock %}
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/_contact_success.css' %}">
+    <link rel="stylesheet" href="{% static 'css/_contact_success.css' %}" />
 {% endblock %}
 {% block content %}
     <div class="success container">
         <section>
+            <img src="{% static 'icons/success.png' %}" alt="Success" />
             <h1 class="strong">Thank You for Contacting TopMap Solutions!</h1>
             <p>
-                We've successfully received your inquiry. Our team will review your request
-                and respond within <strong>1-2 business days</strong>.
+                We've successfully received your inquiry. Our team will review your
+                request and respond within <strong>1-2 business days</strong>.
             </p>
             <p>
                 Please keep an eye on <strong>{{ email }}</strong>, including your
-                <strong>Spam</strong> or <strong>Junk</strong> folder, in case our reply is
-                filtered there.
+                <strong>Spam</strong> or <strong>Junk</strong> folder, in case our reply
+                is filtered there.
             </p>
         </section>
         <div class="btn-container">

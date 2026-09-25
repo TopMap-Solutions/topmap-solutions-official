@@ -1,23 +1,86 @@
-.btn-primary {
-  display: inline-block;
-  background: var(--color-dark);
-  color: var(--color-bg);
-  padding: 12px 24px;
+.btn-primary,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+
+  min-height: 44px;
+  padding: 0.8rem 1.25rem;
+
+  border: 1px solid var(--color-dark);
   border-radius: var(--radius-btn);
-  font-weight: var(--fw-bold);
-  border: none;
-  transition: all ease-in-out 0.2s;
+
+  font-size: 0.9375rem;
+  font-weight: 650;
+  line-height: 1.4;
+
+  text-align: center;
   text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--color-dark);
+  color: #fff;
 }
 
 .btn-primary:hover {
-  background-color: var(--color-accent);
-  cursor: pointer;
+  background: var(--color-secondary-dark);
+  border-color: var(--color-secondary-dark);
+
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--color-bg);
+  color: var(--color-dark);
+}
+
+.btn-secondary:hover {
+  background: var(--color-secondary-bg);
+
+  transform: translateY(-1px);
+}
+
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.btn-primary:active,
+.btn-secondary:active {
+  transform: translateY(0);
 }
 
 .chip-tag {
-  background-color: var(--color-secondary);
-  color: var(--color-text-light);
+  display: inline-block;
+
+  padding: 0.25rem 0.65rem;
+
+  background: var(--color-secondary-bg);
+  color: var(--color-dark);
+
   border-radius: var(--radius-chip);
-  padding: 0.3rem 0.8rem;
+
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+  .btn-primary,
+  .btn-secondary {
+    min-height: 46px;
+    padding: 0.75rem 1rem;
+
+    font-size: 0.9rem;
+  }
 }

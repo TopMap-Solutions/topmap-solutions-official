@@ -1,15 +1,18 @@
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
-from django.core.mail import send_mail, EmailMultiAlternatives
+from django.core.mail import EmailMessage, EmailMultiAlternatives
+
+
+INQUIRY_EMAIL = "joshdels@topmapsolutions.com"
 
 
 def send_inquiry_emails(data):
     """Send inquiry notification to staff and confirmation to customer."""
 
     # Send email to staff
-    send_mail(
+    notification = EmailMessage(
         subject="Client Inquiry",
-        message=f"""
+        body=f"""
             New Inquiry Received (TopMap Solutions)
 
             Name: {data["name"]}
@@ -20,10 +23,11 @@ def send_inquiry_emails(data):
             Inquiry:
             {data["inquiry"]}
             """.strip(),
-        from_email="noreply@topmapsolutions.com",
-        recipient_list=["joshdels@topmapsolutions.com"],
-        fail_silently=False,
+        from_email=INQUIRY_EMAIL,
+        to=[INQUIRY_EMAIL],
+        reply_to=[INQUIRY_EMAIL],
     )
+    notification.send(fail_silently=False)
 
     # Send email to customer
     html_message = render_to_string(
@@ -36,8 +40,9 @@ def send_inquiry_emails(data):
     message = EmailMultiAlternatives(
         subject="Inquiry Received",
         body=plain_message,
-        from_email="noreply@topmapsolutions.com",
+        from_email=INQUIRY_EMAIL,
         to=[data["email"]],
+        reply_to=[INQUIRY_EMAIL],
     )
 
     message.attach_alternative(html_message, "text/html")
