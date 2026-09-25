@@ -1,7 +1,7 @@
-/* Homepage and shared service-page styles. Edit the matching component file. */
 @import url("components/layout.css");
 @import url("components/hero.css");
 @import url("components/partner.css");
+@import url("components/problem.css");
 @import url("components/service.css");
 @import url("components/customer.css");
 @import url("components/process.css");

@@ -1,3 +1,4 @@
+{% load static %}
 <section class="container" id="sectors">
     <div class="section-heading">
         <p class="eyebrow">Sectors</p>
@@ -6,12 +7,14 @@
     </div>
     <div class="sector-grid">
         <article class="sector-card">
+            <img src="{% static 'icons/map-and-location.png' %}" alt="land logo">
             <span class="badge">Core expertise</span>
             <h3>Land &amp; property</h3>
             <p>Parcel conversion, record validation and shared mapping for assessor offices, planning teams, surveyors and property organizations.</p>
             <a class="text-link"
                href="{% url 'guests:service_detail' slug='gis-data-conversion' %}">Explore land data conversion <span aria-hidden="true">↗</span></a></article>
         <article class="sector-card">
+            <img src="{% static 'icons/power-grid.png' %}" alt="utilities logo">
             <span class="badge badge-outline">Expanding focus</span>
             <h3>Utilities &amp; infrastructure</h3>
             <p>We're extending our GIS focus to utility assets and infrastructure records. Talk with us about your mapping needs so we can assess the data, workflow and project fit together.</p>

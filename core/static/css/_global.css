@@ -59,10 +59,6 @@ a {
   text-underline-offset: .2em;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
 
 button,
 input,
@@ -136,7 +132,20 @@ a {
 
 .text-link {
   font-weight: 650;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: transparent;
   text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+
+  transition:
+    color 0.15s ease,
+    text-decoration-color 0.15s ease;
+}
+
+.text-link:hover {
+  color: var(--color-accent);
+  text-decoration-color: var(--color-accent);
 }
 
 .sr-only {

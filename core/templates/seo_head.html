@@ -2,9 +2,9 @@
 <meta name="description" content="{{ description }}">
 <link rel="canonical" href="{{ canonical }}">
 {% if noindex %}
-<meta name="robots" content="noindex, follow">
+    <meta name="robots" content="noindex, follow">
 {% else %}
-<meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="robots" content="index, follow, max-image-preview:large">
 {% endif %}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TopMap Solutions">
@@ -18,6 +18,7 @@
 <meta name="twitter:title" content="{{ title }}">
 <meta name="twitter:description" content="{{ description }}">
 <meta name="twitter:image" content="{{ image }}">
-<meta name="twitter:image:alt" content="City planning drawing with buildings and green spaces">
+<meta name="twitter:image:alt"
+      content="City planning drawing with buildings and green spaces">
 <script type="application/ld+json">{{ organization_json|safe }}</script>
 {% if service_json %}<script type="application/ld+json">{{ service_json|safe }}</script>{% endif %}

@@ -1,3 +1,15 @@
+.section-grid > div:first-child > img {
+  display: block;
+
+  width: clamp(100px, 12vw, 170px);
+  height: clamp(100px, 12vw, 170px);
+
+  margin-top: 2rem;
+
+  object-fit: contain;
+  object-position: left center;
+}
+
 .faq-list details {
   border-bottom: var(--border-hairline);
   padding-block: 1rem;
@@ -11,4 +23,13 @@
 
 .faq-list details p {
   padding-block: 0.75rem;
+}
+
+@media (max-width: 700px) {
+  .section-grid > div:first-child > img {
+    width: clamp(90px, 28vw, 130px);
+    height: clamp(90px, 28vw, 130px);
+
+    margin-top: 1.5rem;
+  }
 }

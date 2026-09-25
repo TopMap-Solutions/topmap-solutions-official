@@ -2,6 +2,7 @@
 SERVICES = {
     "gis-data-conversion": {
         "name": "GIS data conversion",
+        "icon": "icons/technical-drawing.png",
         "title": "CAD & Survey Data to GIS Conversion",
         "description": "Turn CAD drawings, survey descriptions and disconnected spatial files into structured GIS data. Discuss inputs, coordinate systems and deliverables with TopMap Solutions.",
         "headline": "Turn disconnected files into usable GIS data.",
@@ -14,6 +15,7 @@ SERVICES = {
     },
     "spatial-data-validation": {
         "name": "Spatial data cleaning & validation",
+        "icon": "icons/data-cleaning.png",
         "title": "Spatial & Parcel Data Cleaning and Validation",
         "description": "Identify geometry, attribute and consistency issues in GIS datasets. Scope parcel and spatial data cleaning with documented checks and reviewable outputs.",
         "headline": "Know where your spatial data needs attention.",
@@ -26,6 +28,7 @@ SERVICES = {
     },
     "web-gis-development": {
         "name": "Web GIS & workflow consulting",
+        "icon": "icons/smart-city.png",
         "title": "Web GIS Development & GIS Workflow Consulting",
         "description": "Plan and build browser-based GIS workflows for maps, spatial records and shared access. Define users, data, integrations and handover with TopMap Solutions.",
         "headline": "Put maps and spatial records into your team's workflow.",

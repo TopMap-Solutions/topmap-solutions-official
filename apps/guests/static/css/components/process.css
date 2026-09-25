@@ -11,34 +11,72 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2rem;
+
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .process-grid li {
+  min-width: 0;
+
   border-top: 1px solid #78634c;
   padding-top: 1.5rem;
 }
 
-.step-number {
+.process-grid li > img {
   display: block;
-  color: #ffb88e;
-  margin-bottom: 1.5rem;
-  font-size: 0.875rem;
+
+  width: clamp(70px, 7vw, 105px);
+  height: clamp(70px, 7vw, 105px);
+
+  margin-bottom: 1.25rem;
+
+  object-fit: contain;
+  object-position: left center;
+
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
 }
 
-.process-grid h3 {
+.process-title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+
   margin-bottom: 1rem;
 }
 
-.process-grid p {
-  color: #ded5c8;
+.step-number {
+  display: block;
+  flex-shrink: 0;
+
+  margin: 0;
+
+  color: #ffb88e;
+
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.08em;
 }
 
-@media (max-width: 700px) {
-  .process-grid {
-    grid-template-columns: 1fr;
-  }
+.process-grid h3 {
+  margin: 0;
+
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  line-height: 1.25;
+
+  color: var(--color-text-light);
+}
+
+.process-grid p {
+  margin: 0;
+
+  font-size: 0.95rem;
+  line-height: 1.65;
+
+  color: #ded5c8;
 }
 
 .process-action {
@@ -48,4 +86,71 @@
 .process-action .btn-secondary {
   background: var(--color-bg);
   color: var(--color-dark);
+}
+
+@media (max-width: 900px) {
+  .process-grid {
+    gap: 1.5rem;
+  }
+
+  .process-grid li > img {
+    width: clamp(65px, 9vw, 90px);
+    height: clamp(65px, 9vw, 90px);
+  }
+
+  .step-number {
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  }
+
+  .process-grid h3 {
+    font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+  }
+}
+
+@media (max-width: 700px) {
+  .process-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .process-grid li {
+    padding-top: 1.25rem;
+  }
+
+  .process-grid li > img {
+    width: clamp(70px, 20vw, 90px);
+    height: clamp(70px, 20vw, 90px);
+
+    margin-bottom: 1.25rem;
+  }
+
+  .process-title {
+    align-items: center;
+    gap: 0.65rem;
+
+    margin-bottom: 0.85rem;
+  }
+
+  .step-number {
+    margin: 0;
+
+    font-size: clamp(1.1rem, 5vw, 1.4rem);
+    line-height: 1;
+  }
+
+  .process-grid h3 {
+    margin: 0;
+
+    font-size: clamp(1.2rem, 5vw, 1.35rem);
+    line-height: 1.25;
+  }
+
+  .process-grid p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .process-action {
+    margin-top: 2rem;
+  }
 }
