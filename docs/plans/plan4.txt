@@ -1,5 +1,0 @@
-what would i see in my dashboard
-1. maplibre
-2. query filter
-3. parcels
-4. 

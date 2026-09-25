@@ -1,0 +1,259 @@
+.partner-section {
+  padding-block: 3rem 2rem;
+  border-block: var(--border-hairline);
+  background: var(--color-secondary-bg);
+}
+
+/* -----------------------------------------
+   Heading
+   ----------------------------------------- */
+
+.partner-heading.container {
+  padding-block: 0 2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.partner-heading h2 {
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  margin-bottom: 0.75rem;
+}
+
+.partner-heading .btn-primary {
+  flex-shrink: 0;
+}
+
+/* -----------------------------------------
+   Marquee
+   ----------------------------------------- */
+
+.partner-marquee {
+  width: min(100% - 3rem, 1160px);
+  margin-inline: auto;
+  overflow: hidden;
+
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+.partner-track {
+  display: flex;
+  width: max-content;
+
+  animation: partner-scroll 32s linear infinite;
+}
+
+/* -----------------------------------------
+   Logo Groups
+   ----------------------------------------- */
+
+.client-logos {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  width: 1160px;
+  flex-shrink: 0;
+}
+
+.partner-logo {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+
+  width: 260px;
+  flex-shrink: 0;
+
+  padding: 1rem;
+  text-align: center;
+}
+
+.partner-logo img {
+  width: 180px;
+  height: 150px;
+  object-fit: contain;
+}
+
+.partner-logo figcaption {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #63432e;
+}
+
+/* -----------------------------------------
+   Pause on Interaction
+   ----------------------------------------- */
+
+.partner-marquee:hover .partner-track,
+.partner-marquee:focus-within .partner-track {
+  animation-play-state: paused;
+}
+
+/* -----------------------------------------
+   Evidence
+   ----------------------------------------- */
+
+.partner-evidence.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+/* -----------------------------------------
+   Animation
+   ----------------------------------------- */
+
+@keyframes partner-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* -----------------------------------------
+   Tablet / Mobile
+   ----------------------------------------- */
+
+@media (max-width: 760px) {
+  .partner-heading.container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .partner-marquee {
+    width: calc(100% - 2rem);
+
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+  }
+
+  .client-logos {
+    width: max(100vw, 800px);
+  }
+
+  .partner-logo {
+    width: 200px;
+    padding: 0.75rem;
+  }
+
+  .partner-logo img {
+    width: 150px;
+    height: 120px;
+  }
+
+  .partner-logo figcaption {
+    font-size: 0.8rem;
+  }
+
+  .partner-evidence.container {
+    gap: 0.75rem;
+    padding-inline: 1rem;
+  }
+}
+
+/* -----------------------------------------
+   Small Mobile
+   ----------------------------------------- */
+
+@media (max-width: 480px) {
+  .partner-section {
+    padding-block: 2.5rem 1.5rem;
+  }
+
+  .partner-heading.container {
+    padding-block: 0 1.5rem;
+  }
+
+  .partner-marquee {
+    width: calc(100% - 1.5rem);
+  }
+
+  .client-logos {
+    width: 720px;
+  }
+
+  .partner-logo {
+    width: 180px;
+    gap: 0.75rem;
+    padding: 0.5rem;
+  }
+
+  .partner-logo img {
+    width: 130px;
+    height: 100px;
+  }
+
+  .partner-logo figcaption {
+    font-size: 0.75rem;
+  }
+
+  .partner-evidence.container {
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 0.5rem;
+    padding-inline: 0.75rem;
+
+    text-align: center;
+  }
+
+  .partner-evidence.container > * {
+    width: 100%;
+    margin-inline: auto;
+  }
+}
+
+/* -----------------------------------------
+   Reduced Motion
+   ----------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .partner-track {
+    animation: none;
+  }
+
+  .partner-track > *[aria-hidden="true"] {
+    display: none;
+  }
+
+  .partner-marquee {
+    overflow-x: auto;
+
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}

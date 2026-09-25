@@ -1,0 +1,14 @@
+.faq-list details {
+  border-bottom: var(--border-hairline);
+  padding-block: 1rem;
+}
+
+.faq-list summary {
+  font-weight: 650;
+  cursor: pointer;
+  padding-block: 0.5rem;
+}
+
+.faq-list details p {
+  padding-block: 0.75rem;
+}

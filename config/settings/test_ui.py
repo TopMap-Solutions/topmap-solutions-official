@@ -1,6 +1,6 @@
 """Database-free UI/SEO regression settings. Never loads .env or applies migrations.
 
-Run only the SimpleTestCase suite: python -m django test tests --settings=config.settings.test_ui
+Run only the SimpleTestCase suite: python manage.py test apps.guests.tests.test_public_site --settings=config.settings.test_ui
 """
 from pathlib import Path
 

@@ -4,132 +4,15 @@
     <link rel="stylesheet" href="{% static 'css/_homepage.css' %}">
 {% endblock %}
 {% block content %}
-    <section class="hero container">
-        <div class="hero-copy">
-            <p class="eyebrow">GIS services · Data to decisions</p>
-            <h1>Make your spatial data work for your team.</h1>
-            <p class="lead">Turn scattered drawings, records and datasets into usable GIS data and web maps. Built around your workflow, with land expertise at the core and utilities as our next focus.</p>
-            <div class="actions"><a class="btn-primary" href="{% url 'guests:inquiry' %}">Discuss your GIS project</a><a class="btn-secondary" href="#services">Explore services <span aria-hidden="true">↗</span></a></div>
-            <p class="microcopy">Based in the Philippines. Open to projects across borders.</p>
-        </div>
-        <figure class="hero-visual">
-            <img src="{% static 'images/city-planning.jpg' %}"
-                 alt="A hand marking buildings and green spaces on a city planning drawing"
-                 fetchpriority="high"
-                 width="1280"
-                 height="720">
-        </figure>
-    </section>
-    <section class="proof-strip container" aria-label="Existing client references">
-        <p class="eyebrow">Land expertise, grounded in local work</p>
-        <div class="client-logos">
-            <img src="{% static 'images/offices/tagum.png' %}"
-                 alt="City of Tagum"
-                 width="64"
-                 height="64"
-                 loading="lazy">
-            <img src="{% static 'images/offices/tagum_assessors.png' %}"
-                 alt="Tagum City Assessor’s Office"
-                 width="64"
-                 height="64"
-                 loading="lazy">
-            <img src="{% static 'images/offices/tagum_cpdo.png' %}"
-                 alt="Tagum City Planning and Development Office"
-                 width="64"
-                 height="64"
-                 loading="lazy">
-        </div>
-        {% if case_studies %}<a class="text-link" href="{{ case_studies.url }}">Explore our case studies <span aria-hidden="true">↗</span></a>{% endif %}
-    </section>
-    <section class="container section-grid" aria-labelledby="problem-title">
-        <div>
-            <p class="eyebrow">Start with the problem</p>
-            <h2 id="problem-title">Your team needs answers. Your data lives everywhere.</h2>
-        </div>
-        <div class="prose">
-            <p>CAD files in one folder. Records in another. Maps that need checking before anyone can use them. Disconnected information turns a simple question into more manual work.</p>
-            <p>We help you bring that information together, identify what needs attention, and build a practical way to use it.</p>
-        </div>
-    </section>
-    <section class="section-tint" id="services">
-        <div class="container">
-            <div class="section-heading">
-                <p class="eyebrow">What we can help you do</p>
-                <h2>A useful next step for your GIS.</h2>
-                <p>Start with a data problem, a mapping need or a workflow you want to improve.</p>
-            </div>
-            <div class="card-grid">
-                {% for slug, service in services.items %}
-                    <article class="service-card">
-                        <span class="card-number" aria-hidden="true">0{{ forloop.counter }}</span>
-                        <h3><a href="{% url 'guests:service_detail' slug=slug %}">{{ service.name }}</a></h3>
-                        <p>{{ service.summary }}</p>
-                        <a class="text-link" href="{% url 'guests:service_detail' slug=slug %}">See inputs &amp; deliverables <span aria-hidden="true">↗</span><span class="sr-only"> for {{ service.name }}</span></a>
-                    </article>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-    <section class="container" id="sectors">
-        <div class="section-heading">
-            <p class="eyebrow">Sectors</p>
-            <h2>Land at our core. A wider view ahead.</h2>
-            <p>The GIS work starts with your data and the people who need to use it.</p>
-        </div>
-        <div class="sector-grid">
-            <article class="sector-card"><span class="badge">Core expertise</span><h3>Land &amp; property</h3><p>Parcel conversion, record validation and shared mapping for assessor offices, planning teams, surveyors and property organizations.</p><a class="text-link"
-   href="{% url 'guests:service_detail' slug='gis-data-conversion' %}">Explore land data conversion <span aria-hidden="true">↗</span></a></article>
-            <article class="sector-card"><span class="badge badge-outline">Expanding focus</span><h3>Utilities &amp; infrastructure</h3><p>We're extending our GIS focus to utility assets and infrastructure records. Talk with us about your mapping needs so we can assess the data, workflow and project fit together.</p><a class="text-link" href="{% url 'guests:inquiry' %}">Discuss a utilities project <span aria-hidden="true">↗</span></a></article>
-        </div>
-    </section>
-    <section class="section-dark" id="process">
-        <div class="container">
-            <div class="section-heading">
-                <p class="eyebrow">How we start</p>
-                <h2>A clear scope before a bigger commitment.</h2>
-            </div>
-            <ol class="process-grid">
-                <li>
-                    <span class="step-number">01</span>
-                    <h3>Tell us what isn't working</h3>
-                    <p>Describe your data, users and the outcome you need. We'll discuss whether the project fits.</p>
-                </li>
-                <li>
-                    <span class="step-number">02</span>
-                    <h3>Agree a practical scope</h3>
-                    <p>Define inputs, deliverables, checks and commercial terms. Where useful, start with a bounded pilot.</p>
-                </li>
-                <li>
-                    <span class="step-number">03</span>
-                    <h3>Review, then move forward</h3>
-                    <p>Review outputs against the agreed requirements and plan the next step or handover together.</p>
-                </li>
-            </ol>
-        </div>
-    </section>
-    <section class="container section-grid" aria-labelledby="faq-title">
-        <div>
-            <p class="eyebrow">Before we talk</p>
-            <h2 id="faq-title">A few useful answers.</h2>
-        </div>
-        <div class="faq-list">
-            <details>
-                <summary>Can we work with you outside the Philippines?</summary>
-                <p>Yes, we welcome international inquiries. We'll discuss remote collaboration, time zones, data-sharing requirements and any local expertise your project needs before agreeing a scope.</p>
-            </details>
-            <details>
-                <summary>Do we need a complete GIS system to start?</summary>
-                <p>No. A conversion task, a dataset needing review or one clearly defined mapping workflow can be a useful starting point.</p>
-            </details>
-            <details>
-                <summary>What should we include in an inquiry?</summary>
-                <p>Tell us your sector, country, source formats, approximate data volume and desired outcome. A description is enough to start; please don't include confidential records in the form.</p>
-            </details>
-            <details>
-                <summary>How are costs and timelines agreed?</summary>
-                <p>They depend on source quality, volume and the work involved. We discuss requirements and agree scope and commercial terms before committing to delivery.</p>
-            </details>
-        </div>
-    </section>
+    {% include 'components/hero.html' %}
+    {% include 'components/partner.html' %}
+    {% include 'components/problem.html' %}
+    {% include 'components/service.html' %}
+    {% include 'components/customer.html' %}
+    {% include 'components/process.html' %}
+    {% include 'components/faq.html' %}
     {% include 'components/cta.html' %}
+{% endblock %}
+{% block scripts %}
+    <script type="module" src="{% static 'js/homepage.js' %}"></script>
 {% endblock %}

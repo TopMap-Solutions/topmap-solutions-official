@@ -1,0 +1,51 @@
+.section-dark {
+  background: var(--color-dark);
+  color: var(--color-text-light);
+}
+
+.section-dark .eyebrow {
+  color: #ffb88e;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+}
+
+.process-grid li {
+  border-top: 1px solid #78634c;
+  padding-top: 1.5rem;
+}
+
+.step-number {
+  display: block;
+  color: #ffb88e;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.process-grid h3 {
+  margin-bottom: 1rem;
+}
+
+.process-grid p {
+  color: #ded5c8;
+}
+
+@media (max-width: 700px) {
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.process-action {
+  margin-top: 2.5rem;
+}
+
+.process-action .btn-secondary {
+  background: var(--color-bg);
+  color: var(--color-dark);
+}

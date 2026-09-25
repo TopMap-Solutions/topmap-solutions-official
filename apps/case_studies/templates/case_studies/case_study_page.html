@@ -5,6 +5,7 @@
 {% block extra_css %}
     <link rel="stylesheet"
           href="{% static 'css/case_studies/contentPage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components/cta.css' %}">
 {% endblock %}
 {% block content %}
     <div class="container">
@@ -105,7 +106,7 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="case-study-cta"><h2>Have a similar GIS challenge?</h2><p>Tell us about your data and the outcome you need.</p><a class="btn-primary" href="{% url 'guests:inquiry' %}">Discuss your GIS project</a></div>
+            {% include 'components/cta-case-study.html' %}
         </article>
     </div>
 {% endblock %}

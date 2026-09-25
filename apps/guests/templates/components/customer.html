@@ -1,36 +1,20 @@
-{% load static %}
-<section class="customer container">
-    <h2>Who We Help</h2>
-    <main>
-        <div class="customer-card">
-            <img class="customer-icon"
-                 src="{% static 'icons/company.png' %}"
-                 alt="company">
-            <h3>City & Municipal Governments</h3>
-        </div>
-        <div class="customer-card">
-            <img class="customer-icon"
-                 src="{% static 'icons/map-and-location.png' %}"
-                 alt="map-and-location">
-            <h3>Assessor's Offices & Tax Mapping Divisions</h3>
-        </div>
-        <div class="customer-card">
-            <img class="customer-icon"
-                 src="{% static 'icons/agreement.png' %}"
-                 alt="agreement">
-            <h3>Planning & Development Offices</h3>
-        </div>
-        <div class="customer-card">
-            <img class="customer-icon"
-                 src="{% static 'icons/model.png' %}"
-                 alt="model">
-            <h3>Surveying & Engineering Firms</h3>
-        </div>
-        <div class="customer-card">
-            <img class="customer-icon"
-                 src="{% static 'icons/real-estate.png' %}"
-                 alt="real-estate">
-            <h3>Real Estate Developers</h3>
-        </div>
-    </main>
+<section class="container" id="sectors">
+    <div class="section-heading">
+        <p class="eyebrow">Sectors</p>
+        <h2>Land at our core. A wider view ahead.</h2>
+        <p>The GIS work starts with your data and the people who need to use it.</p>
+    </div>
+    <div class="sector-grid">
+        <article class="sector-card">
+            <span class="badge">Core expertise</span>
+            <h3>Land &amp; property</h3>
+            <p>Parcel conversion, record validation and shared mapping for assessor offices, planning teams, surveyors and property organizations.</p>
+            <a class="text-link"
+               href="{% url 'guests:service_detail' slug='gis-data-conversion' %}">Explore land data conversion <span aria-hidden="true">↗</span></a></article>
+        <article class="sector-card">
+            <span class="badge badge-outline">Expanding focus</span>
+            <h3>Utilities &amp; infrastructure</h3>
+            <p>We're extending our GIS focus to utility assets and infrastructure records. Talk with us about your mapping needs so we can assess the data, workflow and project fit together.</p>
+            <a class="text-link" href="{% url 'guests:inquiry' %}">Discuss a utilities project <span aria-hidden="true">↗</span></a></article>
+    </div>
 </section>

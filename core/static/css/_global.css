@@ -133,12 +133,6 @@ a {
   margin-top: 1.25rem;
 }
 
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .75rem;
-  align-items: center;
-}
 
 .text-link {
   font-weight: 650;

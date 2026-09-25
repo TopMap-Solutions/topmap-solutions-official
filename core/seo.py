@@ -1,8 +1,9 @@
 """Canonical public URLs and metadata; never derive the public origin from a Host header."""
-from urllib.parse import urlsplit
+from urllib.parse import urljoin, urlsplit
 
 from django.conf import settings
 from django.urls import reverse
+from django.templatetags.static import static
 from django.utils.html import strip_tags
 
 from apps.guests.content import SERVICES
@@ -13,18 +14,23 @@ def public_url(path):
     return origin + "/" + urlsplit(path).path.lstrip("/")
 
 
+def public_static_url(path):
+    """Use collected filenames and preserve an externally hosted static origin."""
+    return urljoin(public_url("/"), static(path))
+
+
 def metadata(request, page=None):
     match = getattr(request, "resolver_match", None)
     route = getattr(match, "url_name", None)
-    title = "GIS Data Conversion, Mapping & Web GIS | TopMap Solutions"
-    description = "Make spatial data work for your team. TopMap Solutions offers GIS data conversion, validation and web mapping, with land expertise and a growing utilities focus."
+    title = "GIS Services in the Philippines | TopMap Solutions"
+    description = "Philippines-based GIS data conversion, spatial validation and web GIS consulting. Land expertise, with remote collaboration for local and international teams."
     noindex = False
     path = request.path
     if page is not None:
         title = f"{page.seo_title or page.title} | TopMap Solutions"
         description = strip_tags(page.search_description or getattr(page, "summary", "") or getattr(page, "intro", "") or f"Explore {page.title}: GIS project work from TopMap Solutions.")
         path = page.get_url(request=request) or request.path
-        noindex = bool(getattr(request, "is_preview", False))
+        noindex = bool(getattr(request, "is_preview", False)) or not getattr(page, "live", True)
     elif route == "service_detail":
         service = SERVICES.get(match.kwargs.get("slug"))
         if service:
@@ -45,5 +51,25 @@ def metadata(request, page=None):
         title = "Page Not Found | TopMap Solutions"
         description = "Find GIS services and project information from TopMap Solutions."
         noindex = True
-    return {"title": title, "description": description, "canonical": public_url(path), "noindex": noindex,
-            "image": public_url("/static/images/city-planning.jpg"), "home": public_url("/")}
+    return {"title": title, "description": " ".join(description.split()), "canonical": public_url(path), "noindex": noindex,
+            "image": public_static_url("images/city-planning.jpg"), "home": public_url("/")}
+
+
+def page_schema(request, data):
+    """Describe public service pages using the same evidence as their visible copy."""
+    match = getattr(request, "resolver_match", None)
+    if data["noindex"] or getattr(match, "url_name", None) != "service_detail":
+        return None
+    service = SERVICES.get(match.kwargs.get("slug"))
+    if not service:
+        return None
+    return {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "@id": data["canonical"] + "#service",
+        "name": service["name"],
+        "serviceType": service["title"],
+        "description": service["description"],
+        "url": data["canonical"],
+        "provider": {"@id": data["home"] + "#organization"},
+    }

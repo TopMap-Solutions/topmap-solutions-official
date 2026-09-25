@@ -71,7 +71,7 @@ class PublicSiteTests(PublicSiteTestCase):
         for copy in ("Make your spatial data work", "Land &amp; property", "Utilities &amp; infrastructure", "Expanding focus", "international inquiries"):
             self.assertContains(response, copy)
         self.assertNotContains(response, 'href=""')
-        self.assertNotContains(response, "homepage.js")
+        self.assertContains(response, "homepage.js")
 
     def test_every_service_has_buying_details_and_consistent_metadata(self):
         titles = set()
