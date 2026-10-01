@@ -2,22 +2,44 @@
 <section class="container" id="sectors">
     <div class="section-heading">
         <p class="eyebrow">Sectors</p>
-        <h2>Land at our core. A wider view ahead.</h2>
-        <p>The GIS work starts with your data and the people who need to use it.</p>
+        <h2>From land records to interactive project maps.</h2>
+        <p>
+            We turn existing land data and technical drawings into practical
+            GIS systems and interactive maps people can actually use.
+        </p>
     </div>
     <div class="sector-grid">
         <article class="sector-card">
-            <img src="{% static 'icons/map-and-location.png' %}" alt="land logo">
+            <img src="{% static 'icons/map-and-location.png' %}"
+                 alt="Land parcel mapping icon">
             <span class="badge">Core expertise</span>
-            <h3>Land &amp; property</h3>
-            <p>Parcel conversion, record validation and shared mapping for assessor offices, planning teams, surveyors and property organizations.</p>
+            <h3>Land Parcel Mapping</h3>
+            <p>
+                Turn cadastral records, CAD drawings and existing parcel data
+                into organized GIS datasets and digital parcel maps for
+                assessors, planning teams, surveyors and property organizations.
+            </p>
             <a class="text-link"
-               href="{% url 'guests:service_detail' slug='gis-data-conversion' %}">Explore land data conversion <span aria-hidden="true">↗</span></a></article>
+               href="{% url 'guests:service_detail' slug='gis-data-conversion' %}">
+                Explore land parcel mapping
+                <span aria-hidden="true">↗</span>
+            </a>
+        </article>
         <article class="sector-card">
-            <img src="{% static 'icons/power-grid.png' %}" alt="utilities logo">
-            <span class="badge badge-outline">Expanding focus</span>
-            <h3>Utilities &amp; infrastructure</h3>
-            <p>We're extending our GIS focus to utility assets and infrastructure records. Talk with us about your mapping needs so we can assess the data, workflow and project fit together.</p>
-            <a class="text-link" href="{% url 'guests:inquiry' %}">Discuss a utilities project <span aria-hidden="true">↗</span></a></article>
+            <img src="{% static 'icons/architecture-and-city.png' %}"
+                 alt="Interactive masterplan icon">
+            <span class="badge badge-outline">For client presentations</span>
+            <h3>Interactive Masterplan Maps</h3>
+            <p>
+                Turn your existing masterplan drawings into an
+                interactive online map your clients can open on desktop or
+                phone, pan and zoom around, explore project areas and use
+                during presentations or project handover.
+            </p>
+            <a class="text-link" href="{% url 'guests:inquiry' %}">
+                Make your masterplan drawings interactive
+                <span aria-hidden="true">↗</span>
+            </a>
+        </article>
     </div>
 </section>

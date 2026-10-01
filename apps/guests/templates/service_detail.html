@@ -17,12 +17,11 @@
         <p class="lead">{{ service.summary }}</p>
         <a class="btn-primary" href="{% url 'guests:inquiry' %}">Discuss your GIS project</a>
     </section>
-    
     <section class="container section-grid">
         <div>
             <p class="eyebrow">The right fit</p>
             <h2>Start with the work your data needs to do.</h2>
-            <img src="{% static 'icons/talk.png'%}" alt="logo">
+            <img src="{% static 'icons/talk.png' %}" alt="logo">
         </div>
         <div class="prose">
             <p>{{ service.problem }}</p>
@@ -32,7 +31,7 @@
     <section class="section-tint">
         <div class="container sector-grid">
             <article class="service-card">
-                <img src="{% static 'icons/flag.png'%}" alt="logo">
+                <img src="{% static 'icons/flag.png' %}" alt="logo">
                 <h2>What we start with</h2>
                 <ul class="deliverables">
                     {% for item in service.inputs %}
