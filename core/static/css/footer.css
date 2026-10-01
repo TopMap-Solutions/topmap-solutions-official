@@ -47,6 +47,10 @@ footer {
   opacity: 0.75;
 }
 
+.footer-socials {
+  margin-top: 1rem;
+}
+
 .footer-links {
   display: flex;
   flex-direction: column;
@@ -79,12 +83,23 @@ footer {
 }
 
 .footer-note {
+  display: flex;
   margin: 0;
 
   font-size: 0.8rem;
   line-height: 1.5;
   color: var(--color-text-light);
   opacity: 0.6;
+  gap: 1rem;
+}
+
+.footer-note a {
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.footer-note a:hover {
+  color: var(--color-accent-second);
 }
 
 @media (max-width: 768px) {

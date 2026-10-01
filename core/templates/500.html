@@ -1,0 +1,17 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block extra_css %}{% endblock %}
+{% block content %}
+    <section class="container">
+        <div class="errors">
+            <div>
+                <img src="{% static 'icons/depression.png' %}" alt="error">
+            </div>
+            <section>
+                <h1>500.</h1>
+                <p>We couldn't find the page you're looking for.</p>
+                <a class="btn-primary" href="{% url 'guests:homepage' %}">Back to Home</a>
+            </section>
+        </div>
+    </section>
+{% endblock %}
