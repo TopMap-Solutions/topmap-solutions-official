@@ -58,7 +58,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           timeout: 60s
-          command_timeout: 30m
+          command_timeout: 60m
           envs: DEPLOY_SHA
           script: |
             set -e
