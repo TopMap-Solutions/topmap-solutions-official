@@ -1,9 +1,8 @@
 # UI, positioning and SEO changes
 
-TopMap now presents GIS services across sectors, with land as the strongest
-current specialty and utilities/infrastructure explicitly marked as an expanding
-focus. The public site welcomes international inquiries without asserting a
-foreign presence or completed utility projects.
+TopMap presents GIS services across two sectors: government land parcels and
+private interactive masterplan maps. Keep SEO copy aligned with those sectors
+and do not invent clients, projects, locations, or results.
 
 ## Editing content
 

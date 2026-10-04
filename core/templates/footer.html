@@ -9,19 +9,31 @@
                     <span>TopMap Solutions</span>
                 </a>
                 <p class="footer-tagline">
-                    Practical GIS solutions for teams and organizations that need
-                    better spatial data, clearer workflows, and room to scale.
+                    Land information for better decisions, and masterplans people
+                    can explore. TopMap helps LGU land and planning teams organize
+                    parcel data and helps private teams turn existing drawings into
+                    interactive browser maps.
                 </p>
+                <div class="footer-socials">
+                    <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/company/topmap-solutions" aria-label="TopMap Solutions on LinkedIn" title="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i><span class="sr-only">LinkedIn</span></a>
+                    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/topmapsolutions" aria-label="TopMap Solutions on Facebook" title="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+                    <a target="_blank" rel="noopener noreferrer" href="https://youtube.com/@topmapsolutions?si=r2kofEGRD6rw7sgT" aria-label="TopMap Solutions on YouTube" title="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i><span class="sr-only">YouTube</span></a>
+                </div>
             </div>
             <nav class="footer-links" aria-label="Footer navigation">
-                <a href="{% url 'guests:homepage' %}#services">Services</a>
-                <a href="{% url 'guests:homepage' %}#sectors">Sectors</a>
-                <a href="{% url 'guests:inquiry' %}">Discuss your GIS project</a>
+                <a href="{% url 'guests:homepage' %}#services">Land and property GIS</a>
+                <a href="{% url 'guests:products' %}">Products</a>
+                <a href="{% url 'guests:homepage' %}#sectors">LGU and masterplan teams</a>
+                <a href="{% url 'guests:inquiry' %}">Discuss your project</a>
             </nav>
         </div>
         <div class="footer-bottom">
-            <p class="footer-note">Based in the Philippines · Working with local and international teams.</p>
             <p class="footer-note">© {% now "Y" %} TopMap Solutions. All rights reserved.</p>
+            <nav class="footer-note footer-legal" aria-label="Legal navigation">
+                <a href="{% url 'guests:privacy' %}">Privacy</a>
+                <a href="{% url 'guests:legal' %}">Legal</a>
+                <a href="{% url 'guests:terms' %}">Terms</a>
+            </nav>
         </div>
     </div>
 </footer>

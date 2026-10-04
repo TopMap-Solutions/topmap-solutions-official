@@ -42,7 +42,7 @@
 .problem-content p {
   max-width: 580px;
   margin: 0;
-  font-size: 1rem;
+  font-size: clamp(1.05rem, 1.2vw, 1.15rem);
   line-height: 1.65;
 }
 
@@ -80,7 +80,7 @@
   }
 
   .problem-content p {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 }
 

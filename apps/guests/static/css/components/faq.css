@@ -19,6 +19,20 @@
   font-weight: 650;
   cursor: pointer;
   padding-block: 0.5rem;
+  list-style: none;
+}
+
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-list summary i {
+  margin-right: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.faq-list details[open] summary i {
+  transform: rotate(90deg);
 }
 
 .faq-list details p {

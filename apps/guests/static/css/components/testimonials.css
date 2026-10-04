@@ -1,0 +1,43 @@
+.testimonials-section {
+  background: var(--color-bg);
+  border-top: var(--border-hairline);
+}
+
+.testimonials-coming-soon {
+  max-width: 680px;
+  margin-inline: auto;
+  padding: clamp(2rem, 5vw, 4rem);
+  text-align: center;
+  background: var(--color-secondary-bg);
+  border: var(--border-hairline);
+  border-radius: var(--radius-card);
+}
+
+.testimonials-coming-soon h2 {
+  margin-bottom: 1rem;
+}
+
+.testimonials-coming-soon p:not(.eyebrow) {
+  max-width: 50rem;
+  margin-inline: auto;
+  line-height: 1.7;
+}
+
+.coming-soon-label {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.35rem 0.75rem;
+  color: var(--color-accent);
+  border: 1px solid currentColor;
+  border-radius: var(--radius-chip);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  .testimonials-coming-soon {
+    padding: 1.75rem 1.25rem;
+  }
+}

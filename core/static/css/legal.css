@@ -1,0 +1,8 @@
+.legal-page { max-width: 860px; padding-block: clamp(4rem, 8vw, 7rem); }
+.legal-header { max-width: 700px; margin-bottom: 3rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-secondary-light); }
+.legal-header h1 { margin: 0.5rem 0 0.75rem; color: var(--color-dark); }
+.legal-header > p:last-child { margin: 0; color: var(--color-secondary); font-size: 0.9rem; }
+.legal-content { max-width: 720px; color: var(--color-secondary-dark); }
+.legal-content h2 { margin: 2.5rem 0 0.75rem; color: var(--color-dark); font-size: 1.35rem; }
+.legal-content h2:first-child { margin-top: 0; }
+.legal-content p { margin: 0 0 1rem; line-height: 1.8; }

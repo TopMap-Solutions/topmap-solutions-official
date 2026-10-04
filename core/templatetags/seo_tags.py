@@ -17,7 +17,7 @@ def seo_head(context):
     schema = {"@context": "https://schema.org", "@type": "Organization",
               "@id": data["home"] + "#organization",
               "name": "TopMap Solutions", "url": data["home"],
-              "description": "Philippines-based GIS data conversion, spatial validation and web GIS consulting for local and international teams.",
+              "description": "Philippines-based TopMap Solutions prepares LGU land parcel, tax and spatial planning data and creates interactive masterplan maps for local and international project teams.",
               "address": {"@type": "PostalAddress", "addressCountry": "PH"}}
     data["organization_json"] = script_json(schema)
     service = page_schema(context["request"], data)

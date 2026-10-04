@@ -3,8 +3,93 @@
 @import url("components/partner.css");
 @import url("components/problem.css");
 @import url("components/service.css");
+@import url("components/tools.css");
 @import url("components/customer.css");
 @import url("components/process.css");
+@import url("components/testimonials.css");
 @import url("components/faq.css");
 @import url("components/cta.css");
 @import url("components/service_detail.css");
+
+/* Keep the homepage sections visually related while allowing each section to
+   retain its own surface treatment. */
+.homepage-sections > section {
+  position: relative;
+  isolation: isolate;
+}
+
+.homepage-sections > section:not(.hero):not(.partner-section):not(.tools-highlight) {
+  border-top: var(--border-hairline);
+}
+
+.homepage-sections .section-heading {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.homepage-sections .section-heading h2 {
+  max-width: 42rem;
+}
+
+.homepage-sections .partner-section {
+  border-top: 0;
+  background: var(--color-secondary-bg);
+  border-block: var(--border-hairline);
+}
+
+/* Alternate the existing palette across the homepage so adjacent sections
+   feel connected without making every section look like the same block. */
+.homepage-sections .problem-section {
+  background: var(--color-bg);
+}
+
+.homepage-sections #sectors {
+  background: var(--color-secondary-bg);
+}
+
+.homepage-sections #sectors > .container {
+  background: transparent;
+}
+
+.homepage-sections #services {
+  background: var(--color-bg);
+}
+
+.homepage-sections #tools {
+  background: var(--color-secondary-bg);
+  border-block: var(--border-hairline);
+  color: var(--color-dark);
+}
+
+.homepage-sections #tools .tool-card {
+  background: var(--color-bg);
+  border-color: var(--border-hairline);
+  box-shadow: none;
+}
+
+.homepage-sections #tools .tool-card p,
+.homepage-sections #tools .section-heading > p:last-child {
+  color: inherit;
+}
+
+.homepage-sections .section-dark {
+  border-top: 0;
+}
+
+.homepage-sections section[aria-labelledby="faq-title"],
+.homepage-sections .cta-section {
+  background: var(--color-bg);
+}
+
+.homepage-sections section[aria-labelledby="faq-title"] {
+  align-items: start;
+}
+
+@media (max-width: 700px) {
+  .homepage-sections .container {
+    width: min(100% - 2rem, 1160px);
+  }
+
+  .homepage-sections .section-heading {
+    margin-bottom: 2rem;
+  }
+}

@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     "core",
     "apps.guests",
     "apps.case_studies",
+    "apps.maps",
 ]
 # ============================================================
 # MIDDLEWARE
