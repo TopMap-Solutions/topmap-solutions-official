@@ -1,22 +1,32 @@
 .cta-section {
   border-top: var(--border-hairline);
+}
+
+.cta-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   gap: 1.25rem;
+  padding-block: clamp(4rem, 8vw, 7rem);
 }
 
-.cta-section h2 {
+.cta-inner h2 {
   max-width: 28ch;
 }
 
-.cta-section .eyebrow {
+.cta-inner .eyebrow {
   margin: 0;
 }
 
-.cta-section .btn-primary {
+.cta-inner .btn-primary {
   margin-top: 0.5rem;
+}
+
+/* Keep the separator full-bleed while the content remains aligned to the site grid. */
+.cta-section {
+  display: flex;
+  width: 100%;
 }
 
 .homepage-prompt.container {

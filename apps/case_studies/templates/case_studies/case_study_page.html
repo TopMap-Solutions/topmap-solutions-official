@@ -13,7 +13,7 @@
             {% with parent=page.get_parent %}
                 {% if parent %}
                     <a href="{{ parent.url }}">
-                        <img src="{% static 'icons/back-button.png' %}" alt="back-button">
+                        <svg class="lucide-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
                         <p>All Success Stories</p>
                     </a>
                 {% endif %}
@@ -29,29 +29,12 @@
                 </div>
                 <div class="right-bar">
                     <div class="client-info">
-                        {% if page.client %}
-                            <div>
-                                <img src="{% static 'icons/company2.png' %}" alt="company">
-                                <p>{{ page.client }}</p>
-                            </div>
-                        {% endif %}
-                        {% if page.location %}
-                            <div>
-                                <img src="{% static 'icons/map.png' %}" alt="map">
-                                <p>{{ page.location }}</p>
-                            </div>
-                        {% endif %}
+                        {% if page.client %}<div><img src="{% static 'icons/company2.png' %}" alt="company"><p>{{ page.client }}</p></div>{% endif %}
+                        {% if page.location %}<div><img src="{% static 'icons/map.png' %}" alt="map"><p>{{ page.location }}</p></div>{% endif %}
                     </div>
                     <div class="tags-list-container">
                         {% with tags=page.tags.all %}
-                            {% if tags %}
-                                <p>Tags</p>
-                                <div class="tags-container">
-                                    {% for tag in tags %}
-                                        <span class="chip-tag">{{ tag }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% endif %}
+                            {% if tags %}<p>Tags</p><div class="tags-container">{% for tag in tags %}<span class="chip-tag">{{ tag }}</span>{% endfor %}</div>{% endif %}
                         {% endwith %}
                     </div>
                 </div>
@@ -106,7 +89,7 @@
                     {% endif %}
                 </div>
             </div>
-            {% include 'components/cta-case-study.html' %}
+            {% include 'components/cta-global.html' %}
         </article>
     </div>
 {% endblock %}

@@ -73,6 +73,25 @@ class PublicSiteTests(PublicSiteTestCase):
         self.assertNotContains(response, 'href=""')
         self.assertContains(response, "homepage.js")
 
+    def test_homepage_sections_follow_buyer_flow_and_use_inline_icons(self):
+        html = self.client.get("/").content.decode()
+        sections = [
+            'class="hero container"',
+            'class="partner-section"',
+            'class="container section-grid problem-section"',
+            'class="customer-section"',
+            'class="section-tint" id="services"',
+            'class="section-dark" id="process"',
+            'class="tools-highlight" id="tools"',
+            'class="testimonials-section"',
+            'aria-labelledby="faq-title"',
+            'class="cta-section',
+        ]
+        positions = [html.index(section) for section in sections]
+        self.assertEqual(positions, sorted(positions))
+        self.assertContains(response := self.client.get("/"), 'class="lucide-icon faq-chevron"')
+        self.assertContains(response, 'class="lucide-icon" aria-hidden="true" viewBox="0 0 24 24"')
+
     def test_every_service_has_buying_details_and_consistent_metadata(self):
         titles = set()
         for slug, service in SERVICES.items():
@@ -295,5 +314,5 @@ class CMSMetadataTests(PublicSiteTestCase):
         doc = Document(html)
         self.assertEqual(len(doc.attributes("main")), 1)
         self.assertEqual(len(doc.attributes("h1")), 1)
-        self.assertIn("Discuss your GIS project", html)
+        self.assertIn("Bring us the drawing, parcel workflow or map problem.", html)
         self.assertIn("A specific GIS project | TopMap Solutions", html)

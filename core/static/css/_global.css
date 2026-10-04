@@ -145,6 +145,14 @@ a {
     text-decoration-color 0.15s ease;
 }
 
+.lucide-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  flex: 0 0 auto;
+}
+
 .text-link:hover {
   color: var(--color-accent);
   text-decoration-color: var(--color-accent);

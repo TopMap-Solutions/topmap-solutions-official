@@ -26,12 +26,16 @@
   display: none;
 }
 
-.faq-list summary i {
+.faq-list .faq-chevron {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  vertical-align: -0.15em;
   margin-right: 0.5rem;
   transition: transform 0.2s ease;
 }
 
-.faq-list details[open] summary i {
+.faq-list details[open] .faq-chevron {
   transform: rotate(90deg);
 }
 

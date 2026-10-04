@@ -42,6 +42,23 @@ def metadata(request, page=None):
         title = "TopMap Products | Coming Soon"
         description = "TopMap Solutions products for parcel information and WebGIS workflows are coming soon."
         path = reverse("guests:products")
+    elif route in {"privacy", "legal", "terms"}:
+        legal_pages = {
+            "privacy": (
+                "Privacy Policy | TopMap Solutions",
+                "Read TopMap Solutions' privacy policy for website visits, project inquiries, client materials, and interactive map demonstrations.",
+            ),
+            "legal": (
+                "Legal & Map Disclaimer | TopMap Solutions",
+                "Review TopMap Solutions' legal and map disclaimer for interactive maps, client materials, and third-party geographic information.",
+            ),
+            "terms": (
+                "Terms of Use | TopMap Solutions",
+                "Read the terms governing use of the TopMap Solutions website, interactive maps, demonstrations, and online materials.",
+            ),
+        }
+        title, description = legal_pages[route]
+        path = reverse(f"guests:{route}")
     elif route in {"inquiry", "send_public_form", "inquiry_form"}:
         title = "Start Your Land or Mapping Project | TopMap Solutions"
         description = "Tell TopMap Solutions about your LGU land information workflow or interactive masterplan project and the outcome you need."

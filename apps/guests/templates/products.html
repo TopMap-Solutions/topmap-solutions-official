@@ -6,14 +6,15 @@
 {% endblock %}
 
 {% block content %}
-    <main class="products-page container" id="main-content">
-        <header class="products-header">
-            <p class="eyebrow">Products</p>
-            <h1>Tools for clearer parcel and WebGIS workflows.</h1>
-            <p class="lead">We’re developing focused products to help teams organize land information and make spatial data easier to use.</p>
-        </header>
+    <main class="products-page" id="main-content">
+        <div class="container">
+            <header class="products-header">
+                <p class="eyebrow">Products</p>
+                <h1>Tools for clearer parcel and WebGIS workflows.</h1>
+                <p class="lead">We’re developing focused products to help teams organize land information and make spatial data easier to use.</p>
+            </header>
 
-        <section class="products-grid" aria-label="TopMap products coming soon">
+            <section class="products-grid" aria-label="TopMap products coming soon">
             <article class="product-card">
                 <span class="product-status">Coming soon</span>
                 <h2>Parcel Buddy</h2>
@@ -29,12 +30,9 @@
                 <h2>Parcel Manager</h2>
                 <p>A focused product for organizing parcel records and supporting land information workflows.</p>
             </article>
-        </section>
+            </section>
+        </div>
 
-        <section class="products-cta">
-            <h2>Need a land information workflow today?</h2>
-            <p>Tell us what you are working with, and we can discuss a project while these products are in development.</p>
-            <a class="btn-primary" href="{% url 'guests:inquiry' %}">Discuss your project</a>
-        </section>
+        {% include 'components/cta-global.html' %}
     </main>
 {% endblock %}

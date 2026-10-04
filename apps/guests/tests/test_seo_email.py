@@ -46,6 +46,19 @@ class SEORegressionTests(SimpleTestCase):
                 self.assertEqual(schema["provider"]["@id"], "https://topmapsolutions.com/#organization")
                 self.assertFalse(data["noindex"])
 
+    def test_legal_routes_have_specific_titles_and_canonicals(self):
+        expected = {
+            "privacy": "Privacy Policy | TopMap Solutions",
+            "legal": "Legal & Map Disclaimer | TopMap Solutions",
+            "terms": "Terms of Use | TopMap Solutions",
+        }
+        for route, title in expected.items():
+            with self.subTest(route=route):
+                data = seo_head({"request": self.request(f"/{route}/")})
+                self.assertEqual(data["title"], title)
+                self.assertEqual(data["canonical"], f"https://topmapsolutions.com/{route}/")
+                self.assertFalse(data["noindex"])
+
     @override_settings(PUBLIC_SITE_URL="https://example.com")
     def test_schema_and_canonical_follow_configured_public_origin(self):
         data = seo_head({"request": self.request("/services/gis-data-conversion/")})

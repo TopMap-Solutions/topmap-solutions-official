@@ -10,30 +10,30 @@
   transition: 0.2s all ease-in-out;
 }
 
+.case-study-navigation .lucide-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: transform 0.2s ease;
+}
+
 .case-study-navigation a:hover {
   color: var(--color-accent);
 }
 
-.case-study-navigation img {
-  height: 25px;
-  transition:
-    transform 0.2s ease-in-out,
-    filter 0.2s ease-in-out;
-}
-
-.case-study-navigation a:hover img {
-  filter: var(--icon-accent);
+.case-study-navigation a:hover .lucide-icon {
   transform: translateX(-3px);
 }
 
 /* ---------- Header ---------- */
 .case-study header {
-  display: flex;
-  gap: 5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
 }
 
 .case-study header .title {
-  flex: 6;
+  min-width: 0;
 }
 
 .case-study header .title h1 {
@@ -41,7 +41,7 @@
 }
 
 .case-study header .right-bar {
-  flex: 2;
+  min-width: 0;
   padding: 2rem;
   background-color: var(--color-secondary-bg);
   border-radius: var(--radius-card);
@@ -114,6 +114,12 @@
   gap: 5rem;
 }
 
+.case-study-layout > .case-study-results {
+  position: sticky;
+  top: calc(50px + 2.8rem + 1px + 0.75rem);
+  align-self: flex-start;
+}
+
 .case-study-result {
   margin-bottom: 2rem;
 }
@@ -136,6 +142,7 @@
 
 .case-study-layout {
   margin-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .case-study-result p {
@@ -152,7 +159,7 @@
 /* Tablet: stack header, tighten gaps */
 @media (max-width: 900px) {
   .case-study header {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 2rem;
   }
 
@@ -176,8 +183,13 @@
 
   /* Results sidebar + body stack */
   .case-study-layout {
+    display: flex;
     flex-direction: column;
     gap: 2rem;
+  }
+
+  .case-study-layout > .case-study-results {
+    position: static;
   }
 
   /* Results row: cards side-by-side */
