@@ -18,10 +18,6 @@
   isolation: isolate;
 }
 
-.homepage-sections > section:not(.hero):not(.partner-section):not(.tools-highlight) {
-  border-top: var(--border-hairline);
-}
-
 .homepage-sections .section-heading {
   margin-bottom: clamp(2rem, 4vw, 3rem);
 }
@@ -30,15 +26,24 @@
   max-width: 42rem;
 }
 
+/* Keep section separators intentional and explicit. */
+.homepage-sections > section.problem-section,
+.homepage-sections > section#sectors,
+.homepage-sections > section#services,
+.homepage-sections > section.section-dark,
+.homepage-sections > section.faq-section {
+  border-top: var(--border-hairline);
+}
+
 .homepage-sections .partner-section {
   border-top: 0;
   background: var(--color-secondary-bg);
-  border-block: var(--border-hairline);
+  border-top: var(--border-hairline);
 }
 
 /* Alternate the existing palette across the homepage so adjacent sections
    feel connected without making every section look like the same block. */
-.homepage-sections .problem-section {
+.homepage-sections > section.problem-section {
   background: var(--color-bg);
 }
 
@@ -75,13 +80,24 @@
   border-top: 0;
 }
 
-.homepage-sections section[aria-labelledby="faq-title"],
+.homepage-sections section.faq-section,
 .homepage-sections .cta-section {
   background: var(--color-bg);
 }
 
-.homepage-sections section[aria-labelledby="faq-title"] {
+.homepage-sections section.faq-section {
+  background: var(--color-secondary-bg);
+  border-block: var(--border-hairline);
+}
+
+.homepage-sections section.faq-section {
   align-items: start;
+}
+
+.homepage-sections section.faq-section > .container > div:first-child {
+  position: sticky;
+  top: 1.5rem;
+  align-self: start;
 }
 
 @media (max-width: 700px) {
@@ -91,5 +107,9 @@
 
   .homepage-sections .section-heading {
     margin-bottom: 2rem;
+  }
+
+  .homepage-sections section.faq-section > .container > div:first-child {
+    position: static;
   }
 }
