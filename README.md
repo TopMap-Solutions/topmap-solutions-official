@@ -2,8 +2,8 @@
 
 The public website for **TopMap Solutions** — GIS data conversion, spatial-data
 validation and web mapping services for local and international buyers.
-Land and property are our core sector, with utilities and infrastructure an
-expanding focus.
+Our two sectors are government land parcels and private interactive masterplan
+maps.
 
 ## Features
 

@@ -22,8 +22,8 @@ def public_static_url(path):
 def metadata(request, page=None):
     match = getattr(request, "resolver_match", None)
     route = getattr(match, "url_name", None)
-    title = "GIS Services in the Philippines | TopMap Solutions"
-    description = "Philippines-based GIS data conversion, spatial validation and web GIS consulting. Land expertise, with remote collaboration for local and international teams."
+    title = "LGU Land Parcels & Interactive Masterplans in the Philippines | TopMap Solutions"
+    description = "Philippines-based TopMap Solutions helps LGU assessor and planning teams centralize land parcel, tax and spatial planning data, and turns existing masterplans into interactive browser maps for local and international teams."
     noindex = False
     path = request.path
     if page is not None:
@@ -38,9 +38,13 @@ def metadata(request, page=None):
             description = service["description"]
         else:
             noindex = True
+    elif route == "products":
+        title = "TopMap Products | Coming Soon"
+        description = "TopMap Solutions products for parcel information and WebGIS workflows are coming soon."
+        path = reverse("guests:products")
     elif route in {"inquiry", "send_public_form", "inquiry_form"}:
-        title = "Discuss Your GIS Project | TopMap Solutions"
-        description = "Tell us about your GIS data, mapping or web application needs. Discuss project scope, deliverables and remote collaboration with TopMap Solutions."
+        title = "Start Your Land or Mapping Project | TopMap Solutions"
+        description = "Tell TopMap Solutions about your LGU land information workflow or interactive masterplan project and the outcome you need."
         path = reverse("guests:inquiry")
         noindex = route != "inquiry"
     elif route == "inquiry_success":

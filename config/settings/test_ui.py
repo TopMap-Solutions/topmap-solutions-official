@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "core",
     "apps.guests",
     "apps.case_studies",
+    "apps.maps",
 ]
 ROOT_URLCONF = "config.urls"
 MIDDLEWARE = [

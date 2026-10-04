@@ -4,14 +4,18 @@
     <link rel="stylesheet" href="{% static 'css/_homepage.css' %}">
 {% endblock %}
 {% block content %}
-    {% include 'components/hero.html' %}
-    {% include 'components/partner.html' %}
-    {% include 'components/problem.html' %}
-    {% include 'components/service.html' %}
-    {% include 'components/customer.html' %}
-    {% include 'components/process.html' %}
-    {% include 'components/faq.html' %}
-    {% include 'components/cta.html' %}
+    <div class="homepage-sections">
+        {% include 'components/hero.html' %}
+        {% include 'components/partner.html' %}
+        {% include 'components/problem.html' %}
+        {% include 'components/customer.html' %}
+        {% include 'components/service.html' %}
+        {% include 'components/tools.html' %}
+        {% include 'components/process.html' %}
+        {% include 'components/testimonials.html' %}
+        {% include 'components/faq.html' %}
+        {% include 'components/cta.html' %}
+    </div>
 {% endblock %}
 {% block scripts %}
     <script type="module" src="{% static 'js/homepage.js' %}"></script>

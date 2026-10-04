@@ -166,7 +166,7 @@
 
 .hero-copy h1 {
   max-width: 17ch;
-  font-size: clamp(2.75rem, 4.5vw, 4.75rem);
+  font-size: clamp(2.35rem, 3.8vw, 3.9rem);
 }
 
 .hero-visual img {
@@ -216,7 +216,7 @@
 
   .hero-copy h1 {
     max-width: 17ch;
-    font-size: clamp(2.4rem, 10vw, 3.5rem);
+    font-size: clamp(2.2rem, 8.5vw, 3rem);
   }
 
   .hero-copy .lead {
@@ -224,7 +224,8 @@
   }
 
   .hero-visual img {
-    aspect-ratio: 16 / 11;
+    aspect-ratio: 16 / 9;
+    max-height: 300px;
   }
 
   .hero-visual figcaption {
@@ -264,11 +265,12 @@
   }
 
   .hero-copy h1 {
-    font-size: clamp(2.1rem, 11vw, 2.8rem);
+    font-size: clamp(2rem, 10vw, 2.55rem);
   }
 
   .hero-visual img {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 9;
+    max-height: 220px;
   }
 
   .hero-dots {

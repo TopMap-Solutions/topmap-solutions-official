@@ -3,6 +3,7 @@
 @import url("navbar.css");
 @import url("button.css");
 @import url("footer.css");
+@import url("legal.css");
 @import url("errors.css");
 
 :root {
@@ -45,6 +46,7 @@
 
 html {
   scroll-padding-top: 9rem;
+  scrollbar-gutter: stable;
 }
 
 body {

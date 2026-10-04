@@ -1,3 +1,7 @@
+.customer-section {
+  background: var(--color-secondary-bg);
+}
+
 .sector-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -84,6 +88,14 @@
 }
 
 @media (max-width: 700px) {
+  .customer-section .container {
+    padding-block: 3rem 3.5rem;
+  }
+
+  .customer-section .section-heading {
+    margin-bottom: 2rem;
+  }
+
   .sector-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -109,5 +121,9 @@
 
   .sector-card .text-link {
     font-size: 0.85rem;
+  }
+
+  .sector-card .text-link {
+    line-height: 1.45;
   }
 }

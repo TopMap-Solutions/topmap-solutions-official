@@ -48,9 +48,9 @@ def send_public_form(request):
             {"form": form},
         )
 
-    send_inquiry_emails(data)
-
     Guest.objects.create(**data)
+
+    send_inquiry_emails(data)
 
     request.session["submitted_email"] = data["email"]
 

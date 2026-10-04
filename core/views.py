@@ -18,7 +18,7 @@ def robots(request):
 @require_safe
 def sitemap(request):
     root = Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
-    paths = [reverse("guests:homepage"), reverse("guests:inquiry")]
+    paths = [reverse("guests:homepage"), reverse("guests:products"), reverse("guests:inquiry")]
     paths += [reverse("guests:service_detail", kwargs={"slug": slug}) for slug in SERVICES]
     entries = [(path, None) for path in paths]
     for page in case_study_pages(request):

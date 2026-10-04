@@ -1,3 +1,3 @@
 from django.test import TestCase
 
-# Create your tests here.
+# Map models are loaded through the app configuration.

@@ -1,4 +1,4 @@
-<form action="{% url 'guests:send_public_form' %}" method="post">
+<form action="{% url 'guests:send_public_form' %}" method="post" onsubmit="this.querySelector('button[type=submit]').disabled = true; this.querySelector('button[type=submit]').textContent = 'Sending…';">
     {% csrf_token %}
     {% if form.errors %}
         <div class="error-summary" role="alert">
@@ -20,7 +20,7 @@
     {% endif %}
 </div>
 {% endfor %}
-<button class="btn-primary" type="submit">Send project inquiry</button>
+<button class="btn-primary" type="submit">Start the conversation</button>
 <p class="form-note">
     We'll use these details to respond to your inquiry. Please don't include
     confidential land or customer records.

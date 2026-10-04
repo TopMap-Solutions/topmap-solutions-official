@@ -64,11 +64,11 @@ class PublicSiteTests(PublicSiteTestCase):
         self.navigation_mock = self.navigation.start()
         self.navigation_mock.return_value.type.return_value.first.return_value = None
         self.addCleanup(self.navigation.stop)
-        self.payload = {"name": "Alex Example", "email": "alex@example.com", "organization": "Example team", "phone": "+44 1234 567890", "inquiry": "We need to map utility assets."}
+        self.payload = {"name": "Alex Example", "email": "alex@example.com", "organization": "Example team", "phone": "+44 1234 567890", "inquiry": "We need to centralize government land parcel data."}
 
     def test_homepage_positions_both_sectors_without_claiming_utility_clients(self):
         response = self.client.get("/")
-        for copy in ("Make your spatial data work", "Land &amp; property", "Utilities &amp; infrastructure", "Expanding focus", "international inquiries"):
+        for copy in ("Land information for decisions", "Land parcels, tax and spatial planning data", "Interactive Masterplan Maps", "international inquiries"):
             self.assertContains(response, copy)
         self.assertNotContains(response, 'href=""')
         self.assertContains(response, "homepage.js")
@@ -217,7 +217,11 @@ class CrawlTests(PublicSiteTestCase):
         self.assertEqual(response.status_code, 200)
         tree = ElementTree.fromstring(response.content)
         urls = [node.text for node in tree.findall("{*}url/{*}loc")]
-        expected = {"https://topmapsolutions.com/", "https://topmapsolutions.com/inquiry/"}
+        expected = {
+            "https://topmapsolutions.com/",
+            "https://topmapsolutions.com/products/",
+            "https://topmapsolutions.com/inquiry/",
+        }
         expected |= {f"https://topmapsolutions.com/services/{slug}/" for slug in SERVICES}
         self.assertEqual(set(urls), expected)
 
