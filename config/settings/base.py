@@ -3,30 +3,12 @@ import os
 
 from dotenv import load_dotenv
 
-# ============================================================
-# BASE
-# ============================================================
-
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-
-
-# ============================================================
-# ENVIRONMENT
-# ============================================================
 
 load_dotenv(BASE_DIR / ".env")
 
-
-# ============================================================
-# SECURITY
-# ============================================================
-
 SECRET_KEY = os.environ["SECRET_KEY"]
 
-
-# ============================================================
-# APPLICATIONS
-# ============================================================
 
 INSTALLED_APPS = [
     # Django
@@ -61,9 +43,6 @@ INSTALLED_APPS = [
     "apps.case_studies",
     "apps.maps",
 ]
-# ============================================================
-# MIDDLEWARE
-# ============================================================
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -77,19 +56,10 @@ MIDDLEWARE = [
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
 
-
-# ============================================================
-# URLS
-# ============================================================
-
 ROOT_URLCONF = "config.urls"
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-
-# ============================================================
-# TEMPLATES
-# ============================================================
 
 TEMPLATES = [
     {
@@ -108,10 +78,6 @@ TEMPLATES = [
 ]
 
 
-# ============================================================
-# DATABASE
-# ============================================================
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
@@ -123,10 +89,6 @@ DATABASES = {
     }
 }
 
-
-# ============================================================
-# PASSWORD VALIDATION
-# ============================================================
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -147,10 +109,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# ============================================================
-# INTERNATIONALIZATION
-# ============================================================
-
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "Asia/Manila"
@@ -159,15 +117,7 @@ USE_I18N = True
 USE_TZ = True
 
 
-# ============================================================
-# STATIC FILES
-# ============================================================
-
-STATIC_URL = "static/"
-
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+STATIC_URL = "/static/"
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
@@ -175,21 +125,12 @@ MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "/media/"
 
 
-# ============================================================
-# DEFAULT PRIMARY KEY
-# ============================================================
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
-# ============================================================
-# Wag Tail Config
-# ============================================================
 
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000
 
 WAGTAIL_SITE_NAME = "TopMap Solutions"
 WAGTAILADMIN_BASE_URL = "https://topmapsolutions.com"
 
-# Preferred public origin for canonical links, social metadata and the sitemap.
 PUBLIC_SITE_URL = "https://topmapsolutions.com"
