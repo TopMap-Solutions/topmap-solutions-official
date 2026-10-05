@@ -19,6 +19,13 @@ class TestimonialModelTests(TestCase):
         self.assertEqual(str(testimonial), "Example Organization")
         self.assertNotIn(testimonial, public_testimonials())
 
+    def test_testimonial_uses_anonymous_when_attribution_is_blank(self):
+        testimonial = Testimonial.objects.create(quote="A useful project outcome.")
+
+        self.assertEqual(testimonial.attribution, "Anonymous")
+        self.assertEqual(str(testimonial), "Anonymous")
+        self.assertEqual(testimonial.logo_alt, "Testimonial logo")
+
     def test_public_selector_filters_and_orders_testimonials(self):
         second = Testimonial.objects.create(
             quote="Second",

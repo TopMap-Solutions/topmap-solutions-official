@@ -24,7 +24,7 @@ Keep the initial schema focused on the requested content:
 
 - testimonial text;
 - optional person's name;
-- organization (required);
+- optional organization;
 - optional Wagtail image for the organization logo;
 - explicit public-approval/published state, hidden by default;
 - numeric display order, with a stable secondary ordering.
@@ -45,18 +45,21 @@ Avoid database queries inside templates.
 
 Render the attribution as follows:
 
-1. When a person's name exists, show the name followed by the organization.
+1. When a person's name exists, show it followed by the organization when one
+   is available.
 2. When no name exists, show the organization as the sole attribution.
-3. When a logo exists, render an appropriate Wagtail image rendition with useful
+3. When both name and organization are absent, show `Anonymous`.
+4. When a logo exists, render an appropriate Wagtail image rendition with useful
    alternative text based on the organization.
-4. When no logo exists, omit the logo element and preserve the card layout; do
+5. When no logo exists, omit the logo element and preserve the layout; do
    not show a broken image or generic fake logo.
 
 Render testimonials as a centered, touch-friendly carousel using CSS overflow
 and scroll snapping. Keep native scrolling and keyboard access and do not add a
-carousel dependency. Show manual previous/next controls when there is more than
-one item. When there are more than two items, advance every five seconds while
-the component is not hovered or focused; pause when the document is hidden and
+carousel dependency. Show compact previous/next chevrons and up to five truthful
+slide-indicator dots when there is more than one item; do not show text labels or
+a numeric counter. When there is more than one item, advance every five seconds;
+pause while the component has keyboard focus or the document is hidden, and
 disable timed motion for visitors who prefer reduced motion. The layout must work
 with one item and continue growing without template changes. Preserve an honest
 empty state when there are no approved testimonials.
@@ -76,6 +79,7 @@ Cover at least:
 - public filtering and deterministic ordering;
 - name plus organization attribution;
 - organization-only fallback when the name is blank;
+- anonymous fallback when both name and organization are blank;
 - logo present and logo absent rendering;
 - empty-state rendering;
 - accessible horizontal scrolling markup and unchanged homepage section order.

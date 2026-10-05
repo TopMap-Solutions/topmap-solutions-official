@@ -4,7 +4,7 @@ export function initTestimonialsCarousel(carousel) {
     const controls = carousel?.querySelector(".testimonials-controls");
     const previous = carousel?.querySelector(".testimonial-previous");
     const next = carousel?.querySelector(".testimonial-next");
-    const currentLabel = carousel?.querySelector("[data-testimonial-current]");
+    const dots = [...(carousel?.querySelectorAll(".testimonial-dot") ?? [])];
     if (!track || slides.length < 2 || !controls || !previous || !next) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -16,25 +16,30 @@ export function initTestimonialsCarousel(carousel) {
             left: wrappedIndex * track.clientWidth,
             behavior: reducedMotion.matches ? "instant" : "smooth",
         });
-        if (currentLabel) currentLabel.textContent = String(wrappedIndex + 1);
+        updateControls(wrappedIndex);
     };
-    const updateCurrent = () => {
-        if (currentLabel) currentLabel.textContent = String(currentIndex() + 1);
+    const updateControls = (index = currentIndex()) => {
+        const firstVisible = Math.max(0, Math.min(index - 2, dots.length - 5));
+        dots.forEach((dot, dotIndex) => {
+            dot.hidden = dots.length > 5 && (dotIndex < firstVisible || dotIndex >= firstVisible + 5);
+            dot.setAttribute("aria-current", String(dotIndex === index));
+        });
     };
 
     controls.hidden = false;
     previous.addEventListener("click", () => showSlide(currentIndex() - 1));
     next.addEventListener("click", () => showSlide(currentIndex() + 1));
-    track.addEventListener("scroll", updateCurrent, { passive: true });
-    window.addEventListener("resize", updateCurrent);
-    updateCurrent();
+    dots.forEach((dot, index) => dot.addEventListener("click", () => showSlide(index)));
+    track.addEventListener("scroll", () => updateControls(), { passive: true });
+    window.addEventListener("resize", () => updateControls());
+    updateControls();
 
     if (carousel.dataset.autoplay !== "true") return;
     window.setInterval(() => {
         if (
             reducedMotion.matches ||
             document.hidden ||
-            carousel.matches(":hover, :focus-within") ||
+            carousel.matches(":focus-within") ||
             !track.clientWidth
         ) return;
         showSlide(currentIndex() + 1);

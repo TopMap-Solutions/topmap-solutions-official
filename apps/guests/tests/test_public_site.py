@@ -117,6 +117,18 @@ class PublicSiteTests(PublicSiteTestCase):
                 organization="Example Land",
                 logo=None,
             ),
+            SimpleNamespace(
+                quote="A clear and useful result.",
+                name="",
+                organization="",
+                logo=None,
+            ),
+            SimpleNamespace(
+                quote="The presentation stayed focused on the land.",
+                name="Taylor Example",
+                organization="Example Surveying",
+                logo=None,
+            ),
         ]
 
         response = self.client.get("/")
@@ -126,9 +138,13 @@ class PublicSiteTests(PublicSiteTestCase):
         self.assertContains(response, 'data-autoplay="true"')
         self.assertContains(response, 'aria-label="Show previous testimonial"')
         self.assertContains(response, 'aria-label="Show next testimonial"')
+        self.assertContains(response, 'class="testimonial-dot"', count=5)
+        self.assertNotContains(response, "<span>Previous</span>")
+        self.assertNotContains(response, "<span>Next</span>")
         self.assertContains(response, "Alex Example")
         self.assertContains(response, "Example Planning")
         self.assertContains(response, "Sample Development", count=1)
+        self.assertContains(response, "Anonymous", count=1)
         self.assertNotContains(response, 'class="testimonial-logo"')
 
     def test_homepage_testimonials_preserve_empty_state(self):
@@ -136,6 +152,16 @@ class PublicSiteTests(PublicSiteTestCase):
 
         self.assertContains(response, "Coming soon")
         self.assertNotContains(response, 'class="testimonials-scroll"')
+
+    def test_two_testimonials_enable_autoplay(self):
+        self.testimonial_query_mock.return_value = [
+            SimpleNamespace(quote="First", name="", organization="One", logo=None),
+            SimpleNamespace(quote="Second", name="", organization="Two", logo=None),
+        ]
+
+        response = self.client.get("/")
+
+        self.assertContains(response, 'data-autoplay="true"')
 
     def test_every_service_has_buying_details_and_consistent_metadata(self):
         titles = set()

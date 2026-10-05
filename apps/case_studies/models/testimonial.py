@@ -14,7 +14,11 @@ class Testimonial(index.Indexed, models.Model):
         blank=True,
         help_text="Optional. Leave blank to attribute the testimonial to the organization.",
     )
-    organization = models.CharField(max_length=255)
+    organization = models.CharField(
+        max_length=255,
+        blank=True,
+        help_text="Optional. Leave both name and organization blank for Anonymous.",
+    )
     logo = models.ForeignKey(
         get_image_model_string(),
         null=True,
@@ -48,8 +52,16 @@ class Testimonial(index.Indexed, models.Model):
     class Meta:
         ordering = ["display_order", "pk"]
 
+    @property
+    def attribution(self):
+        return self.name or self.organization or "Anonymous"
+
+    @property
+    def logo_alt(self):
+        return f"{self.organization or self.name or 'Testimonial'} logo"
+
     def __str__(self):
-        return self.name or self.organization
+        return self.attribution
 
 
 class TestimonialViewSet(SnippetViewSet):
