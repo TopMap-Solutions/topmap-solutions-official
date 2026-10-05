@@ -64,6 +64,11 @@ class PublicSiteTests(PublicSiteTestCase):
         self.navigation_mock = self.navigation.start()
         self.navigation_mock.return_value.type.return_value.first.return_value = None
         self.addCleanup(self.navigation.stop)
+        self.testimonial_query = patch(
+            "apps.guests.views.homepage.public_testimonials", return_value=[]
+        )
+        self.testimonial_query_mock = self.testimonial_query.start()
+        self.addCleanup(self.testimonial_query.stop)
         self.payload = {"name": "Alex Example", "email": "alex@example.com", "organization": "Example team", "phone": "+44 1234 567890", "inquiry": "We need to centralize government land parcel data."}
 
     def test_homepage_positions_both_sectors_without_claiming_utility_clients(self):
@@ -91,6 +96,46 @@ class PublicSiteTests(PublicSiteTestCase):
         self.assertEqual(positions, sorted(positions))
         self.assertContains(response := self.client.get("/"), 'class="lucide-icon faq-chevron"')
         self.assertContains(response, 'class="lucide-icon" aria-hidden="true" viewBox="0 0 24 24"')
+
+    def test_homepage_testimonials_use_name_and_organization_fallbacks(self):
+        self.testimonial_query_mock.return_value = [
+            SimpleNamespace(
+                quote="The parcel map made the project easier to explain.",
+                name="Alex Example",
+                organization="Example Planning",
+                logo=None,
+            ),
+            SimpleNamespace(
+                quote="Our clients can now explore the plan on their phones.",
+                name="",
+                organization="Sample Development",
+                logo=None,
+            ),
+            SimpleNamespace(
+                quote="The map gave everyone a shared view of the site.",
+                name="Jordan Example",
+                organization="Example Land",
+                logo=None,
+            ),
+        ]
+
+        response = self.client.get("/")
+
+        self.assertContains(response, 'class="testimonials-scroll"')
+        self.assertContains(response, 'aria-label="Client testimonials"')
+        self.assertContains(response, 'data-autoplay="true"')
+        self.assertContains(response, 'aria-label="Show previous testimonial"')
+        self.assertContains(response, 'aria-label="Show next testimonial"')
+        self.assertContains(response, "Alex Example")
+        self.assertContains(response, "Example Planning")
+        self.assertContains(response, "Sample Development", count=1)
+        self.assertNotContains(response, 'class="testimonial-logo"')
+
+    def test_homepage_testimonials_preserve_empty_state(self):
+        response = self.client.get("/")
+
+        self.assertContains(response, "Coming soon")
+        self.assertNotContains(response, 'class="testimonials-scroll"')
 
     def test_every_service_has_buying_details_and_consistent_metadata(self):
         titles = set()
