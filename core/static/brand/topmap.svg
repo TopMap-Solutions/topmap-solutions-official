@@ -1,0 +1,20 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .coffee { fill: #5C3A21; }
+      .coffee-mid { fill: #7A5233; }
+      .cream { fill: #D9C7A8; }
+      .orange { fill: #DD8637; }
+    </style>
+  </defs>
+  <g transform="translate(22,26)">
+    <!-- stacked GIS layer slabs forming the top bar of the T -->
+    <rect x="0" y="34" width="156" height="15" rx="3" class="cream"/>
+    <rect x="9" y="17" width="138" height="15" rx="3" class="coffee-mid"/>
+    <rect x="18" y="0" width="120" height="15" rx="3" class="coffee"/>
+    <!-- vertical stem of T, centered under the stack -->
+    <rect x="66" y="49" width="24" height="103" rx="2" class="coffee"/>
+    <!-- location / parcel point accent at base -->
+    <circle cx="78" cy="152" r="10" class="orange"/>
+  </g>
+</svg>

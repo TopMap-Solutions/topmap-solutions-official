@@ -1,0 +1,19 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .coffee { fill: #5C3A21; }
+      .coffee-mid { fill: #7A5233; }
+      .cream { fill: #F3E9D8; }
+      .cream-layer { fill: #C9A876; }
+      .orange { fill: #DD8637; }
+    </style>
+  </defs>
+  <rect x="4" y="4" width="192" height="192" rx="36" class="cream"/>
+  <g transform="translate(28,32)">
+    <rect x="0" y="30" width="144" height="14" rx="3" class="cream-layer"/>
+    <rect x="8" y="15" width="128" height="14" rx="3" class="coffee-mid"/>
+    <rect x="16" y="0" width="112" height="14" rx="3" class="coffee"/>
+    <rect x="60" y="44" width="24" height="96" rx="2" class="coffee"/>
+    <circle cx="72" cy="140" r="10" class="orange"/>
+  </g>
+</svg>
