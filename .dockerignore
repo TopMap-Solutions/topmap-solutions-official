@@ -2,13 +2,26 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+*.sqlite3
+*.log
 
 .env*
+.venv/
+venv/
 node_modules/
 .git/
 .gitignore
+.github/
+.vscode/
+.idea/
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
 
-docs
-data
-license
+media/
+staticfiles/
+docs/
+data/
+LICENSE
 README.md
