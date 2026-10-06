@@ -1,6 +1,6 @@
 # TopMap Solutions — agent guide
 
-Read this file before changing the project. Updated 2026-09-30.
+Read this file before changing the project. Updated 2026-10-05.
 
 ## Project purpose
 
@@ -75,6 +75,8 @@ the owner.
   staff/customer notifications and a session-based success page.
 - Case studies: Wagtail-managed clients, locations, summaries, challenges,
   solutions, results, tags and image galleries.
+- Testimonials: client-approved Wagtail-managed endorsements presented on the
+  homepage as a progressively growing, horizontally scrollable collection.
 - Interactive maps: public, permission-based MapLibre showcases of completed or
   prepared map outputs.
 - SEO: page metadata, Wagtail SEO fields, canonical URLs, social previews,
@@ -133,7 +135,9 @@ Applications:
   Service copy and public URL slugs.
 
 - `apps/case_studies/`
-  Wagtail case-study models, templates and styles.
+  Wagtail case-study models, templates and styles, plus related editorial proof
+  such as testimonials. See `apps/case_studies/AGENTS.md` before changing this
+  app.
 
 - `apps/maps/`
   Public interactive-map showcases.
@@ -223,6 +227,11 @@ Use real evidence for business claims.
 
 Never invent clients, projects, results, locations, certifications, partnerships,
 foreign offices or performance metrics.
+
+Testimonials are public claims. Store and display only wording, attribution and
+logos that TopMap has permission to publish. New testimonial records must remain
+hidden from the public site until that approval is explicitly recorded in the
+CMS.
 
 ## Working rules
 

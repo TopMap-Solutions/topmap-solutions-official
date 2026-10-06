@@ -1,14 +1,80 @@
+{% load wagtailimages_tags %}
 <section class="testimonials-section" aria-labelledby="testimonials-title">
     <div class="container">
-        <div class="testimonials-coming-soon">
+        <div class="section-heading testimonials-heading">
             <p class="eyebrow">Testimonials</p>
-            <h2 id="testimonials-title">Client stories are coming soon.</h2>
-            <p>
-                We’re preparing approved feedback from the teams we’ve worked
-                with. Check back soon for practical perspectives on land
-                information and interactive mapping projects.
-            </p>
-            <span class="coming-soon-label">Coming soon</span>
+            <h2 id="testimonials-title">What clients say about working with TopMap Solutions</h2>
         </div>
+        {% if testimonials %}
+            <div class="testimonials-carousel"
+                 data-testimonials-carousel
+                 data-autoplay="{% if testimonials|length > 1 %}true{% else %}false{% endif %}">
+                <div class="testimonials-scroll"
+                     role="region"
+                     aria-label="Client testimonials"
+                     tabindex="0">
+                    {% for testimonial in testimonials %}
+                        <article class="testimonial-card">
+                            <blockquote>
+                                <p>{{ testimonial.quote }}</p>
+                            </blockquote>
+                            <footer class="testimonial-attribution">
+                                {% if testimonial.logo %}
+                                    {% image testimonial.logo max-240x96 as testimonial_logo %}
+                                    <img class="testimonial-logo"
+                                         src="{{ testimonial_logo.url }}"
+                                         width="{{ testimonial_logo.width }}"
+                                         height="{{ testimonial_logo.height }}"
+                                         alt="{{ testimonial.logo_alt }}"
+                                         loading="lazy">
+                                {% endif %}
+                                <div>
+                                    {% if testimonial.name %}
+                                        <p class="testimonial-name">{{ testimonial.name }}</p>
+                                    {% endif %}
+                                    {% if testimonial.organization %}
+                                        <p class="testimonial-organization">{{ testimonial.organization }}</p>
+                                    {% elif not testimonial.name %}
+                                        <p class="testimonial-name">Anonymous</p>
+                                    {% endif %}
+                                </div>
+                            </footer>
+                        </article>
+                    {% endfor %}
+                </div>
+                {% if testimonials|length > 1 %}
+                    <div class="testimonials-controls" hidden>
+                        <button class="testimonial-control testimonial-previous"
+                                type="button"
+                                aria-label="Show previous testimonial">
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"></path></svg>
+                        </button>
+                        <div class="testimonial-dots" aria-label="Choose a testimonial">
+                            {% for testimonial in testimonials %}
+                                <button class="testimonial-dot"
+                                        type="button"
+                                        data-testimonial-index="{{ forloop.counter0 }}"
+                                        aria-label="Show testimonial {{ forloop.counter }}"
+                                        aria-current="{% if forloop.first %}true{% else %}false{% endif %}"></button>
+                            {% endfor %}
+                        </div>
+                        <button class="testimonial-control testimonial-next"
+                                type="button"
+                                aria-label="Show next testimonial">
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"></path></svg>
+                        </button>
+                    </div>
+                {% endif %}
+            </div>
+        {% else %}
+            <div class="testimonials-coming-soon">
+                <p>
+                    We’re preparing approved feedback from the teams we’ve worked
+                    with. Check back soon for practical perspectives on land
+                    information and interactive mapping projects.
+                </p>
+                <span class="coming-soon-label">Coming soon</span>
+            </div>
+        {% endif %}
     </div>
 </section>

@@ -1,8 +1,8 @@
 from django.conf import settings
-from django.conf import settings
 from django.http import Http404
 from django.shortcuts import render
 
+from apps.case_studies.selectors import public_testimonials
 from apps.guests.content import SERVICES
 from apps.guests.forms import InquiryForm
 
@@ -23,7 +23,13 @@ def homepage(request):
         in {".jpg", ".jpeg", ".png", ".webp", ".avif", ".gif", ".svg"}
     ]
     return render(
-        request, "homepage.html", {"services": SERVICES, "hero_images": hero_images}
+        request,
+        "homepage.html",
+        {
+            "services": SERVICES,
+            "hero_images": hero_images,
+            "testimonials": public_testimonials(),
+        },
     )
 
 
