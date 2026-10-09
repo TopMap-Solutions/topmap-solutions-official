@@ -1,14 +1,14 @@
 .problem-section {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(2rem, 5vw, 4rem);
   align-items: center;
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 }
 
 .problem-heading {
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   min-width: 0;
 }
 
@@ -17,38 +17,38 @@
 }
 
 .problem-heading h2 {
-  max-width: 600px;
-  margin: 0;
   font-size: clamp(2rem, 3vw, 2.75rem);
   line-height: 1.08;
+  margin: 0;
+  max-width: 600px;
 }
 
 .problem-image {
   display: block;
-  width: clamp(110px, 10vw, 150px);
   height: auto;
   margin-top: 1.5rem;
   object-fit: contain;
+  width: clamp(110px, 10vw, 150px);
 }
 
 .problem-content {
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 1rem;
   min-width: 0;
 }
 
 .problem-content p {
-  max-width: 580px;
-  margin: 0;
   font-size: clamp(1.05rem, 1.2vw, 1.15rem);
   line-height: 1.65;
+  margin: 0;
+  max-width: 580px;
 }
 
 .problem-content .problem-impact {
-  padding-left: 1rem;
   border-left: 3px solid var(--color-accent);
+  padding-left: 1rem;
 }
 
 .problem-content .problem-impact strong {
@@ -60,9 +60,9 @@
 }
 
 .problem-content strong {
-  font-weight: 700;
   font-size: 1.1rem;
   font-style: italic;
+  font-weight: 700;
 }
 
 @media (max-width: 900px) {
@@ -75,8 +75,8 @@
   }
 
   .problem-image {
-    width: clamp(100px, 13vw, 135px);
     margin-top: 1.25rem;
+    width: clamp(100px, 13vw, 135px);
   }
 
   .problem-content p {
@@ -86,8 +86,8 @@
 
 @media (max-width: 700px) {
   .problem-section {
-    grid-template-columns: 1fr;
     gap: 1.75rem;
+    grid-template-columns: 1fr;
   }
 
   .problem-heading .eyebrow {
@@ -95,14 +95,14 @@
   }
 
   .problem-heading h2 {
-    max-width: 100%;
     font-size: clamp(1.8rem, 8vw, 2.25rem);
     line-height: 1.1;
+    max-width: 100%;
   }
 
   .problem-image {
-    width: clamp(90px, 25vw, 120px);
     margin-top: 1.25rem;
+    width: clamp(90px, 25vw, 120px);
   }
 
   .problem-content {
@@ -110,9 +110,9 @@
   }
 
   .problem-content p {
-    max-width: 100%;
     font-size: 0.95rem;
     line-height: 1.6;
+    max-width: 100%;
   }
 
   .problem-content .problem-impact {

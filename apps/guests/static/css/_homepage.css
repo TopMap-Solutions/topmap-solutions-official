@@ -14,8 +14,8 @@
 /* Keep the homepage sections visually related while allowing each section to
    retain its own surface treatment. */
 .homepage-sections > section {
-  position: relative;
   isolation: isolate;
+  position: relative;
 }
 
 .homepage-sections .section-heading {
@@ -36,7 +36,6 @@
 }
 
 .homepage-sections .partner-section {
-  border-top: 0;
   background: var(--color-secondary-bg);
   border-top: var(--border-hairline);
 }
@@ -95,9 +94,9 @@
 }
 
 .homepage-sections section.faq-section > .container > div:first-child {
+  align-self: start;
   position: sticky;
   top: 1.5rem;
-  align-self: start;
 }
 
 @media (max-width: 700px) {

@@ -1,7 +1,7 @@
 .partner-section {
-  padding-block: 3rem 2rem;
-  border-block: var(--border-hairline);
   background: var(--color-secondary-bg);
+  border-block: var(--border-hairline);
+  padding-block: 3rem 2rem;
 }
 
 /* -----------------------------------------
@@ -9,12 +9,12 @@
    ----------------------------------------- */
 
 .partner-heading.container {
-  padding-block: 0 2rem;
+  align-items: center;
 
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   gap: 2rem;
+  justify-content: space-between;
+  padding-block: 0 2rem;
 }
 
 .partner-heading h2 {
@@ -31,9 +31,7 @@
    ----------------------------------------- */
 
 .partner-marquee {
-  width: min(100% - 3rem, 1160px);
   margin-inline: auto;
-  overflow: hidden;
 
   -webkit-mask-image: linear-gradient(
     to right,
@@ -50,13 +48,15 @@
     black 92%,
     transparent 100%
   );
+  overflow: hidden;
+  width: min(100% - 3rem, 1160px);
 }
 
 .partner-track {
-  display: flex;
-  width: max-content;
 
   animation: partner-scroll 32s linear infinite;
+  display: flex;
+  width: max-content;
 }
 
 /* -----------------------------------------
@@ -64,36 +64,36 @@
    ----------------------------------------- */
 
 .client-logos {
-  display: flex;
   align-items: center;
+  display: flex;
+  flex-shrink: 0;
   justify-content: space-around;
 
   width: 1160px;
-  flex-shrink: 0;
 }
 
 .partner-logo {
   display: grid;
-  justify-items: center;
-  gap: 1rem;
-
-  width: 260px;
   flex-shrink: 0;
+  gap: 1rem;
+  justify-items: center;
 
   padding: 1rem;
   text-align: center;
+
+  width: 260px;
 }
 
 .partner-logo img {
-  width: 180px;
   height: 150px;
   object-fit: contain;
+  width: 180px;
 }
 
 .partner-logo figcaption {
+  color: #63432e;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #63432e;
 }
 
 /* -----------------------------------------
@@ -110,16 +110,16 @@
    ----------------------------------------- */
 
 .partner-evidence {
+
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  width: min(100% - 3rem, 1160px);
+  justify-content: center;
   margin-inline: auto;
 
-  align-items: center;
-  justify-content: center;
-
   text-align: center;
+  width: min(100% - 3rem, 1160px);
 }
 
 /* -----------------------------------------
@@ -138,13 +138,12 @@
 
 @media (max-width: 760px) {
   .partner-heading.container {
-    flex-direction: column;
     align-items: flex-start;
+    flex-direction: column;
     gap: 1.25rem;
   }
 
   .partner-marquee {
-    width: calc(100% - 2rem);
 
     -webkit-mask-image: linear-gradient(
       to right,
@@ -161,6 +160,7 @@
       black 90%,
       transparent 100%
     );
+    width: calc(100% - 2rem);
   }
 
   .client-logos {
@@ -168,13 +168,13 @@
   }
 
   .partner-logo {
-    width: 200px;
     padding: 0.75rem;
+    width: 200px;
   }
 
   .partner-logo img {
-    width: 150px;
     height: 120px;
+    width: 150px;
   }
 
   .partner-logo figcaption {
@@ -182,17 +182,17 @@
   }
 
   .partner-evidence {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 0.5rem;
     padding-inline: 0.75rem;
     text-align: center;
   }
 
   .partner-evidence > * {
-    width: min(100%, 20rem);
     margin-inline: auto;
+    width: min(100%, 20rem);
   }
 }
 
@@ -218,14 +218,14 @@
   }
 
   .partner-logo {
-    width: 180px;
     gap: 0.75rem;
     padding: 0.5rem;
+    width: 180px;
   }
 
   .partner-logo img {
-    width: 130px;
     height: 100px;
+    width: 130px;
   }
 
   .partner-logo figcaption {
@@ -233,8 +233,8 @@
   }
 
   .partner-evidence {
-    flex-direction: column;
     align-items: stretch;
+    flex-direction: column;
 
     gap: 0.5rem;
     padding-inline: 0.75rem;
@@ -243,8 +243,8 @@
   }
 
   .partner-evidence > * {
-    width: 100%;
     margin-inline: auto;
+    width: 100%;
   }
 }
 
@@ -262,9 +262,9 @@
   }
 
   .partner-marquee {
-    overflow-x: auto;
 
     -webkit-mask-image: none;
     mask-image: none;
+    overflow-x: auto;
   }
 }

@@ -8,17 +8,26 @@ register = template.Library()
 
 def script_json(value):
     # Prevent editor-controlled content from ending a JSON-LD script element.
-    return json.dumps(value).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
+    return (
+        json.dumps(value)
+        .replace("<", "\\u003c")
+        .replace(">", "\\u003e")
+        .replace("&", "\\u0026")
+    )
 
 
 @register.inclusion_tag("seo_head.html", takes_context=True)
 def seo_head(context):
     data = metadata(context["request"], context.get("page"))
-    schema = {"@context": "https://schema.org", "@type": "Organization",
-              "@id": data["home"] + "#organization",
-              "name": "TopMap Solutions", "url": data["home"],
-              "description": "Philippines-based TopMap Solutions prepares LGU land parcel, tax and spatial planning data and creates interactive masterplan maps for local and international project teams.",
-              "address": {"@type": "PostalAddress", "addressCountry": "PH"}}
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": data["home"] + "#organization",
+        "name": "TopMap Solutions",
+        "url": data["home"],
+        "description": "Philippines-based TopMap Solutions prepares LGU land parcel, tax and spatial planning data and creates interactive masterplan maps for local and international project teams.",
+        "address": {"@type": "PostalAddress", "addressCountry": "PH"},
+    }
     data["organization_json"] = script_json(schema)
     service = page_schema(context["request"], data)
     data["service_json"] = script_json(service) if service else None

@@ -18,8 +18,24 @@
             <main id="main-content" tabindex="-1">
                 {% block content %}{% endblock %}
             </main>
+            <button class="back-to-top"
+                    type="button"
+                    data-back-to-top
+                    aria-label="Back to top"
+                    title="Back to top">
+                <svg aria-hidden="true"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path d="m18 15-6-6-6 6"></path>
+                </svg>
+            </button>
             {% include 'footer.html' %}
         </div>
+        <script src="{% static 'js/site.js' %}" defer></script>
         {% block scripts %}{% endblock %}
     </body>
 </html>

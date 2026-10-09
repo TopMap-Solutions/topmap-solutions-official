@@ -19,7 +19,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.postgres",
-
     # Wagtail
     "wagtail",
     "wagtail.admin",
@@ -32,16 +31,16 @@ INSTALLED_APPS = [
     "wagtail.embeds",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
-
     # Third party
     "modelcluster",
     "taggit",
-
     # Local
     "core",
     "apps.guests",
     "apps.case_studies",
     "apps.maps",
+    "apps.products",
+    "apps.licensing",
 ]
 
 MIDDLEWARE = [
@@ -93,18 +92,17 @@ DATABASES = {
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": (
-            "django.contrib.auth.password_validation."
-            "UserAttributeSimilarityValidator"
+            "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
         ),
     },
     {
-        "NAME": ("django.contrib.auth.password_validation." "MinimumLengthValidator"),
+        "NAME": ("django.contrib.auth.password_validation.MinimumLengthValidator"),
     },
     {
-        "NAME": ("django.contrib.auth.password_validation." "CommonPasswordValidator"),
+        "NAME": ("django.contrib.auth.password_validation.CommonPasswordValidator"),
     },
     {
-        "NAME": ("django.contrib.auth.password_validation." "NumericPasswordValidator"),
+        "NAME": ("django.contrib.auth.password_validation.NumericPasswordValidator"),
     },
 ]
 
@@ -134,3 +132,16 @@ WAGTAIL_SITE_NAME = "TopMap Solutions"
 WAGTAILADMIN_BASE_URL = "https://topmapsolutions.com"
 
 PUBLIC_SITE_URL = "https://topmapsolutions.com"
+
+# Public licensing API. Override these in production when tuning traffic.
+LICENSING_TOKEN_MAX_AGE_SECONDS = int(
+    os.environ.get("LICENSING_TOKEN_MAX_AGE_SECONDS", "2592000")
+)
+LICENSING_RATE_LIMIT = int(os.environ.get("LICENSING_RATE_LIMIT", "25"))
+LICENSING_RATE_WINDOW_SECONDS = int(
+    os.environ.get("LICENSING_RATE_WINDOW_SECONDS", "25")
+)
+LICENSING_KEY_PEPPER = os.environ.get("LICENSING_KEY_PEPPER", SECRET_KEY)
+LICENSING_TRUST_PROXY_HEADERS = (
+    os.environ.get("LICENSING_TRUST_PROXY_HEADERS", "false").lower() == "true"
+)

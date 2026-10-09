@@ -1,0 +1,40 @@
+{% extends "_base.html" %}
+{% load static wagtailimages_tags %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/products.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components/cta.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="products-page">
+        <div class="container">
+            <header class="products-header">
+                <p class="eyebrow">Products</p>
+                <h1>Tools for clearer parcel and WebGIS workflows.</h1>
+                <p class="lead">Explore TopMap products, training, and practical guides for land-information workflows.</p>
+            </header>
+            <section class="products-grid" aria-label="TopMap products">
+                {% for product in products %}
+                    <a class="product-card" href="{{ product.get_absolute_url }}">
+                        {% if product.card_image %}
+                            {% image product.card_image fill-800x500 as card_image %}
+                            <img src="{{ card_image.url }}"
+                                 width="{{ card_image.width }}"
+                                 height="{{ card_image.height }}"
+                                 alt=""
+                                 loading="lazy">
+                        {% endif %}
+                        <span class="product-status">{{ product.get_status_display }}</span>
+                        <h2>{{ product.name }}</h2>
+                        <p>{{ product.summary }}</p>
+                    </a>
+                {% empty %}
+                    <div class="products-empty">
+                        <h2>Products are being prepared.</h2>
+                        <p>Please check back soon or contact us for details.</p>
+                    </div>
+                {% endfor %}
+            </section>
+        </div>
+        {% include "components/cta-global.html" %}
+    </div>
+{% endblock %}

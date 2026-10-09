@@ -2,45 +2,67 @@
 <section class="customer-section" id="sectors">
     <div class="container">
         <div class="section-heading">
-        <p class="eyebrow">Sectors We Help</p>
-        <h2>Two focused offers for land and property teams.</h2>
-        <p>
-            We prepare land information for government decisions and turn
-            existing masterplans into clear interactive project experiences.
-        </p>
+            <p class="eyebrow">Sectors We Help</p>
+            <h2>Two focused offers for land and property teams.</h2>
+            <p>
+                We prepare land information for government decisions and turn
+                existing masterplans into clear interactive project experiences.
+            </p>
         </div>
         <div class="sector-grid">
-        <article class="sector-card">
-            <img src="{% static 'icons/map-and-location.png' %}"
-                 alt="Land parcel mapping icon">
-            <span class="badge">LGU land and planning</span>
-            <h3>Land parcels, tax and spatial planning data</h3>
-            <p>
-                Help assessor and planning offices organize parcel and tax
-                information, centralize spatial planning data and create a
-                shared reference across government teams.
-            </p>
-            <a class="text-link"
-               href="{% url 'guests:service_detail' slug='gis-data-conversion' %}">
-                Plan your land information workflow
-                <svg class="lucide-icon external-link-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
-            </a>
-        </article>
-        <article class="sector-card">
-            <img src="{% static 'icons/architecture-and-city.png' %}"
-                 alt="Interactive masterplan icon">
-            <span class="badge badge-outline">Private project presentation</span>
-            <h3>Interactive Masterplan Maps</h3>
-            <p>
-                Turn an existing masterplan or site drawing into a browser
-                map that clients can open, pan, zoom and explore during
-                presentations, approvals or project handover.
-            </p>
-            <a class="text-link" href="{% url 'guests:inquiry' %}">
-                Make your masterplan drawings interactive
-                <svg class="lucide-icon external-link-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
-            </a>
-        </article>
+            <article class="sector-card">
+                <img src="{% static 'icons/map-and-location.png' %}"
+                     alt="Land parcel mapping icon">
+                <span class="badge">LGU land and planning</span>
+                <h3>Land parcels, tax and spatial planning data</h3>
+                <p>
+                    Help assessor and planning offices organize parcel and tax
+                    information, centralize spatial planning data and create a
+                    shared reference across government teams.
+                </p>
+                <a class="text-link"
+                   href="{% url 'guests:service_detail' slug='gis-data-conversion' %}">
+                    Plan your land information workflow
+                    <svg class="lucide-icon external-link-icon"
+                         aria-hidden="true"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2"
+                         stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14 21 3"></path>
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    </svg>
+                </a>
+            </article>
+            <article class="sector-card">
+                <img src="{% static 'icons/architecture-and-city.png' %}"
+                     alt="Interactive masterplan icon">
+                <span class="badge badge-outline">Private project presentation</span>
+                <h3>Interactive Masterplan Maps</h3>
+                <p>
+                    Turn an existing masterplan or site drawing into a browser
+                    map that clients can open, pan, zoom and explore during
+                    presentations, approvals or project handover.
+                </p>
+                <a class="text-link" href="{% url 'guests:inquiry' %}">
+                    Make your masterplan drawings interactive
+                    <svg class="lucide-icon external-link-icon"
+                         aria-hidden="true"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2"
+                         stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14 21 3"></path>
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    </svg>
+                </a>
+            </article>
         </div>
     </div>
 </section>

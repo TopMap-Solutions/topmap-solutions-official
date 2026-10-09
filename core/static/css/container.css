@@ -1,7 +1,7 @@
 .container {
-  width: min(100% - 3rem, 1160px);
   margin-inline: auto;
   padding-block: clamp(3rem, 6vw, 5.5rem);
+  width: min(100% - 3rem, 1160px);
 }
 
 .container-navbar {
@@ -9,9 +9,9 @@
 }
 
 .base {
-  min-height: var(--min-height);
   display: flex;
   flex-direction: column;
+  min-height: var(--min-height);
 }
 
 .base>main {

@@ -1,3 +1,1 @@
-from django.contrib import admin
-
-# Register your models here.
+"""Interactive-map models are registered through their configured admin."""

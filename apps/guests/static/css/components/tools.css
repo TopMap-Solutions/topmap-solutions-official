@@ -4,13 +4,12 @@
 
 .tools-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .tool-card {
-  min-width: 0;
-  padding: clamp(1.25rem, 2.5vw, 2rem);
+  align-items: stretch;
 
   background: var(--color-bg);
   border: var(--border-hairline);
@@ -18,23 +17,24 @@
 
   display: flex;
   flex-direction: column;
-  align-items: stretch;
   gap: 1.25rem;
+  min-width: 0;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
 }
 
 .tool-status {
-  display: inline-block;
-  margin-bottom: 1.25rem;
   color: var(--color-accent);
+  display: inline-block;
   font-size: 0.75rem;
   font-weight: var(--fw-bold);
   letter-spacing: 0.08em;
+  margin-bottom: 1.25rem;
   text-transform: uppercase;
 }
 
 .tool-card h3 {
-  margin-bottom: 0.75rem;
   font-size: clamp(1.35rem, 2vw, 1.7rem);
+  margin-bottom: 0.75rem;
 }
 
 .tool-card p {
@@ -42,8 +42,8 @@
 }
 
 .tool-card p {
-  max-width: 34rem;
   line-height: 1.7;
+  max-width: 34rem;
 }
 
 .tools-link {

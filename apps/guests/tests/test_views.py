@@ -6,7 +6,6 @@ from core.decorators import without_manifest_storage
 
 @without_manifest_storage
 class HomepageViewTest(TestCase):
-
     def test_homepage_status_code(self):
         response = self.client.get(reverse("guests:homepage"))
 
@@ -20,7 +19,6 @@ class HomepageViewTest(TestCase):
 
 @without_manifest_storage
 class InquiryPageViewTest(TestCase):
-
     def test_inquiry_page_status_code(self):
         response = self.client.get(reverse("guests:inquiry"))
 

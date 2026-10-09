@@ -1,4 +1,5 @@
 """Public service content shared by pages, navigation, metadata and the sitemap."""
+
 SERVICES = {
     "gis-data-conversion": {
         "name": "LGU parcel and tax data preparation",
@@ -8,8 +9,16 @@ SERVICES = {
         "headline": "Bring parcel and tax information into one usable spatial workflow.",
         "summary": "Prepare parcel records, tax information and existing drawings for a centralized spatial reference across assessor and planning teams.",
         "problem": "A drawing can look complete and still be difficult to use in GIS. Layers, coordinates and attributes need to agree before the data can support a shared workflow.",
-        "inputs": ["CAD drawings or existing spatial datasets", "Technical descriptions and available reference information", "Your target coordinate system, format and intended use"],
-        "outputs": ["GIS layers in the agreed format and coordinate system", "An agreed attribute structure for the converted data", "A record of source issues and items requiring clarification"],
+        "inputs": [
+            "CAD drawings or existing spatial datasets",
+            "Technical descriptions and available reference information",
+            "Your target coordinate system, format and intended use",
+        ],
+        "outputs": [
+            "GIS layers in the agreed format and coordinate system",
+            "An agreed attribute structure for the converted data",
+            "A record of source issues and items requiring clarification",
+        ],
         "fit": "For LGU assessor, treasurer and planning teams moving from separate records and drawings to a shared spatial workflow.",
         "boundary": "Conversion cannot resolve missing survey evidence by itself. We agree how to handle incomplete descriptions and uncertain source information before processing.",
     },
@@ -21,8 +30,16 @@ SERVICES = {
         "headline": "Know where your spatial data needs attention.",
         "summary": "Find inconsistent attributes, duplicate records and geometry issues before they spread into maps, reports and everyday decisions.",
         "problem": "When teams combine datasets from different sources, gaps and conflicting records are easy to miss. A repeatable review makes those issues visible and helps prioritize corrections.",
-        "inputs": ["Existing GIS layers and attribute tables", "Reference datasets and known problem examples", "Your validation rules and intended business workflow"],
-        "outputs": ["Reviewed layers with agreed corrections applied", "An issue register separating corrected and unresolved items", "Documented checks your team can use during handover"],
+        "inputs": [
+            "Existing GIS layers and attribute tables",
+            "Reference datasets and known problem examples",
+            "Your validation rules and intended business workflow",
+        ],
+        "outputs": [
+            "Reviewed layers with agreed corrections applied",
+            "An issue register separating corrected and unresolved items",
+            "Documented checks your team can use during handover",
+        ],
         "fit": "For assessor, treasurer and planning offices maintaining parcel and spatial records across multiple sources.",
         "boundary": "Data validation checks agreed rules; it does not certify ownership, legal boundaries or field accuracy. Issues needing a survey or domain decision are flagged for your team.",
     },
@@ -34,8 +51,16 @@ SERVICES = {
         "headline": "Put maps and spatial records into your team's workflow.",
         "summary": "Create an interactive masterplan people can pan and zoom through, or a shared spatial workflow for government land information.",
         "problem": "A shared map is useful when it answers real questions. We start with your users, data readiness and daily tasks, then define the smallest useful implementation.",
-        "inputs": ["Your current datasets and systems", "User roles, recurring tasks and access requirements", "Hosting, integration and maintenance constraints"],
-        "outputs": ["An agreed workflow and implementation scope", "A browser-based mapping application for the agreed use cases", "Deployment and handover requirements defined with your team"],
+        "inputs": [
+            "Your current datasets and systems",
+            "User roles, recurring tasks and access requirements",
+            "Hosting, integration and maintenance constraints",
+        ],
+        "outputs": [
+            "An agreed workflow and implementation scope",
+            "A browser-based mapping application for the agreed use cases",
+            "Deployment and handover requirements defined with your team",
+        ],
         "fit": "For LGU land and planning teams and private masterplan teams that need people to understand and use spatial information.",
         "boundary": "Hosting, integrations, training and ongoing support are scoped explicitly. A project discussion establishes what is feasible before delivery commitments are made.",
     },

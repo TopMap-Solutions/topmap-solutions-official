@@ -1,15 +1,15 @@
 .service-intro {
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 1.5rem;
 }
 
 .service-intro-heading {
-  display: flex;
   align-items: center;
-  justify-content: flex-start;
+  display: flex;
   gap: 1rem;
+  justify-content: flex-start;
   margin-top: 0.5rem;
 }
 
@@ -19,11 +19,11 @@
 
 .service-intro-icon {
   display: block;
-  width: clamp(80px, 8vw, 110px);
+  flex-shrink: 0;
   height: clamp(80px, 8vw, 110px);
   object-fit: contain;
   object-position: left center;
-  flex-shrink: 0;
+  width: clamp(80px, 8vw, 110px);
 }
 
 .service-intro h1 {
@@ -35,8 +35,8 @@
 }
 
 .section-grid {
-  display: flex;
   align-items: center;
+  display: flex;
   gap: clamp(2rem, 6vw, 6rem);
 }
 
@@ -47,26 +47,26 @@
 
 .section-grid > div > img {
   display: block;
-  width: clamp(110px, 10vw, 150px);
   height: auto;
   margin-top: 1.5rem;
   object-fit: contain;
+  width: clamp(110px, 10vw, 150px);
 }
 
 .section-grid > img {
   display: block;
-  width: clamp(110px, 10vw, 150px);
+  flex: 0 0 auto;
   height: auto;
   object-fit: contain;
-  flex: 0 0 auto;
+  width: clamp(110px, 10vw, 150px);
 }
 
 .service-card img {
   display: block;
-  width: clamp(90px, 8vw, 120px);
   height: clamp(90px, 8vw, 120px);
   margin-bottom: 1.25rem;
   object-fit: contain;
+  width: clamp(90px, 8vw, 120px);
 }
 
 .deliverables {
@@ -96,8 +96,8 @@
   }
 
   .service-card img {
-    width: 90px;
     height: 90px;
+    width: 90px;
   }
 }
 
@@ -111,38 +111,38 @@
   }
 
   .service-intro-icon {
-    width: clamp(70px, 20vw, 90px);
     height: clamp(70px, 20vw, 90px);
+    width: clamp(70px, 20vw, 90px);
   }
 
   .section-grid {
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
     gap: 2rem;
   }
 
   .section-grid > * {
-    width: 100%;
     flex: none;
+    width: 100%;
   }
 
   .section-grid > div > img,
   .section-grid > img {
-    width: 100px;
     margin-top: 1.25rem;
+    width: 100px;
   }
 
   .service-card img {
-    width: 80px;
     height: 80px;
     margin-bottom: 1rem;
+    width: 80px;
   }
 }
 
 @media (max-width: 480px) {
   .service-intro-icon {
-    width: 70px;
     height: 70px;
+    width: 70px;
   }
 
   .section-grid > div > img,
@@ -151,7 +151,7 @@
   }
 
   .service-card img {
-    width: 72px;
     height: 72px;
+    width: 72px;
   }
 }

@@ -1,0 +1,15 @@
+{
+  "name": "topmap-public-site-quality",
+  "private": true,
+  "scripts": {
+    "lint:css": "stylelint \"{core,apps}/**/*.css\"",
+    "lint:js": "eslint \"{core,apps}/**/*.js\"",
+    "format:css": "stylelint \"{core,apps}/**/*.css\" --fix",
+    "format:js": "eslint \"{core,apps}/**/*.js\" --fix"
+  },
+  "devDependencies": {
+    "eslint": "^10.12.0",
+    "stylelint": "^17.16.0",
+    "stylelint-order": "^8.1.1"
+  }
+}

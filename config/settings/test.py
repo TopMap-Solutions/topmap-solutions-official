@@ -1,4 +1,5 @@
 """Full-suite settings: temporary SQLite database, no .env or external services."""
+
 from .test_ui import *
 
 DATABASES = {

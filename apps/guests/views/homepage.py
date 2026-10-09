@@ -33,10 +33,6 @@ def homepage(request):
     )
 
 
-def products_page(request):
-    return render(request, "products.html")
-
-
 def service_detail(request, slug):
     if slug not in SERVICES:
         raise Http404("Service not found")

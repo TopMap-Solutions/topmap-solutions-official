@@ -61,9 +61,7 @@ class TestimonialModelTests(TestCase):
 )
 class TestimonialHomepageTests(TestCase):
     def test_homepage_renders_an_optional_logo(self):
-        gif = base64.b64decode(
-            "R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
-        )
+        gif = base64.b64decode("R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==")
         logo = get_image_model().objects.create(
             title="Example logo",
             file=ContentFile(gif, name="example.gif"),
@@ -79,5 +77,6 @@ class TestimonialHomepageTests(TestCase):
 
         self.assertContains(response, 'class="testimonial-logo"')
         self.assertContains(response, 'alt="Example Organization logo"')
+
 
 # Create your tests here.

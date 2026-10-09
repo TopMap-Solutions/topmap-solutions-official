@@ -2,6 +2,7 @@
 
 Run only the SimpleTestCase suite: python manage.py test apps.guests.tests.test_public_site --settings=config.settings.test_ui
 """
+
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parents[2]
@@ -34,6 +35,8 @@ INSTALLED_APPS = [
     "apps.guests",
     "apps.case_studies",
     "apps.maps",
+    "apps.products",
+    "apps.licensing",
 ]
 ROOT_URLCONF = "config.urls"
 MIDDLEWARE = [
@@ -46,22 +49,36 @@ MIDDLEWARE = [
 ]
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 EMAIL_BACKEND = "django.core.mail.backends.locmem.EmailBackend"
-TEMPLATES = [{"BACKEND": "django.template.backends.django.DjangoTemplates", "APP_DIRS": True,
-    "OPTIONS": {"context_processors": [
-        "django.template.context_processors.request",
-        "django.contrib.auth.context_processors.auth",
-        "django.contrib.messages.context_processors.messages",
-        "core.context_processors.navigation",
-    ]}}]
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+                "core.context_processors.navigation",
+            ]
+        },
+    }
+]
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 MEDIA_URL = "/media/"
 MEDIA_ROOT = "/tmp/topmap-test-media"
-STORAGES = {"default": {"BACKEND": "django.core.files.storage.InMemoryStorage"},
-            "staticfiles": {"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"}}
+STORAGES = {
+    "default": {"BACKEND": "django.core.files.storage.InMemoryStorage"},
+    "staticfiles": {"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"},
+}
 PUBLIC_SITE_URL = "https://topmapsolutions.com"
 WAGTAILADMIN_BASE_URL = PUBLIC_SITE_URL
 WAGTAIL_SITE_NAME = "TopMap Solutions"
+LICENSING_TOKEN_MAX_AGE_SECONDS = 2592000
+LICENSING_RATE_LIMIT = 25
+LICENSING_RATE_WINDOW_SECONDS = 25
+LICENSING_KEY_PEPPER = SECRET_KEY
+LICENSING_TRUST_PROXY_HEADERS = False
 USE_TZ = True
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

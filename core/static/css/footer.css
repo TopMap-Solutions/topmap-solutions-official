@@ -4,16 +4,16 @@ footer {
 }
 
 .footer-inner {
-  width: min(100% - 3rem, 1160px);
   margin-inline: auto;
   padding-block: 3.5rem 2rem;
+  width: min(100% - 3rem, 1160px);
 }
 
 .footer-main {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 4rem;
   align-items: start;
+  display: grid;
+  gap: 4rem;
+  grid-template-columns: 1.4fr 1fr;
 }
 
 .footer-brand-section {
@@ -21,71 +21,71 @@ footer {
 }
 
 .footer-brand {
-  display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
 
   color: var(--color-text-light);
+  display: inline-flex;
   font-size: 1.25rem;
   font-weight: 700;
+  gap: 0.75rem;
   text-decoration: none;
 }
 
 .footer-brand img {
-  width: 36px;
   height: 36px;
   object-fit: contain;
+  width: 36px;
 }
 
 .footer-tagline {
-  max-width: 500px;
-  margin: 1.25rem 0 0;
+  color: var(--color-text-light);
 
   font-size: 0.95rem;
   line-height: 1.7;
-  color: var(--color-text-light);
+  margin: 1.25rem 0 0;
+  max-width: 500px;
   opacity: 0.75;
 }
 
 .footer-socials {
-  display: flex;
   align-items: center;
+  display: flex;
   gap: 0.65rem;
   margin-top: 1rem;
 }
 
 .footer-socials a {
-  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  width: 2.25rem;
-  height: 2.25rem;
-  color: var(--color-text-light);
   border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: 999px;
+  color: var(--color-text-light);
+  display: inline-flex;
+  height: 2.25rem;
+  justify-content: center;
+  text-decoration: none;
   transition:
     color 0.2s ease,
     border-color 0.2s ease,
     transform 0.2s ease;
+  width: 2.25rem;
 }
 
 .footer-socials svg {
-  width: 1.1rem;
   height: 1.1rem;
+  width: 1.1rem;
 }
 
 .footer-socials a:hover,
 .footer-socials a:focus-visible {
-  color: var(--color-accent-second);
   border-color: var(--color-accent-second);
+  color: var(--color-accent-second);
   transform: translateY(-2px);
 }
 
 .footer-links {
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 0.85rem;
 }
 
@@ -93,35 +93,39 @@ footer {
   color: var(--color-text-light);
   font-size: 0.9rem;
   font-weight: 600;
+  opacity: 0.82;
   text-decoration: none;
-
-  transition: all 0.2s ease;
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease;
 }
 
-.footer-links a:hover {
+.footer-links a:hover,
+.footer-links a:focus-visible {
   color: var(--color-accent-second);
+  opacity: 1;
 }
 
 .footer-bottom {
-  margin-top: 3rem;
-  padding-top: 1.5rem;
-
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
 
   border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
 }
 
 .footer-note {
+  color: var(--color-text-light);
   display: flex;
-  margin: 0;
 
   font-size: 0.8rem;
-  line-height: 1.5;
-  color: var(--color-text-light);
-  opacity: 0.6;
   gap: 1rem;
+  line-height: 1.5;
+  margin: 0;
+  opacity: 0.6;
 }
 
 .footer-note a {
@@ -131,15 +135,15 @@ footer {
 }
 
 .sr-only {
-  position: absolute;
-  width: 1px;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
   height: 1px;
-  padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  padding: 0;
+  position: absolute;
   white-space: nowrap;
-  border: 0;
+  width: 1px;
 }
 
 .footer-note a:hover {
@@ -148,8 +152,8 @@ footer {
 
 @media (max-width: 768px) {
   .footer-main {
-    grid-template-columns: 1fr;
     gap: 2.5rem;
+    grid-template-columns: 1fr;
   }
 
   .footer-links {
@@ -166,8 +170,8 @@ footer {
 
 @media (max-width: 600px) {
   .footer-inner {
-    width: min(100% - 2rem, 1160px);
     padding-block: 2.5rem 1.5rem;
+    width: min(100% - 2rem, 1160px);
   }
 
   .footer-brand {
@@ -175,8 +179,8 @@ footer {
   }
 
   .footer-brand img {
-    width: 32px;
     height: 32px;
+    width: 32px;
   }
 
   .footer-tagline {
@@ -184,8 +188,8 @@ footer {
   }
 
   .footer-links {
-    flex-direction: column;
     align-items: flex-start;
+    flex-direction: column;
     gap: 0.75rem;
   }
 
