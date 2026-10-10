@@ -44,6 +44,10 @@ class Product(models.Model):
         default=False,
         help_text="Only explicitly published products appear on the public website.",
     )
+    highlight_on_homepage = models.BooleanField(
+        default=False,
+        help_text="Show this product in the homepage tools section when published.",
+    )
     display_order = models.PositiveIntegerField(default=0)
     seo_title = models.CharField(max_length=70, blank=True)
     search_description = models.CharField(max_length=170, blank=True)
@@ -58,7 +62,10 @@ class Product(models.Model):
         ),
         FieldPanel("body"),
         MultiFieldPanel(["current_version", "download_url"], heading="Release"),
-        MultiFieldPanel(["is_published", "display_order"], heading="Publishing"),
+        MultiFieldPanel(
+            ["is_published", "highlight_on_homepage", "display_order"],
+            heading="Publishing",
+        ),
         MultiFieldPanel(["seo_title", "search_description"], heading="SEO"),
     ]
 

@@ -20,7 +20,7 @@
                             <img src="{{ card_image.url }}"
                                  width="{{ card_image.width }}"
                                  height="{{ card_image.height }}"
-                                 alt=""
+                                 alt="{{ product.card_image.title }}"
                                  loading="lazy">
                         {% endif %}
                         <span class="product-status">{{ product.get_status_display }}</span>

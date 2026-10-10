@@ -5,6 +5,7 @@ from django.shortcuts import render
 from apps.case_studies.selectors import public_testimonials
 from apps.guests.content import SERVICES
 from apps.guests.forms import InquiryForm
+from apps.products.selectors import homepage_products
 
 
 def homepage(request):
@@ -28,6 +29,7 @@ def homepage(request):
         {
             "services": SERVICES,
             "hero_images": hero_images,
+            "highlighted_products": homepage_products(),
             "testimonials": public_testimonials(),
         },
     )

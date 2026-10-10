@@ -1,3 +1,4 @@
+{% load wagtailimages_tags %}
 <section class="tools-highlight" id="tools">
     <div class="container">
         <div class="section-heading">
@@ -6,16 +7,29 @@
             <p>We’re building practical products around the land information workflows teams use every day.</p>
         </div>
         <div class="tools-grid">
-            <article class="tool-card">
-                <span class="tool-status">Coming soon</span>
-                <h3>Parcel Buddy</h3>
-                <p>A simpler way to organize parcel information and make it easier for teams to work from the same picture.</p>
-            </article>
-            <article class="tool-card">
-                <span class="tool-status">Coming soon</span>
-                <h3>WebGIS Parcels</h3>
-                <p>A focused WebGIS tool for viewing and working with parcel information in the browser.</p>
-            </article>
+            {% for product in highlighted_products %}
+                <a class="tool-card" href="{{ product.get_absolute_url }}">
+                    {% if product.card_image %}
+                        {% image product.card_image fill-800x500 as card_image %}
+                        <img class="tool-card-image"
+                             src="{{ card_image.url }}"
+                             width="{{ card_image.width }}"
+                             height="{{ card_image.height }}"
+                             alt="{{ product.card_image.title }}"
+                             loading="lazy">
+                    {% endif %}
+                    <div class="tool-card-content">
+                        <span class="tool-status">{{ product.get_status_display }}</span>
+                        <h3>{{ product.name }}</h3>
+                        <p>{{ product.summary }}</p>
+                    </div>
+                </a>
+            {% empty %}
+                <div class="tools-empty">
+                    <h3>New tools are being prepared.</h3>
+                    <p>Visit the product catalog for the latest releases and guides.</p>
+                </div>
+            {% endfor %}
         </div>
         <a class="text-link tools-link" href="{% url 'products:index' %}">See all products <svg class="lucide-icon"
       aria-hidden="true"
