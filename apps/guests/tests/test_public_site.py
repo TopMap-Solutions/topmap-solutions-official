@@ -72,6 +72,11 @@ class PublicSiteTests(PublicSiteTestCase):
         )
         self.testimonial_query_mock = self.testimonial_query.start()
         self.addCleanup(self.testimonial_query.stop)
+        self.product_query = patch(
+            "apps.guests.views.homepage.homepage_products", return_value=[]
+        )
+        self.product_query_mock = self.product_query.start()
+        self.addCleanup(self.product_query.stop)
         self.payload = {
             "name": "Alex Example",
             "email": "alex@example.com",
@@ -91,6 +96,23 @@ class PublicSiteTests(PublicSiteTestCase):
             self.assertContains(response, copy)
         self.assertNotContains(response, 'href=""')
         self.assertContains(response, "homepage.js")
+
+    def test_homepage_tools_use_selected_product_content(self):
+        self.product_query_mock.return_value = [
+            SimpleNamespace(
+                name="Parcel Buddy",
+                summary="Keep parcel work organized.",
+                card_image=None,
+                get_absolute_url=lambda: "/products/parcel-buddy/",
+                get_status_display=lambda: "Coming soon",
+            )
+        ]
+
+        response = self.client.get("/")
+
+        self.assertContains(response, "Parcel Buddy")
+        self.assertContains(response, "Keep parcel work organized.")
+        self.assertContains(response, 'href="/products/parcel-buddy/"')
 
     def test_homepage_sections_follow_buyer_flow_and_use_inline_icons(self):
         html = self.client.get("/").content.decode()

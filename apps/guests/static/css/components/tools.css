@@ -5,21 +5,39 @@
 .tools-grid {
   display: grid;
   gap: 1.25rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 20rem));
+  justify-content: start;
 }
 
 .tool-card {
-  align-items: stretch;
-
   background: var(--color-bg);
   border: var(--border-hairline);
   border-radius: var(--radius-card);
-
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+  color: inherit;
+  display: block;
   min-width: 0;
-  padding: clamp(1.25rem, 2.5vw, 2rem);
+  overflow: hidden;
+  text-decoration: none;
+  transition:
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.tool-card:hover {
+  box-shadow: 0 0.75rem 2rem rgb(43 29 14 / 10%);
+  transform: translateY(-3px);
+}
+
+.tool-card-image {
+  aspect-ratio: 16 / 9;
+  display: block;
+  height: auto;
+  object-fit: cover;
+  width: 100%;
+}
+
+.tool-card-content {
+  padding: 1.25rem;
 }
 
 .tool-status {
@@ -28,13 +46,13 @@
   font-size: 0.75rem;
   font-weight: var(--fw-bold);
   letter-spacing: 0.08em;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.85rem;
   text-transform: uppercase;
 }
 
 .tool-card h3 {
-  font-size: clamp(1.35rem, 2vw, 1.7rem);
-  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .tool-card p {
@@ -42,7 +60,8 @@
 }
 
 .tool-card p {
-  line-height: 1.7;
+  font-size: 0.95rem;
+  line-height: 1.55;
   max-width: 34rem;
 }
 
@@ -51,8 +70,19 @@
   margin-top: 1.5rem;
 }
 
+.tools-empty {
+  border: var(--border-hairline);
+  border-radius: var(--radius-card);
+  grid-column: 1 / -1;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.tools-empty p {
+  margin-top: 0.5rem;
+}
+
 @media (max-width: 700px) {
   .tools-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 20rem);
   }
 }

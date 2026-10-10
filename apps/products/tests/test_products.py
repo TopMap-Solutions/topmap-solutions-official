@@ -1,6 +1,7 @@
 from django.test import TestCase
 
 from apps.products.models import Product, ProductGuide
+from apps.products.selectors import homepage_products
 
 
 class ProductPublishingTests(TestCase):
@@ -25,6 +26,26 @@ class ProductPublishingTests(TestCase):
         self.assertContains(response, "Parcel Buddy")
         self.assertNotContains(response, "Private product")
         self.assertContains(response, "GIS Products, Training &amp; Manuals")
+
+    def test_homepage_products_only_returns_published_highlights(self):
+        self.product.highlight_on_homepage = True
+        self.product.save(update_fields=["highlight_on_homepage"])
+        Product.objects.create(
+            name="Published but not highlighted",
+            slug="not-highlighted",
+            product_code="not-highlighted",
+            summary="Catalog only.",
+            is_published=True,
+        )
+        Product.objects.create(
+            name="Highlighted draft",
+            slug="highlighted-draft",
+            product_code="highlighted-draft",
+            summary="Not public.",
+            highlight_on_homepage=True,
+        )
+
+        self.assertEqual(list(homepage_products()), [self.product])
 
     def test_product_has_manual_training_and_video_guides(self):
         for order, kind in enumerate(ProductGuide.Kind.values):
