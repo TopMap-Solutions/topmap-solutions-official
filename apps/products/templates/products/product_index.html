@@ -16,14 +16,15 @@
                 {% for product in products %}
                     <a class="product-card" href="{{ product.get_absolute_url }}">
                         {% if product.card_image %}
-                            {% image product.card_image fill-800x500 as card_image %}
-                            <img src="{{ card_image.url }}"
-                                 width="{{ card_image.width }}"
-                                 height="{{ card_image.height }}"
-                                 alt="{{ product.card_image.title }}"
-                                 loading="lazy">
+                            <div class="product-card-media">
+                                {% image product.card_image max-800x800 as card_image %}
+                                <img src="{{ card_image.url }}"
+                                     width="{{ card_image.width }}"
+                                     height="{{ card_image.height }}"
+                                     alt="{{ product.card_image.title }}"
+                                     loading="lazy">
+                            </div>
                         {% endif %}
-                        <span class="product-status">{{ product.get_status_display }}</span>
                         <h2>{{ product.name }}</h2>
                         <p>{{ product.summary }}</p>
                     </a>

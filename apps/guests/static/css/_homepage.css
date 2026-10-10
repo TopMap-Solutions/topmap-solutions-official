@@ -66,7 +66,7 @@
 
 .homepage-sections #tools .tool-card {
   background: var(--color-bg);
-  border-color: var(--border-hairline);
+  border-color: #d8cfc2;
   box-shadow: none;
 }
 

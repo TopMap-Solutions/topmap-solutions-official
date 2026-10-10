@@ -10,16 +10,17 @@
             {% for product in highlighted_products %}
                 <a class="tool-card" href="{{ product.get_absolute_url }}">
                     {% if product.card_image %}
-                        {% image product.card_image fill-800x500 as card_image %}
-                        <img class="tool-card-image"
-                             src="{{ card_image.url }}"
-                             width="{{ card_image.width }}"
-                             height="{{ card_image.height }}"
-                             alt="{{ product.card_image.title }}"
-                             loading="lazy">
+                        <div class="tool-card-media">
+                            {% image product.card_image max-800x800 as card_image %}
+                            <img class="tool-card-image"
+                                 src="{{ card_image.url }}"
+                                 width="{{ card_image.width }}"
+                                 height="{{ card_image.height }}"
+                                 alt="{{ product.card_image.title }}"
+                                 loading="lazy">
+                        </div>
                     {% endif %}
                     <div class="tool-card-content">
-                        <span class="tool-status">{{ product.get_status_display }}</span>
                         <h3>{{ product.name }}</h3>
                         <p>{{ product.summary }}</p>
                     </div>

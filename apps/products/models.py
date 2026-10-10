@@ -15,11 +15,6 @@ class PublishableQuerySet(models.QuerySet):
 
 @register_snippet
 class Product(models.Model):
-    class Status(models.TextChoices):
-        COMING_SOON = "coming_soon", "Coming soon"
-        AVAILABLE = "available", "Available"
-        DISCONTINUED = "discontinued", "Discontinued"
-
     name = models.CharField(max_length=120)
     slug = models.SlugField(unique=True)
     product_code = models.SlugField(
@@ -34,9 +29,6 @@ class Product(models.Model):
         blank=True,
         on_delete=models.SET_NULL,
         related_name="+",
-    )
-    status = models.CharField(
-        max_length=20, choices=Status.choices, default=Status.COMING_SOON
     )
     current_version = models.CharField(max_length=40, blank=True)
     download_url = models.URLField(blank=True)
@@ -57,9 +49,7 @@ class Product(models.Model):
     objects = PublishableQuerySet.as_manager()
 
     panels = [
-        MultiFieldPanel(
-            ["name", "slug", "product_code", "summary", "card_image", "status"]
-        ),
+        MultiFieldPanel(["name", "slug", "product_code", "summary", "card_image"]),
         FieldPanel("body"),
         MultiFieldPanel(["current_version", "download_url"], heading="Release"),
         MultiFieldPanel(

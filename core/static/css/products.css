@@ -39,11 +39,20 @@
   box-shadow: 0 0.75rem 2rem rgb(43 29 14 / 10%);
   transform: translateY(-3px);
 }
-.product-card > img {
-  aspect-ratio: 8 / 5;
+.product-card-media {
+  aspect-ratio: 1;
+  background: #fff;
   border-radius: 0.7rem;
   margin-bottom: 1.25rem;
+  overflow: hidden;
+  width: 100%;
+}
+
+.product-card-media img {
+  display: block;
+  height: 100%;
   object-fit: cover;
+  object-position: center;
   width: 100%;
 }
 .products-empty {
@@ -82,24 +91,34 @@
 }
 
 .product-back {
+  align-items: center;
   color: var(--color-accent, #8a4b2d);
-  display: block;
+  display: inline-flex;
+  gap: 0.45rem;
   margin-bottom: 2rem;
+  text-decoration: underline;
+  text-decoration-color: transparent;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.3em;
+  transition: text-decoration-color 150ms ease;
+}
+
+.product-back:hover,
+.product-back:focus-visible {
+  text-decoration-color: currentColor;
+}
+
+.product-back .lucide-icon {
+  height: 1rem;
+  width: 1rem;
 }
 
 .product-hero {
   align-items: center;
-  background: var(--color-secondary-bg);
-  border: var(--border-hairline);
-  border-radius: var(--radius-card);
   display: grid;
   gap: clamp(2rem, 5vw, 5rem);
   grid-template-columns: 1fr 1fr;
   margin-bottom: clamp(3rem, 7vw, 6rem);
-  overflow: hidden;
-  padding: clamp(1.5rem, 4vw, 4rem);
 }
 
 .product-hero h1 {
@@ -109,10 +128,19 @@
   max-width: 12ch;
 }
 
-.product-hero img {
-  aspect-ratio: 4 / 3;
-  border-radius: 1rem;
-  height: auto;
+.product-hero-media {
+  aspect-ratio: 1;
+  background: #fff;
+  border-radius: 1.5rem;
+  justify-self: end;
+  max-width: 32rem;
+  overflow: hidden;
+  width: 100%;
+}
+
+.product-hero-media img {
+  display: block;
+  height: 100%;
   object-fit: cover;
   width: 100%;
 }
@@ -260,16 +288,6 @@
   padding-top: 1.5rem;
 }
 
-.product-status {
-  color: var(--color-accent, #b5663f);
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  margin-bottom: 1.5rem;
-  text-transform: uppercase;
-}
-
 .product-card h2 {
   margin: 0 0 0.75rem;
 }
@@ -310,9 +328,6 @@
     max-width: none;
   }
 
-  .product-hero img {
-    aspect-ratio: 16 / 10;
-  }
 }
 
 @media (max-width: 520px) {
@@ -322,8 +337,7 @@
   }
 
   .product-hero {
-    border-radius: 0.75rem;
-    padding: 1.25rem;
+    gap: 1.5rem;
   }
 
   .editorial-content img,

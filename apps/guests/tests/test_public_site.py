@@ -104,7 +104,6 @@ class PublicSiteTests(PublicSiteTestCase):
                 summary="Keep parcel work organized.",
                 card_image=None,
                 get_absolute_url=lambda: "/products/parcel-buddy/",
-                get_status_display=lambda: "Coming soon",
             )
         ]
 

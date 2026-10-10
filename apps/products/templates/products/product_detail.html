@@ -6,20 +6,34 @@
 {% endblock %}
 {% block content %}
     <article class="product-detail container">
-        <a class="product-back" href="{% url 'products:index' %}">← All products</a>
+        <a class="product-back" href="{% url 'products:index' %}">
+            <svg class="lucide-icon"
+                 aria-hidden="true"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
+                <path d="m12 19-7-7 7-7"></path>
+                <path d="M19 12H5"></path>
+            </svg>
+            <span>All products</span>
+        </a>
         <header class="product-hero">
             <div>
-                <p class="eyebrow">{{ product.get_status_display }}</p>
                 <h1>{{ product.name }}</h1>
                 <p class="lead">{{ product.summary }}</p>
             </div>
             {% if product.card_image %}
-                {% image product.card_image width-1000 as hero_image %}
-                <img src="{{ hero_image.url }}"
-                     width="{{ hero_image.width }}"
-                     height="{{ hero_image.height }}"
-                     alt="{{ product.name }}"
-                     loading="eager">
+                <div class="product-hero-media">
+                    {% image product.card_image max-1000x1000 as hero_image %}
+                    <img src="{{ hero_image.url }}"
+                         width="{{ hero_image.width }}"
+                         height="{{ hero_image.height }}"
+                         alt="{{ product.name }}"
+                         loading="eager">
+                </div>
             {% endif %}
         </header>
         {% if product.body %}
