@@ -9,6 +9,8 @@ maps.
 
 - Service pages with clear inputs, deliverables and project inquiries.
 - Wagtail case studies with results, tags and image galleries.
+- Wagtail-managed products, training articles, manuals and video guides.
+- Admin-issued, device-bound plugin licenses with a versioned activation API.
 - Inquiry management in Django admin, with email notifications.
 - Search metadata, social previews, canonical URLs and a sitemap.
 
@@ -50,6 +52,8 @@ then builds the production image; successful pushes to `main` deploy to Vultr.
 - [Installation](docs/installation.md) — environment, local setup and production requirements.
 - [Architecture](docs/architecture.md) — components, request flow and deployment.
 - [UI and SEO](docs/ui-seo.md) — content editing and verification notes.
+- [Products and guides](docs/products-and-guides.md) — publishing product documentation and video guides.
+- [Licensing API](docs/licensing-api.md) — license administration, endpoints, client integration and security.
 - [Agent guide](AGENTS.md) — project context and contributor rules.
 
 Licensed under [Apache 2.0](LICENSE).

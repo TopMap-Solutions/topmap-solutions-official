@@ -1,4 +1,6 @@
-<form action="{% url 'guests:send_public_form' %}" method="post" onsubmit="this.querySelector('button[type=submit]').disabled = true; this.querySelector('button[type=submit]').textContent = 'Sending…';">
+<form action="{% url 'guests:send_public_form' %}"
+      method="post"
+      onsubmit="this.querySelector('button[type=submit]').disabled = true; this.querySelector('button[type=submit]').textContent = 'Sending…';">
     {% csrf_token %}
     {% if form.errors %}
         <div class="error-summary" role="alert">

@@ -1,4 +1,5 @@
 """No database, migrations, external storage or SMTP. ORM boundaries are mocked."""
+
 from datetime import datetime, timezone
 from html.parser import HTMLParser
 from types import SimpleNamespace
@@ -38,7 +39,9 @@ class Document(HTMLParser):
     SECURE_SSL_REDIRECT=False,
     STORAGES={
         "default": {"BACKEND": "django.core.files.storage.InMemoryStorage"},
-        "staticfiles": {"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"},
+        "staticfiles": {
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"
+        },
     },
     MIDDLEWARE=[
         "django.middleware.security.SecurityMiddleware",
@@ -69,11 +72,22 @@ class PublicSiteTests(PublicSiteTestCase):
         )
         self.testimonial_query_mock = self.testimonial_query.start()
         self.addCleanup(self.testimonial_query.stop)
-        self.payload = {"name": "Alex Example", "email": "alex@example.com", "organization": "Example team", "phone": "+44 1234 567890", "inquiry": "We need to centralize government land parcel data."}
+        self.payload = {
+            "name": "Alex Example",
+            "email": "alex@example.com",
+            "organization": "Example team",
+            "phone": "+44 1234 567890",
+            "inquiry": "We need to centralize government land parcel data.",
+        }
 
     def test_homepage_positions_both_sectors_without_claiming_utility_clients(self):
         response = self.client.get("/")
-        for copy in ("Land information for decisions", "Land parcels, tax and spatial planning data", "Interactive Masterplan Maps", "international inquiries"):
+        for copy in (
+            "Land information for decisions",
+            "Land parcels, tax and spatial planning data",
+            "Interactive Masterplan Maps",
+            "international inquiries",
+        ):
             self.assertContains(response, copy)
         self.assertNotContains(response, 'href=""')
         self.assertContains(response, "homepage.js")
@@ -94,8 +108,18 @@ class PublicSiteTests(PublicSiteTestCase):
         ]
         positions = [html.index(section) for section in sections]
         self.assertEqual(positions, sorted(positions))
-        self.assertContains(response := self.client.get("/"), 'class="lucide-icon faq-chevron"')
-        self.assertContains(response, 'class="lucide-icon" aria-hidden="true" viewBox="0 0 24 24"')
+        self.assertContains(
+            response := self.client.get("/"), 'class="lucide-icon faq-chevron"'
+        )
+        icons = Document(response.content.decode()).attributes("svg")
+        self.assertTrue(
+            any(
+                icon.get("class") == "lucide-icon"
+                and icon.get("aria-hidden") == "true"
+                and icon.get("viewbox") == "0 0 24 24"
+                for icon in icons
+            )
+        )
 
     def test_homepage_testimonials_use_name_and_organization_fallbacks(self):
         self.testimonial_query_mock.return_value = [
@@ -167,24 +191,38 @@ class PublicSiteTests(PublicSiteTestCase):
         titles = set()
         for slug, service in SERVICES.items():
             with self.subTest(slug=slug):
-                response = self.client.get(reverse("guests:service_detail", kwargs={"slug": slug}))
+                response = self.client.get(
+                    reverse("guests:service_detail", kwargs={"slug": slug})
+                )
                 self.assertContains(response, escape(service["headline"]))
                 self.assertContains(response, "What we start with")
                 self.assertContains(response, "What we scope together")
                 self.assertContains(response, "Discuss your GIS project")
                 doc = Document(response.content.decode())
                 metas = doc.attributes("meta")
-                title = next(x["content"] for x in metas if x.get("property") == "og:title")
+                title = next(
+                    x["content"] for x in metas if x.get("property") == "og:title"
+                )
                 titles.add(title)
                 self.assertIn(service["title"], title)
-                self.assertIn({"name": "description", "content": service["description"]}, metas)
+                self.assertIn(
+                    {"name": "description", "content": service["description"]}, metas
+                )
         self.assertEqual(len(titles), len(SERVICES))
 
     def test_canonical_drops_tracking_queries_and_www_host(self):
-        response = self.client.get("/?utm_source=campaign", HTTP_HOST="www.topmapsolutions.com")
+        response = self.client.get(
+            "/?utm_source=campaign", HTTP_HOST="www.topmapsolutions.com"
+        )
         doc = Document(response.content.decode())
-        self.assertIn({"rel": "canonical", "href": "https://topmapsolutions.com/"}, doc.attributes("link"))
-        self.assertIn({"property": "og:url", "content": "https://topmapsolutions.com/"}, doc.attributes("meta"))
+        self.assertIn(
+            {"rel": "canonical", "href": "https://topmapsolutions.com/"},
+            doc.attributes("link"),
+        )
+        self.assertIn(
+            {"property": "og:url", "content": "https://topmapsolutions.com/"},
+            doc.attributes("meta"),
+        )
 
     def test_semantic_landmarks_and_assets_on_public_pages(self):
         urls = ["/", "/inquiry/"] + [f"/services/{slug}/" for slug in SERVICES]
@@ -199,14 +237,18 @@ class PublicSiteTests(PublicSiteTestCase):
                 for tag, attrs in doc.tags:
                     source = attrs.get("src", attrs.get("href", ""))
                     if source.startswith("/static/"):
-                        self.assertIsNotNone(finders.find(source.removeprefix("/static/")), source)
+                        self.assertIsNotNone(
+                            finders.find(source.removeprefix("/static/")), source
+                        )
                     if tag == "img":
                         self.assertIn("alt", attrs)
 
     def test_organization_json_is_valid_and_has_no_invented_ratings(self):
         response = self.client.get("/")
         html = response.content.decode()
-        schema = json.loads(html.split('<script type="application/ld+json">')[1].split('</script>')[0])
+        schema = json.loads(
+            html.split('<script type="application/ld+json">')[1].split("</script>")[0]
+        )
         self.assertEqual(schema["@type"], "Organization")
         self.assertEqual(schema["url"], "https://topmapsolutions.com/")
         self.assertNotIn("aggregateRating", schema)
@@ -229,7 +271,9 @@ class PublicSiteTests(PublicSiteTestCase):
         ids = {attrs["id"] for _, attrs in doc.tags if "id" in attrs}
         for attrs in doc.attributes("label"):
             self.assertIn(attrs["for"], ids)
-        phone = next(attrs for attrs in doc.attributes("input") if attrs.get("name") == "phone")
+        phone = next(
+            attrs for attrs in doc.attributes("input") if attrs.get("name") == "phone"
+        )
         self.assertEqual(phone["type"], "tel")
         self.assertNotIn("minlength", phone)
         self.assertContains(response, "country code")
@@ -262,15 +306,23 @@ class PublicSiteTests(PublicSiteTestCase):
     @patch("apps.guests.views.inquiry.send_inquiry_emails")
     @patch("apps.guests.views.inquiry.Guest.objects.create")
     @patch("apps.guests.views.inquiry.check_email_cooldown", return_value=False)
-    def test_successful_submission_and_single_use_success_page(self, cooldown, create, send):
+    def test_successful_submission_and_single_use_success_page(
+        self, cooldown, create, send
+    ):
         response = self.client.post("/submit/", self.payload)
-        self.assertRedirects(response, "/inquiry/success/", fetch_redirect_response=False)
+        self.assertRedirects(
+            response, "/inquiry/success/", fetch_redirect_response=False
+        )
         create.assert_called_once_with(**self.payload)
         send.assert_called_once_with(self.payload)
         success = self.client.get("/inquiry/success/")
         self.assertContains(success, "alex@example.com")
         self.assertContains(success, 'content="noindex, follow"')
-        self.assertRedirects(self.client.get("/inquiry/success/"), "/inquiry/", fetch_redirect_response=False)
+        self.assertRedirects(
+            self.client.get("/inquiry/success/"),
+            "/inquiry/",
+            fetch_redirect_response=False,
+        )
 
     def test_csrf_rejects_forged_submission(self):
         client = Client(enforce_csrf_checks=True)
@@ -278,7 +330,9 @@ class PublicSiteTests(PublicSiteTestCase):
 
     def test_get_submit_and_direct_success_redirect(self):
         for url in ("/submit/", "/inquiry/success/"):
-            self.assertRedirects(self.client.get(url), "/inquiry/", fetch_redirect_response=False)
+            self.assertRedirects(
+                self.client.get(url), "/inquiry/", fetch_redirect_response=False
+            )
 
     def test_form_fragment_is_populated_and_not_indexable(self):
         response = self.client.get("/inquiry/form/")
@@ -286,23 +340,33 @@ class PublicSiteTests(PublicSiteTestCase):
         self.assertEqual(response["X-Robots-Tag"], "noindex, follow")
 
     def test_user_content_is_escaped_in_form(self):
-        response = self.client.post("/submit/", {**self.payload, "email": "invalid", "name": '<script>alert(1)</script>'})
-        self.assertNotContains(response, '<script>alert(1)</script>')
-        self.assertContains(response, '&lt;script&gt;')
+        response = self.client.post(
+            "/submit/",
+            {**self.payload, "email": "invalid", "name": "<script>alert(1)</script>"},
+        )
+        self.assertNotContains(response, "<script>alert(1)</script>")
+        self.assertContains(response, "&lt;script&gt;")
 
     def test_optional_fields_and_global_phone_are_accepted(self):
-        form = InquiryForm({**self.payload, "organization": "", "phone": "+81 (0)3 1234-5678"})
+        form = InquiryForm(
+            {**self.payload, "organization": "", "phone": "+81 (0)3 1234-5678"}
+        )
         self.assertTrue(form.is_valid(), form.errors)
 
     def test_published_case_study_link_appears(self):
-        self.navigation_mock.return_value.type.return_value.first.return_value = SimpleNamespace(url="/pages/work/")
+        self.navigation_mock.return_value.type.return_value.first.return_value = (
+            SimpleNamespace(url="/pages/work/")
+        )
         response = self.client.get("/")
         self.assertContains(response, 'href="/pages/work/"')
 
 
 class CrawlTests(PublicSiteTestCase):
+    @patch("apps.products.selectors.public_products", return_value=[])
     @patch("core.views.case_study_pages", return_value=[])
-    def test_sitemap_contains_all_public_service_pages_and_no_action_routes(self, pages):
+    def test_sitemap_contains_all_public_service_pages_and_no_action_routes(
+        self, pages, products
+    ):
         response = self.client.get("/sitemap.xml", HTTP_HOST="www.topmapsolutions.com")
         self.assertEqual(response.status_code, 200)
         tree = ElementTree.fromstring(response.content)
@@ -312,20 +376,30 @@ class CrawlTests(PublicSiteTestCase):
             "https://topmapsolutions.com/products/",
             "https://topmapsolutions.com/inquiry/",
         }
-        expected |= {f"https://topmapsolutions.com/services/{slug}/" for slug in SERVICES}
+        expected |= {
+            f"https://topmapsolutions.com/services/{slug}/" for slug in SERVICES
+        }
         self.assertEqual(set(urls), expected)
 
+    @patch("apps.products.selectors.public_products", return_value=[])
     @patch("core.views.case_study_pages")
-    def test_sitemap_includes_cms_urls_and_publication_dates(self, pages):
-        page = SimpleNamespace(get_url=lambda **kw: "https://www.topmapsolutions.com/pages/work/example/", last_published_at=datetime(2026, 9, 24, tzinfo=timezone.utc))
+    def test_sitemap_includes_cms_urls_and_publication_dates(self, pages, products):
+        page = SimpleNamespace(
+            get_url=lambda **kw: "https://www.topmapsolutions.com/pages/work/example/",
+            last_published_at=datetime(2026, 9, 24, tzinfo=timezone.utc),
+        )
         pages.return_value = [page, page, SimpleNamespace(get_url=lambda **kw: None)]
         response = self.client.get("/sitemap.xml")
-        self.assertContains(response, "https://topmapsolutions.com/pages/work/example/", count=1)
+        self.assertContains(
+            response, "https://topmapsolutions.com/pages/work/example/", count=1
+        )
         self.assertContains(response, "<lastmod>2026-09-24</lastmod>")
 
     def test_robots_advertises_canonical_sitemap_without_blocking_assets(self):
         response = self.client.get("/robots.txt")
-        self.assertContains(response, "Sitemap: https://topmapsolutions.com/sitemap.xml")
+        self.assertContains(
+            response, "Sitemap: https://topmapsolutions.com/sitemap.xml"
+        )
         self.assertNotContains(response, "Disallow: /static/")
         self.assertNotContains(response, "Disallow: /inquiry/")
 
@@ -335,7 +409,9 @@ class CrawlTests(PublicSiteTestCase):
 
     @patch("core.public_pages.Page")
     @patch("core.public_pages.Site.find_for_request")
-    def test_cms_query_requires_live_public_pages_in_current_site(self, site, page_model):
+    def test_cms_query_requires_live_public_pages_in_current_site(
+        self, site, page_model
+    ):
         site.return_value = SimpleNamespace(root_page="root")
         descendants = page_model.objects.descendant_of.return_value
         case_study_pages(RequestFactory().get("/"))
@@ -354,13 +430,21 @@ class CrawlTests(PublicSiteTestCase):
 class CMSMetadataTests(PublicSiteTestCase):
     def setUp(self):
         self.request = RequestFactory().get("/pages/work/example/?utm_source=test")
-        self.page = SimpleNamespace(seo_title="A specific GIS project", title="Project example", search_description="A useful project description.", summary="Fallback summary", get_url=lambda **kwargs: "/pages/work/example/")
+        self.page = SimpleNamespace(
+            seo_title="A specific GIS project",
+            title="Project example",
+            search_description="A useful project description.",
+            summary="Fallback summary",
+            get_url=lambda **kwargs: "/pages/work/example/",
+        )
 
     def test_editor_seo_fields_are_used(self):
         result = metadata(self.request, self.page)
         self.assertEqual(result["title"], "A specific GIS project | TopMap Solutions")
         self.assertEqual(result["description"], self.page.search_description)
-        self.assertEqual(result["canonical"], "https://topmapsolutions.com/pages/work/example/")
+        self.assertEqual(
+            result["canonical"], "https://topmapsolutions.com/pages/work/example/"
+        )
 
     def test_fallback_and_preview_noindex(self):
         self.page.seo_title = ""
@@ -381,7 +465,11 @@ class CMSMetadataTests(PublicSiteTestCase):
         self.page.location = ""
         self.page.challenge = "<p>Disconnected records.</p>"
         self.page.solution = "<p>Structured GIS layers.</p>"
-        html = render_to_string("case_studies/case_study_page.html", {"page": self.page}, request=self.request)
+        html = render_to_string(
+            "case_studies/case_study_page.html",
+            {"page": self.page},
+            request=self.request,
+        )
         doc = Document(html)
         self.assertEqual(len(doc.attributes("main")), 1)
         self.assertEqual(len(doc.attributes("h1")), 1)

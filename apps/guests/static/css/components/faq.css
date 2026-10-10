@@ -1,13 +1,13 @@
 .section-grid > div:first-child > img {
   display: block;
-
-  width: clamp(100px, 12vw, 170px);
   height: clamp(100px, 12vw, 170px);
 
   margin-top: 2rem;
 
   object-fit: contain;
   object-position: left center;
+
+  width: clamp(100px, 12vw, 170px);
 }
 
 .faq-list details {
@@ -16,10 +16,10 @@
 }
 
 .faq-list summary {
-  font-weight: 650;
   cursor: pointer;
-  padding-block: 0.5rem;
+  font-weight: 650;
   list-style: none;
+  padding-block: 0.5rem;
 }
 
 .faq-list summary::-webkit-details-marker {
@@ -28,11 +28,11 @@
 
 .faq-list .faq-chevron {
   display: inline-block;
-  width: 1rem;
   height: 1rem;
-  vertical-align: -0.15em;
   margin-right: 0.5rem;
   transition: transform 0.2s ease;
+  vertical-align: -0.15em;
+  width: 1rem;
 }
 
 .faq-list details[open] .faq-chevron {
@@ -45,9 +45,9 @@
 
 @media (max-width: 700px) {
   .section-grid > div:first-child > img {
-    width: clamp(90px, 28vw, 130px);
     height: clamp(90px, 28vw, 130px);
 
     margin-top: 1.5rem;
+    width: clamp(90px, 28vw, 130px);
   }
 }

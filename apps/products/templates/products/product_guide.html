@@ -1,0 +1,16 @@
+{% extends "_base.html" %}
+{% load static wagtailcore_tags %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/products.css' %}">
+{% endblock %}
+{% block content %}
+    <article class="guide-page container">
+        <nav class="product-back" aria-label="Breadcrumb"><a href="{% url 'products:index' %}">Products</a> / <a href="{{ product.get_absolute_url }}">{{ product.name }}</a></nav>
+        <header><p class="eyebrow">{{ guide.get_kind_display }}</p><h1>{{ guide.title }}</h1>{% if guide.summary %}<p class="lead">{{ guide.summary }}</p>{% endif %}<p class="guide-updated">Updated {{ guide.updated_at|date:"F j, Y" }}</p></header>
+        <div class="editorial-content">{% include_block guide.body %}</div>
+        <nav class="guide-pagination" aria-label="Guide navigation">
+            {% if previous_guide %}<a href="{{ previous_guide.get_absolute_url }}">← {{ previous_guide.title }}</a>{% endif %}
+            {% if next_guide %}<a href="{{ next_guide.get_absolute_url }}">{{ next_guide.title }} →</a>{% endif %}
+        </nav>
+    </article>
+{% endblock %}

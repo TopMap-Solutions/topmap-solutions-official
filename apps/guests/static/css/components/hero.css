@@ -1,8 +1,8 @@
 .hero {
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: clamp(2rem, 5vw, 5rem);
   align-items: center;
+  display: grid;
+  gap: clamp(2rem, 5vw, 5rem);
+  grid-template-columns: 1.15fr 1fr;
 }
 
 .hero-copy h1 {
@@ -15,49 +15,49 @@
 }
 
 .microcopy {
-  margin-top: 1.25rem;
-  font-size: 0.8rem;
   color: #655b4d;
+  font-size: 0.8rem;
+  margin-top: 1.25rem;
 }
 
 .hero-visual {
-  min-width: 0;
-  position: relative;
-  border-radius: var(--radius-card);
-  overflow: hidden;
   background: var(--color-secondary-bg);
+  border-radius: var(--radius-card);
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
 }
 
 .hero-visual img {
-  display: block;
-  width: 100%;
   aspect-ratio: 4 / 5;
+  display: block;
   object-fit: cover;
+  width: 100%;
 }
 
 .hero-visual figcaption {
-  position: absolute;
-  inset: auto 1rem 1rem;
   background: var(--color-bg);
-  padding: 0.8rem 1rem;
   border-radius: 6px;
   font-size: 0.8rem;
   font-weight: 650;
+  inset: auto 1rem 1rem;
+  padding: 0.8rem 1rem;
+  position: absolute;
 }
 
 .status-dot {
-  display: inline-block;
-  width: 0.5rem;
-  height: 0.5rem;
   background: var(--color-accent);
   border-radius: 100%;
+  display: inline-block;
+  height: 0.5rem;
   margin-right: 0.5rem;
+  width: 0.5rem;
 }
 
 @media (max-width: 900px) {
   .hero {
-    grid-template-columns: 1fr 1fr;
     gap: 2rem;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -93,21 +93,21 @@
 }
 
 .hero-dots {
-  position: absolute;
+  backdrop-filter: blur(8px);
+  background: rgb(255 248 238 / 85%);
+  border: 1px solid rgb(255 248 238 / 55%);
+  border-radius: 2rem;
   bottom: 1.25rem;
-  left: 50%;
-  transform: translateX(-50%);
+  box-shadow: 0 3px 14px rgb(58 38 25 / 15%);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: max-content;
+  left: 50%;
   max-width: calc(100% - 2rem);
   padding: 0.25rem 0.5rem;
-  border: 1px solid rgb(255 248 238 / 55%);
-  border-radius: 2rem;
-  background: rgb(255 248 238 / 85%);
-  box-shadow: 0 3px 14px rgb(58 38 25 / 15%);
-  backdrop-filter: blur(8px);
+  position: absolute;
+  transform: translateX(-50%);
+  width: max-content;
 }
 
 .hero-dots[hidden] {
@@ -115,26 +115,26 @@
 }
 
 .hero-dot {
-  display: grid;
-  place-items: center;
-  width: 24px;
-  height: 28px;
-  padding: 0;
+  background: transparent;
   border: 0;
   border-radius: 50%;
-  background: transparent;
   cursor: pointer;
+  display: grid;
+  height: 28px;
+  padding: 0;
+  place-items: center;
+  width: 24px;
 }
 
 .hero-dot::before {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
   background: #ad9480;
+  border-radius: 50%;
+  content: "";
+  height: 7px;
   transition:
     background 180ms ease,
     transform 180ms ease;
+  width: 7px;
 }
 
 .hero-dot[aria-current="true"]::before {
@@ -158,15 +158,15 @@
 }
 
 .hero.container {
+  gap: clamp(2rem, 5vw, 6rem);
+  grid-template-columns: 1fr 1fr;
   min-height: calc(100svh - 85px);
   padding-block: clamp(2.5rem, 5vw, 5rem);
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 5vw, 6rem);
 }
 
 .hero-copy h1 {
-  max-width: 17ch;
   font-size: clamp(2.35rem, 3.8vw, 3.9rem);
+  max-width: 17ch;
 }
 
 .hero-visual img {
@@ -174,49 +174,49 @@
 }
 
 .actions {
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   gap: 0.75rem;
 }
 
 .actions .btn-primary,
 .actions .btn-secondary {
-  display: inline-flex;
   align-items: center;
+  display: inline-flex;
   justify-content: center;
+  text-align: center;
 
   white-space: nowrap;
-  text-align: center;
 }
 
 @media (max-width: 480px) {
   .actions {
-    flex-direction: column;
     align-items: stretch;
-    width: 100%;
+    flex-direction: column;
     gap: 0.6rem;
+    width: 100%;
   }
 
   .actions .btn-primary,
   .actions .btn-secondary {
-    width: 100%;
     white-space: normal;
+    width: 100%;
   }
 }
 
 @media (max-width: 760px) {
   .hero.container {
-    width: calc(100% - 2rem);
+    gap: 2rem;
     grid-template-columns: 1fr;
     min-height: auto;
-    gap: 2rem;
     padding-block: 2.5rem;
+    width: calc(100% - 2rem);
   }
 
   .hero-copy h1 {
-    max-width: 17ch;
     font-size: clamp(2.2rem, 8.5vw, 3rem);
+    max-width: 17ch;
   }
 
   .hero-copy .lead {
@@ -229,27 +229,27 @@
   }
 
   .hero-visual figcaption {
+    font-size: 0.75rem;
     inset: auto 0.75rem 0.75rem;
     padding: 0.65rem 0.8rem;
-    font-size: 0.75rem;
   }
 
   /* Smaller carousel dots */
   .hero-dots {
     bottom: 0.75rem;
+    gap: 0;
     max-width: calc(100% - 1.5rem);
     padding: 0.15rem 0.35rem;
-    gap: 0;
   }
 
   .hero-dot {
-    width: 20px;
     height: 24px;
+    width: 20px;
   }
 
   .hero-dot::before {
-    width: 6px;
     height: 6px;
+    width: 6px;
   }
 
   .hero-dot[aria-current="true"]::before {
@@ -259,9 +259,9 @@
 
 @media (max-width: 400px) {
   .hero.container {
-    width: calc(100% - 1.5rem);
     gap: 1.5rem;
     padding-block: 2rem;
+    width: calc(100% - 1.5rem);
   }
 
   .hero-copy h1 {
@@ -279,13 +279,13 @@
   }
 
   .hero-dot {
-    width: 17px;
     height: 21px;
+    width: 17px;
   }
 
   .hero-dot::before {
-    width: 5px;
     height: 5px;
+    width: 5px;
   }
 
   .hero-dot[aria-current="true"]::before {
@@ -293,8 +293,8 @@
   }
 
   .hero-visual figcaption {
+    font-size: 0.7rem;
     inset: auto 0.5rem 0.5rem;
     padding: 0.5rem 0.65rem;
-    font-size: 0.7rem;
   }
 }

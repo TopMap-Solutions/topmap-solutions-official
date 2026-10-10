@@ -10,12 +10,10 @@
   --h: 150px;
   --dur: 25s;
   --n: 3;
+  block-size: var(--h);
+  display: flex;
 
   margin-top: 3rem;
-  display: flex;
-  block-size: var(--h);
-  position: relative;
-  overflow-x: hidden;
   mask-image: linear-gradient(
     to right,
     hsl(0 0% 0% / 0),
@@ -23,14 +21,16 @@
     hsl(0 0% 0% / 1) 80%,
     hsl(0 0% 0% / 0)
   );
+  overflow-x: hidden;
+  position: relative;
 }
 
 .partner .item {
-  position: absolute;
-  inset-inline-start: max(calc(var(--w) * var(--n)), calc(100% + var(--w)));
-  transform: translateX(-50%);
   animation: go linear var(--dur)
     calc(var(--dur) / var(--n) * (var(--n) - var(--i)) * -1) infinite;
+  inset-inline-start: max(calc(var(--w) * var(--n)), calc(100% + var(--w)));
+  position: absolute;
+  transform: translateX(-50%);
 }
 
 .partner .item:nth-of-type(1) {

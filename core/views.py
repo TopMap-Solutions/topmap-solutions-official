@@ -12,15 +12,29 @@ from core.seo import public_url
 @require_safe
 def robots(request):
     body = "User-agent: *\nAllow: /\nDisallow: /cms/\nDisallow: /not-admin/\n"
-    return HttpResponse(body + f"\nSitemap: {public_url('/sitemap.xml')}\n", content_type="text/plain")
+    return HttpResponse(
+        body + f"\nSitemap: {public_url('/sitemap.xml')}\n", content_type="text/plain"
+    )
 
 
 @require_safe
 def sitemap(request):
     root = Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
-    paths = [reverse("guests:homepage"), reverse("guests:products"), reverse("guests:inquiry")]
-    paths += [reverse("guests:service_detail", kwargs={"slug": slug}) for slug in SERVICES]
+    paths = [
+        reverse("guests:homepage"),
+        reverse("products:index"),
+        reverse("guests:inquiry"),
+    ]
+    paths += [
+        reverse("guests:service_detail", kwargs={"slug": slug}) for slug in SERVICES
+    ]
     entries = [(path, None) for path in paths]
+    from apps.products.selectors import public_guides, public_products
+
+    for product in public_products():
+        entries.append((product.get_absolute_url(), product.updated_at))
+        for guide in public_guides(product):
+            entries.append((guide.get_absolute_url(), guide.updated_at))
     for page in case_study_pages(request):
         url = page.get_url(request=request)
         if url:
@@ -35,4 +49,7 @@ def sitemap(request):
         SubElement(item, "loc").text = url
         if modified:
             SubElement(item, "lastmod").text = modified.date().isoformat()
-    return HttpResponse(tostring(root, encoding="utf-8", xml_declaration=True), content_type="application/xml")
+    return HttpResponse(
+        tostring(root, encoding="utf-8", xml_declaration=True),
+        content_type="application/xml",
+    )

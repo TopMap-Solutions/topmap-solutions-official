@@ -9,74 +9,74 @@
 
 .process-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 .process-grid li {
-  min-width: 0;
 
   border-top: 1px solid #78634c;
+  min-width: 0;
   padding-top: 1.5rem;
 }
 
 .process-grid li > img {
   display: block;
 
-  width: clamp(70px, 7vw, 105px);
+  filter: brightness(0) invert(1);
   height: clamp(70px, 7vw, 105px);
 
   margin-bottom: 1.25rem;
 
   object-fit: contain;
   object-position: left center;
-
-  filter: brightness(0) invert(1);
   opacity: 0.9;
+
+  width: clamp(70px, 7vw, 105px);
 }
 
 .process-title {
-  display: flex;
   align-items: center;
+  display: flex;
   gap: 0.65rem;
 
   margin-bottom: 1rem;
 }
 
 .step-number {
+
+  color: #ffb88e;
   display: block;
   flex-shrink: 0;
 
-  margin: 0;
-
-  color: #ffb88e;
-
   font-size: clamp(1.15rem, 2vw, 1.5rem);
   font-weight: 700;
-  line-height: 1;
   letter-spacing: 0.08em;
+  line-height: 1;
+
+  margin: 0;
 }
 
 .process-grid h3 {
-  margin: 0;
+
+  color: var(--color-text-light);
 
   font-size: clamp(1.2rem, 2vw, 1.45rem);
   line-height: 1.25;
-
-  color: var(--color-text-light);
+  margin: 0;
 }
 
 .process-grid p {
-  margin: 0;
+
+  color: #ded5c8;
 
   font-size: 0.95rem;
   line-height: 1.65;
-
-  color: #ded5c8;
+  margin: 0;
 }
 
 .process-action {
@@ -94,8 +94,8 @@
   }
 
   .process-grid li > img {
-    width: clamp(65px, 9vw, 90px);
     height: clamp(65px, 9vw, 90px);
+    width: clamp(65px, 9vw, 90px);
   }
 
   .step-number {
@@ -109,8 +109,8 @@
 
 @media (max-width: 700px) {
   .process-grid {
-    grid-template-columns: 1fr;
     gap: 2.5rem;
+    grid-template-columns: 1fr;
   }
 
   .process-grid li {
@@ -118,10 +118,10 @@
   }
 
   .process-grid li > img {
-    width: clamp(70px, 20vw, 90px);
     height: clamp(70px, 20vw, 90px);
 
     margin-bottom: 1.25rem;
+    width: clamp(70px, 20vw, 90px);
   }
 
   .process-title {
@@ -132,17 +132,17 @@
   }
 
   .step-number {
-    margin: 0;
 
     font-size: clamp(1.1rem, 5vw, 1.4rem);
     line-height: 1;
+    margin: 0;
   }
 
   .process-grid h3 {
-    margin: 0;
 
     font-size: clamp(1.2rem, 5vw, 1.35rem);
     line-height: 1.25;
+    margin: 0;
   }
 
   .process-grid p {

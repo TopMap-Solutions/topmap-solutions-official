@@ -5,7 +5,6 @@ app_name = "guests"
 
 urlpatterns = [
     path("", views.homepage, name="homepage"),
-    path("products/", views.products_page, name="products"),
     path("privacy/", views.privacy_page, name="privacy"),
     path("legal/", views.legal_page, name="legal"),
     path("terms/", views.terms_page, name="terms"),

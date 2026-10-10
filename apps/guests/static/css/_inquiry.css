@@ -1,8 +1,8 @@
 .inquiry {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 6vw, 6rem);
   align-items: start;
+  display: grid;
+  gap: clamp(2rem, 6vw, 6rem);
+  grid-template-columns: 1fr 1fr;
 }
 
 .inquiry-intro > * + * {
@@ -14,36 +14,36 @@
 }
 
 .inquiry-note {
-  display: flex;
-  flex-direction: column;
   align-items: flex-start;
-  gap: 1.5rem;
-  padding: 1.5rem;
   border: var(--border-hairline);
   border-radius: var(--radius-card);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
 }
 
 .inquiry-note img {
-  display: block;
-  width: clamp(100px, 14vw, 160px);
-  height: clamp(100px, 14vw, 160px);
   align-self: center;
+  display: block;
+  height: clamp(100px, 14vw, 160px);
   object-fit: contain;
+  width: clamp(100px, 14vw, 160px);
 }
 
 .inquiry-note > div {
-  width: 100%;
   min-width: 0;
+  width: 100%;
 }
 
 .inquiry-note h2 {
-  margin: 0;
   font-size: 1.2rem;
+  margin: 0;
 }
 
 .inquiry-note ul {
-  padding-left: 1.25rem;
   margin-block: 1rem;
+  padding-left: 1.25rem;
 }
 
 .inquiry-note p {
@@ -51,11 +51,11 @@
 }
 
 #contact-form {
-  min-width: 0;
   background: white;
-  padding: clamp(1.25rem, 3vw, 2rem);
   border: var(--border-hairline);
   border-radius: var(--radius-card);
+  min-width: 0;
+  padding: clamp(1.25rem, 3vw, 2rem);
 }
 
 .form-field {
@@ -71,9 +71,9 @@
 .optional,
 .field-help,
 .form-note {
+  color: #655b4d;
   font-size: 0.85rem;
   font-weight: 400;
-  color: #655b4d;
 }
 
 .form-note {
@@ -81,10 +81,10 @@
 }
 
 .error-summary {
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-  border: 1px solid #a02020;
   background: #fff3f0;
+  border: 1px solid #a02020;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
 }
 
 .error-summary h2 {
@@ -105,18 +105,18 @@
 
 @media (max-width: 800px) {
   .inquiry {
-    grid-template-columns: 1fr;
     gap: 2.5rem;
+    grid-template-columns: 1fr;
   }
 
   .inquiry-note img {
-    width: clamp(100px, 22vw, 140px);
     height: clamp(100px, 22vw, 140px);
+    width: clamp(100px, 22vw, 140px);
   }
 
   #contact-form {
-    width: 100%;
     padding: 1.25rem;
+    width: 100%;
   }
 }
 
@@ -131,8 +131,8 @@
   }
 
   .inquiry-note img {
-    width: 100px;
     height: 100px;
+    width: 100px;
   }
 
   #contact-form {

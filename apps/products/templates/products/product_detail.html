@@ -1,0 +1,38 @@
+{% extends "_base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/products.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components/cta.css' %}">
+{% endblock %}
+{% block content %}
+    <article class="product-detail container">
+        <a class="product-back" href="{% url 'products:index' %}">← All products</a>
+        <header class="product-hero">
+            <div>
+                <p class="eyebrow">{{ product.get_status_display }}</p>
+                <h1>{{ product.name }}</h1>
+                <p class="lead">{{ product.summary }}</p>
+            </div>
+            {% if product.card_image %}
+                {% image product.card_image width-1000 as hero_image %}
+                <img src="{{ hero_image.url }}"
+                     width="{{ hero_image.width }}"
+                     height="{{ hero_image.height }}"
+                     alt="{{ product.name }}"
+                     loading="eager">
+            {% endif %}
+        </header>
+        {% if product.body %}
+            <div class="editorial-content">{% include_block product.body %}</div>
+        {% endif %}
+        {% if product.download_url %}<p><a class="btn-primary" href="{{ product.download_url }}" rel="nofollow">Download {{ product.name }}</a></p>{% endif %}
+        <section class="product-guides" aria-labelledby="guides-title">
+            <h2 id="guides-title">Training and guides</h2>
+            <div class="guide-grid">
+                {% for guide in guides %}<a class="guide-card" href="{{ guide.get_absolute_url }}"><span>{{ guide.get_kind_display }}</span><h3>{{ guide.title }}</h3>{% if guide.summary %}<p>{{ guide.summary }}</p>{% endif %}</a>
+            {% empty %}<p>Guides for this product are being prepared.</p>{% endfor %}
+        </div>
+    </section>
+</article>
+{% include "components/cta-global.html" %}
+{% endblock %}

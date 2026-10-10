@@ -1,4 +1,4 @@
-.PHONY: run migrate test test-ui
+.PHONY: run migrate test test-ui lint lint-python lint-templates lint-css lint-js format
 
 run:
 	uv run manage.py runserver
@@ -23,7 +23,34 @@ shell:
 
 
 lint:
-	uv run djlint . --reformat
+	$(MAKE) lint-python
+	$(MAKE) lint-templates
+	$(MAKE) lint-css
+	$(MAKE) lint-js
+
+
+lint-python:
+	uv run --frozen ruff check .
+
+
+lint-templates:
+	uv run --frozen djlint . --profile=django --check
+
+
+lint-css:
+	npm run lint:css
+
+
+lint-js:
+	npm run lint:js
+
+
+format:
+	uv run --frozen ruff check . --fix
+	uv run --frozen ruff format .
+	uv run --frozen djlint . --profile=django --reformat
+	npm run format:css
+	npm run format:js
 
 
 test-ui:

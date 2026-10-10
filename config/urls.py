@@ -13,6 +13,8 @@ urlpatterns = [
     path("robots.txt", robots, name="robots"),
     path("sitemap.xml", sitemap, name="sitemap"),
     path("not-admin/", admin.site.urls),
+    path("api/v1/licensing/", include("apps.licensing.urls")),
+    path("products/", include("apps.products.urls")),
     path("", include("apps.guests.urls")),
     path("cms/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),

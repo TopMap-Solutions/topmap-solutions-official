@@ -65,15 +65,11 @@ STORAGES = {
             "bucket_name": os.environ["B2_BUCKET_NAME"],
             "endpoint_url": os.environ["B2_ENDPOINT_URL"],
             "region_name": os.environ["B2_REGION"],
-
             "default_acl": None,
             "querystring_auth": False,
         },
     },
-
     "staticfiles": {
-        "BACKEND": (
-            "whitenoise.storage.CompressedManifestStaticFilesStorage"
-        ),
+        "BACKEND": ("whitenoise.storage.CompressedManifestStaticFilesStorage"),
     },
 }

@@ -1,0 +1,5 @@
+{% load wagtailcore_tags %}
+<aside class="guide-callout guide-callout--{{ value.style }}">
+    {% if value.title %}<h3>{{ value.title }}</h3>{% endif %}
+    {{ value.text|richtext }}
+</aside>

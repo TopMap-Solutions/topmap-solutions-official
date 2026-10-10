@@ -1,19 +1,19 @@
 @import url("content.css");
 
 .case-study-navigation a {
-  display: flex;
-  margin-bottom: 1.5rem;
   align-items: center;
-  gap: 0.75rem;
-  text-decoration: none;
   color: var(--color-dark);
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  text-decoration: none;
   transition: 0.2s all ease-in-out;
 }
 
 .case-study-navigation .lucide-icon {
-  width: 1.5rem;
   height: 1.5rem;
   transition: transform 0.2s ease;
+  width: 1.5rem;
 }
 
 .case-study-navigation a:hover {
@@ -26,10 +26,10 @@
 
 /* ---------- Header ---------- */
 .case-study header {
-  display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
-  gap: clamp(2rem, 5vw, 5rem);
   align-items: start;
+  display: grid;
+  gap: clamp(2rem, 5vw, 5rem);
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
 }
 
 .case-study header .title {
@@ -41,10 +41,10 @@
 }
 
 .case-study header .right-bar {
-  min-width: 0;
-  padding: 2rem;
   background-color: var(--color-secondary-bg);
   border-radius: var(--radius-card);
+  min-width: 0;
+  padding: 2rem;
 }
 
 .case-study header .right-bar .client-info {
@@ -53,15 +53,15 @@
 }
 
 .case-study header .right-bar .client-info div {
+  align-items: center;
   display: flex;
   gap: 1rem;
   padding: 0.5rem 0rem;
-  align-items: center;
 }
 
 .case-study header .right-bar .client-info p {
-  text-transform: capitalize;
   font-weight: 600;
+  text-transform: capitalize;
 }
 
 .case-study header .right-bar .client-info img {
@@ -74,33 +74,32 @@
 }
 
 .case-study header .right-bar .tags-container {
+  align-items: flex-start;
   display: flex;
   gap: 0.5rem;
-  align-items: flex-start;
 }
 
 /* ---------- Gallery ---------- */
 .case-study .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr));
   gap: 1px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr));
   overflow: hidden;
 }
 
 .case-study .gallery figure {
-  margin: 0;
   background: var(--color-muted);
-  position: relative;
-  margin: 1.5rem 0rem;
   border-radius: var(--radius-card);
+  margin: 1.5rem 0rem;
+  position: relative;
 }
 
 .case-study .gallery figure img {
   border-radius: var(--radius-card);
   display: block;
-  max-width: 100%;
   height: auto;
   margin-inline: auto;
+  max-width: 100%;
 }
 
 .case-study-layout {
@@ -115,9 +114,9 @@
 }
 
 .case-study-layout > .case-study-results {
+  align-self: flex-start;
   position: sticky;
   top: calc(50px + 2.8rem + 1px + 0.75rem);
-  align-self: flex-start;
 }
 
 .case-study-result {
@@ -125,19 +124,19 @@
 }
 
 .case-study-results .btn-primary {
-  display: block;
-  width: 100%;
   box-sizing: border-box;
-  text-align: center;
+  display: block;
   margin-top: 1.75rem;
+  text-align: center;
+  width: 100%;
 }
 
 .case-study-section .case-study-results h2 {
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.12em;
-  text-transform: uppercase;
   margin-bottom: 1.75rem;
+  text-transform: uppercase;
 }
 
 .case-study-layout {
@@ -159,15 +158,15 @@
 /* Tablet: stack header, tighten gaps */
 @media (max-width: 900px) {
   .case-study header {
-    grid-template-columns: 1fr;
     gap: 2rem;
+    grid-template-columns: 1fr;
   }
 
   .case-study header .right-bar {
+    align-items: flex-start;
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
-    align-items: flex-start;
   }
 
   .case-study header .right-bar .client-info {
@@ -222,10 +221,10 @@
   }
 
   .case-study header .right-bar .client-info {
-    border-right: none;
     border-bottom: 1px solid var(--color-dark);
-    padding-right: 0;
+    border-right: none;
     padding-bottom: 1rem;
+    padding-right: 0;
   }
 
   .case-study header .right-bar .tags-list-container {
@@ -256,8 +255,8 @@
 
 .case-study .result-value {
   font-size: clamp(1.75rem, 3vw, 2.75rem);
-  line-height: 1.15;
   font-weight: 750;
+  line-height: 1.15;
 }
 
 .case-study-section h2 {
@@ -269,11 +268,11 @@
 }
 
 .case-study-cta {
+  align-items: flex-start;
   border-top: var(--border-hairline);
-  margin-top: 3rem;
-  padding-top: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
 }

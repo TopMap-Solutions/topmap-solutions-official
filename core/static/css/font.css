@@ -4,8 +4,8 @@ h3,
 h4 {
   font-family: var(--font-header);
   font-weight: var(--fw-bold);
-  line-height: 1.15;
   letter-spacing: -.035em;
+  line-height: 1.15;
   text-wrap: balance;
 }
 
